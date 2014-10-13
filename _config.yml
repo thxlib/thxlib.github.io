@@ -4,6 +4,6 @@ highlighter: pygments
 safe: true
 exclude: ['CNAME', 'README.md']
 lsi: false
-
-collections:
-- libraries
+markdown: redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]

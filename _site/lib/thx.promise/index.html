@@ -6,6 +6,7 @@
   <meta name="author" content="Franco Ponticelli" />
   <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" media="all" />
   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/css/highlight.css" type="text/css" media="all" />
 </head>
 <body>
   <div class="site">
@@ -29,104 +30,80 @@
         </ul>
       </li>
     </ul>
-    <h1 id="thxpromise">thx.promise</h1>
+    <h1 id="thx.promise">thx.promise</h1>
 
-<p><a href="https://travis-ci.org/fponticelli/thx.promise"><img src="https://travis-ci.org/fponticelli/thx.promise.svg" alt="Build Status" /></a></p>
+<p><a href="https://travis-ci.org/fponticelli/thx.promise"><img src="https://travis-ci.org/fponticelli/thx.promise.svg" alt="Build Status"></a></p>
 
 <p>Simple reinterpretation of the Promise pattern for Haxe.</p>
 
 <h2 id="intro">intro</h2>
 
-<p>thx.promise doesn’t follow the Promise/A+ specication or any other specification. The libraries simply tries to leverage the Haxe typing system without enforcing any type of obscure magic.</p>
+<p>thx.promise doesn&#39;t follow the Promise/A+ specication or any other specification. The libraries simply tries to leverage the Haxe typing system without enforcing any type of obscure magic.</p>
 
-<p>Promises always deal with just one value. If you need multiple values, you can use a <a href="https://github.com/fponticelli/thx.core/blob/master/src/thx/core/Tuple.hx">Tuple</a> and if you don’t need any value use <a href="https://github.com/fponticelli/thx.core/blob/master/src/thx/core/Nil.hx">Nil</a>. This approach allows for a very simple API and implementation.
+<p>Promises always deal with just one value. If you need multiple values, you can use a <a href="https://github.com/fponticelli/thx.core/blob/master/src/thx/core/Tuple.hx">Tuple</a> and if you don&#39;t need any value use <a href="https://github.com/fponticelli/thx.core/blob/master/src/thx/core/Nil.hx">Nil</a>. This approach allows for a very simple API and implementation.
 mark
 A Promise is a representation of a value that will be available some time in the future. The value can be either any type in case of success or an instance of <a href="https://github.com/fponticelli/thx.core/blob/master/src/thx/core/Error.hx">Error</a> in case of failure. Notice that the Error case can only occur if the Promise has been explicitely rejected. Any error occurring in the promise handlers will not be automatically captured and will propagate normally.</p>
 
 <p>A simple promise look something like this:</p>
-
-<p><code>haxe
-var promise = Promise.create(function(resolve : String -&gt; Void, reject : Error -&gt; Void) {
-    thx.core.Timer.delay(function() {
-        if(Math.random() &lt; 0.5)
-            resolve("success");
-        else
-            reject(new Error("failure"));
-    }, 100);
-});
-</code></p>
-
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> promise <span class="o">=</span> <span class="n">Promise</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">resolve</span> <span class="p">:</span> <span class="n">String</span> <span class="p">-&gt;</span> <span class="n">Void</span><span class="p">,</span> <span class="n">reject</span> <span class="p">:</span> <span class="n">Error</span> <span class="p">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">thx</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">Timer</span><span class="p">.</span><span class="n">delay</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">)</span>
+            <span class="n">resolve</span><span class="p">(</span><span class="s2">&quot;success&quot;</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="n">reject</span><span class="p">(</span><span class="k">new</span> <span class="n">Error</span><span class="p">(</span><span class="s2">&quot;failure&quot;</span><span class="p">));</span>
+    <span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
 <p>This promise resolve randomly to a success/failure 50% of the times.</p>
 
 <p>Usage looks like:</p>
-
-<p><code>haxe
-promise.success(function(value) trace('SUCCESS $value'));
-</code></p>
-
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="n">promise</span><span class="p">.</span><span class="n">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="n">trace</span><span class="p">(</span><span class="s1">&#39;SUCCESS </span><span class="si">$</span><span class="n">value</span><span class="s1">&#39;</span><span class="p">));</span>
+</code></pre></div>
 <p>In this case we decided to only deal with the success cases and to ignore all the rejected values. We can deal with those by doing:</p>
-
-<p><code>haxe
-promise.failure(function(error) trace('ERROR $error'));
-</code></p>
-
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="n">promise</span><span class="p">.</span><span class="n">failure</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="n">trace</span><span class="p">(</span><span class="s1">&#39;ERROR </span><span class="si">$</span><span class="n">error</span><span class="s1">&#39;</span><span class="p">));</span>
+</code></pre></div>
 <p>or</p>
-
-<p><code>haxe
-promise.either(
-    function(value) trace('SUCCESS $value'),
-    function(error) trace('ERROR $error')
-);
-</code></p>
-
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="n">promise</span><span class="p">.</span><span class="n">either</span><span class="p">(</span>
+    <span class="kd">function</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="n">trace</span><span class="p">(</span><span class="s1">&#39;SUCCESS </span><span class="si">$</span><span class="n">value</span><span class="s1">&#39;</span><span class="p">),</span>
+    <span class="kd">function</span><span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="n">trace</span><span class="p">(</span><span class="s1">&#39;ERROR </span><span class="si">$</span><span class="n">error</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div>
 <p>All these methods are convenience methods that use <code>.then()</code> internally. <code>.then()</code> method deals with <a href="/src/thx/promise/PromiseValue.hx"><code>PromiseValue&lt;T&gt;</code></a> directly.</p>
 
 <p>All of the above methods return the same Promise instance to enable easy chaining. Notice that handlers are executed in the sequence they have been registered and an uncaught exception in one of the handlers will provoke a termination in the chain.</p>
-
-<p><code>haxe
-promise.success(function(value) { /* ... */ })
-    .success(function(value) { /* ... */ })
-    .failure(function(error) { /* ... */ });
-</code></p>
-
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="n">promise</span><span class="p">.</span><span class="n">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">})</span>
+    <span class="p">.</span><span class="n">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">})</span>
+    <span class="p">.</span><span class="n">failure</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">});</span>
+</code></pre></div>
 <p>All of the above are handling the same Promise/Value pair.</p>
 
 <h2 id="values">values</h2>
 
 <p>If you already have a value (or an error) you can instantly fulfill a Promise by doing:</p>
-
-<p><code>haxe
-Promise.value("some value");
-Promise.error(new Error("It's not my fault"));
-</code></p>
-
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="n">Promise</span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="s2">&quot;some value&quot;</span><span class="p">);</span>
+<span class="n">Promise</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="k">new</span> <span class="n">Error</span><span class="p">(</span><span class="s2">&quot;It&#39;s not my fault&quot;</span><span class="p">));</span>
+</code></pre></div>
 <p>They both return a resolved instance of Promise.</p>
 
-<h2 id="transformmap">transform/map</h2>
+<h2 id="transform/map">transform/map</h2>
 
 <p>It seems pretty obvious that a Promise should be easy to transform/map. To that effect you have <code>map</code> and the <code>map*</code> derivative methods. A <code>map</code> method must return a new Promise instance.</p>
-
-<p><code>haxe
-Promise.value(3)
-    // mapping to a new Promise with same type
-    .mapSuccess(function(v) return Promise.value(v * 2))
-    // mapping to a new Promise with a different type
-    .mapSuccess(function(v) return Promise.value(StringTools.rpad('', 'x', v)))
-    .success(function(s) trace(s)); // echoes 'xxxxxx'
-</code></p>
-
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="n">Promise</span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="c1">// mapping to a new Promise with same type</span>
+    <span class="p">.</span><span class="n">mapSuccess</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">return</span> <span class="n">Promise</span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="n">v</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="c1">// mapping to a new Promise with a different type</span>
+    <span class="p">.</span><span class="n">mapSuccess</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">return</span> <span class="n">Promise</span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="n">StringTools</span><span class="p">.</span><span class="n">rpad</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">v</span><span class="p">)))</span>
+    <span class="p">.</span><span class="n">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">trace</span><span class="p">(</span><span class="n">s</span><span class="p">));</span> <span class="c1">// echoes &#39;xxxxxx&#39;</span>
+</code></pre></div>
 <p>In case of failure, <code>mapSuccess</code> will skip the success handler and push the failure down to the output Promise.</p>
 
-<p><code>mapFailure</code> is useful to be able to recover from an error. Let’s suppose that if an error occurred I still want to be able to perform the promise handler with a default value:</p>
+<p><code>mapFailure</code> is useful to be able to recover from an error. Let&#39;s suppose that if an error occurred I still want to be able to perform the promise handler with a default value:</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> promise <span class="p">:</span> <span class="n">Promise</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;</span> <span class="o">=</span> <span class="err">...;</span> <span class="c1">// an integer generator of some sort</span>
 
-<p>```haxe
-var promise : Promise<int> = ...; // an integer generator of some sort</int></p>
+<span class="c1">// in case of error I still want to return a promise that holds 0</span>
 
-<p>// in case of error I still want to return a promise that holds 0</p>
-
-<p>promise = promise.mapFailure(function(err) return 0);
-```</p>
-
+<span class="n">promise</span> <span class="o">=</span> <span class="n">promise</span><span class="p">.</span><span class="n">mapFailure</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">);</span>
+</code></pre></div>
 <p>This promise will always succeed and return an integer result.</p>
 
 <p>To complete the scenario you can also use <code>mapEither</code> that provides a way to map either the success or the failure with two independent handlers.</p>
@@ -135,7 +112,7 @@ var promise : Promise<int> = ...; // an integer generator of some sort</int></p>
 
 <h2 id="always">always</h2>
 
-<p>Sometimes you just want to be notified when a promise has been fulfilled regardless of the value itself. In this case you can use <code>always()</code> (terminal computation like <code>success</code>/<code>failure</code>) or <code>mapAlways()</code> (map method like <code>mapSuccess/mapFailure</code>). Obviously the handlers of these functions will take no arguments because we don’t care about the value of the promise.</p>
+<p>Sometimes you just want to be notified when a promise has been fulfilled regardless of the value itself. In this case you can use <code>always()</code> (terminal computation like <code>success</code>/<code>failure</code>) or <code>mapAlways()</code> (map method like <code>mapSuccess/mapFailure</code>). Obviously the handlers of these functions will take no arguments because we don&#39;t care about the value of the promise.</p>
 
 <h2 id="more">more</h2>
 
@@ -145,45 +122,35 @@ var promise : Promise<int> = ...; // an integer generator of some sort</int></p>
 
 <p>Extensions methods are available in the <code>thx.core.Promise</code> module. Using <code>using</code> you can access those directly as instance members of Promise.</p>
 
-<h3 id="log">log()</h3>
+<h3 id="log()">log()</h3>
 
 <p>Utility function to send the value of a Promise to <code>trace()</code>.</p>
 
-<h3 id="delay">delay()</h3>
+<h3 id="delay()">delay()</h3>
 
-<p>Returns a new Promise that passes through the value of the original promise but with a time delay. If time is not specified, the delay will be the shortest allowed by the platform (for JavaScript developers that might be equivalent to ‘setImmediate’).</p>
-
-<p><code>haxe
-var promise = Promise.value(7).delay(50);
-</code></p>
-
+<p>Returns a new Promise that passes through the value of the original promise but with a time delay. If time is not specified, the delay will be the shortest allowed by the platform (for JavaScript developers that might be equivalent to &#39;setImmediate&#39;).</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> promise <span class="o">=</span> <span class="n">Promise</span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="mi">7</span><span class="p">).</span><span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+</code></pre></div>
 <p>The promise holds the value 7 but its availability is delayed by <code>50ms</code>.</p>
 
-<h3 id="join">join()</h3>
+<h3 id="join()">join()</h3>
 
-<p>Joins together two promises and returns a new Promise holding both values as members of a Tuple. You can easily ‘unpack’ the members of a Promise<tuplex> by using `tuple()`/`mapTuple()`.</tuplex></p>
-
-<p><code>haxe
-Promise.value(7)
-    .join(Promise.value("test"))
-    .success(function(tuple) {
-        trace('${tuple._0} ${tuple._1}')
-    });
-</code></p>
-
+<p>Joins together two promises and returns a new Promise holding both values as members of a Tuple. You can easily &#39;unpack&#39; the members of a Promise<TupleX> by using <code>tuple()</code>/<code>mapTuple()</code>.</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="n">Promise</span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">Promise</span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">))</span>
+    <span class="p">.</span><span class="n">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">tuple</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">trace</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">${</span><span class="n">tuple</span><span class="p">.</span><span class="n">_0</span><span class="si">}</span><span class="s1"> </span><span class="si">${</span><span class="n">tuple</span><span class="p">.</span><span class="n">_1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="p">});</span>
+</code></pre></div>
 <p>Even more simple with the <code>tuple()</code> extension method:</p>
-
-<p><code>haxe
-Promise.value(7)
-    .join(Promise.value("test"))
-    .join(Promise.value(true))
-    .tuple(function(number : Int, text : String, flag : Bool) {
-        // do something here
-    });
-</code></p>
-
-<p>To be clear the Promises joined together will run concurrently and the Promise<tuplex> result will be available as soon as all the Promises involved have been resolved.</tuplex></p>
-
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="n">Promise</span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">Promise</span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">))</span>
+    <span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">Promise</span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="kc">true</span><span class="p">))</span>
+    <span class="p">.</span><span class="n">tuple</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">number</span> <span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">text</span> <span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">flag</span> <span class="p">:</span> <span class="n">Bool</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do something here</span>
+    <span class="p">});</span>
+</code></pre></div>
+<p>To be clear the Promises joined together will run concurrently and the Promise<TupleX> result will be available as soon as all the Promises involved have been resolved.</p>
 
     <div class="footer">
       <div class="contact">

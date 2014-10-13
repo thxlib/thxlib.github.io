@@ -6,6 +6,7 @@
   <meta name="author" content="Franco Ponticelli" />
   <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" media="all" />
   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/css/highlight.css" type="text/css" media="all" />
 </head>
 <body>
   <div class="site">
@@ -27,89 +28,75 @@
         </ul>
       </li>
     </ul>
-    <h1 id="thxcolor">thx.color</h1>
+    <h1 id="thx.color">thx.color</h1>
 
-<p><a href="https://travis-ci.org/fponticelli/thx.color"><img src="https://travis-ci.org/fponticelli/thx.color.svg" alt="Build Status" /></a></p>
+<p><a href="https://travis-ci.org/fponticelli/thx.color"><img src="https://travis-ci.org/fponticelli/thx.color.svg" alt="Build Status"></a></p>
 
 <p>General purpose color library for Haxe.</p>
 
 <p>API uses abstracts to make it easy to use colors with strings and numbers.</p>
-
-<p><code>haxe
-    var rgb : RGB = "#cf8700";
-    trace(rgb.green);
-</code></p>
-
-<h2 id="some-examples-from-demodemodemohx">Some examples from <a href="/demo/Demo.hx">Demo</a></h2>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe">    <span class="kd">var</span> rgb <span class="p">:</span> <span class="n">RGB</span> <span class="o">=</span> <span class="s2">&quot;#cf8700&quot;</span><span class="p">;</span>
+    <span class="n">trace</span><span class="p">(</span><span class="n">rgb</span><span class="p">.</span><span class="n">green</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="some-examples-from-demo">Some examples from <a href="/demo/Demo.hx">Demo</a></h2>
 
 <h3 id="hsl-rainbow">HSL Rainbow</h3>
-
-<p><code>haxe
-var left  : HSL = 'hsl(0,100%,0%)',
-    right : HSL = 'hsl(359.99,100%,0%)',
-    interpolate = left.interpolate.bind(right, _);
-Ints.range(0, w)
-    .map(function(x) {
-        var color = interpolate(x/w);
-        Ints.range(0, h).map(function(y) {
-            ctx.fillStyle = color.lighter(y/h).toRGB().toString();
-            ctx.fillRect(x, y, 1, 1);
-        });
-    });
-</code></p>
-
-<p><img src="/images/rainbow.png?raw=true" alt="Alt text" title="HSL Rainbow" /></p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> left  <span class="p">:</span> <span class="n">HSL</span> <span class="o">=</span> <span class="s1">&#39;hsl(0,100%,0%)&#39;</span><span class="p">,</span>
+    right <span class="p">:</span> <span class="n">HSL</span> <span class="o">=</span> <span class="s1">&#39;hsl(359.99,100%,0%)&#39;</span><span class="p">,</span>
+    interpolate <span class="o">=</span> <span class="n">left</span><span class="p">.</span><span class="n">interpolate</span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">_</span><span class="p">);</span>
+<span class="n">Ints</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> color <span class="o">=</span> <span class="n">interpolate</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">w</span><span class="p">);</span>
+        <span class="n">Ints</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ctx</span><span class="p">.</span><span class="n">fillStyle</span> <span class="o">=</span> <span class="n">color</span><span class="p">.</span><span class="n">lighter</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">h</span><span class="p">).</span><span class="n">toRGB</span><span class="p">().</span><span class="n">toString</span><span class="p">();</span>
+            <span class="n">ctx</span><span class="p">.</span><span class="n">fillRect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+</code></pre></div>
+<p><img src="/images/rainbow.png?raw=true" alt="Alt text" title="HSL Rainbow"></p>
 
 <h3 id="hsv-gradient">HSV Gradient</h3>
-
-<p><code>haxe
-var left  : HSV = 'hsv(0,100%,100%)',
-    right : HSV = 'hsv(359.99,100%,100%)';
-return function(t)
-    return left.interpolate(right, t).toRGB();
-</code></p>
-
-<p><img src="/images/gradienthsv.png?raw=true" alt="Alt text" title="HSV Gradient" /></p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> left  <span class="p">:</span> <span class="n">HSV</span> <span class="o">=</span> <span class="s1">&#39;hsv(0,100%,100%)&#39;</span><span class="p">,</span>
+    right <span class="p">:</span> <span class="n">HSV</span> <span class="o">=</span> <span class="s1">&#39;hsv(359.99,100%,100%)&#39;</span><span class="p">;</span>
+<span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">left</span><span class="p">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">t</span><span class="p">).</span><span class="n">toRGB</span><span class="p">();</span>
+</code></pre></div>
+<p><img src="/images/gradienthsv.png?raw=true" alt="Alt text" title="HSV Gradient"></p>
 
 <h3 id="lighter-rgb">Lighter RGB</h3>
-
-<p><code>haxe
-var left : RGB = '#0000ff';
-return left.lighter;
-</code></p>
-
-<p><img src="/images/lighterrgb.png?raw=true" alt="Alt text" title="Lighter RGB" /></p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> left <span class="p">:</span> <span class="n">RGB</span> <span class="o">=</span> <span class="s1">&#39;#0000ff&#39;</span><span class="p">;</span>
+<span class="k">return</span> <span class="n">left</span><span class="p">.</span><span class="n">lighter</span><span class="p">;</span>
+</code></pre></div>
+<p><img src="/images/lighterrgb.png?raw=true" alt="Alt text" title="Lighter RGB"></p>
 
 <h3 id="named-colors-table">Named Colors Table</h3>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> columns <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    colors  <span class="o">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">names</span><span class="p">.</span><span class="n">keys</span><span class="p">().</span><span class="n">toArray</span><span class="p">().</span><span class="n">filter</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">return</span> <span class="n">n</span><span class="p">.</span><span class="n">indexOf</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">),</span>
+    cellw   <span class="o">=</span> <span class="n">w</span> <span class="o">/</span> <span class="n">columns</span><span class="p">,</span>
+    cellh   <span class="o">=</span> <span class="n">h</span> <span class="o">/</span> <span class="n">Math</span><span class="p">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">colors</span><span class="p">.</span><span class="n">length</span> <span class="o">/</span> <span class="n">columns</span><span class="p">);</span>
+<span class="n">ctx</span><span class="p">.</span><span class="n">textAlign</span> <span class="o">=</span> <span class="s2">&quot;center&quot;</span><span class="p">;</span>
+<span class="n">ctx</span><span class="p">.</span><span class="n">textBaseline</span> <span class="o">=</span> <span class="s2">&quot;middle&quot;</span><span class="p">;</span>
+<span class="n">ctx</span><span class="p">.</span><span class="n">font</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">${</span><span class="n">Math</span><span class="p">.</span><span class="n">round</span><span class="p">(</span><span class="n">cellh</span><span class="o">*</span><span class="mf">0.4</span><span class="p">)</span><span class="si">}</span><span class="s1">px Verdana, sans-serif&#39;</span><span class="p">;</span>
+<span class="n">colors</span><span class="p">.</span><span class="n">mapi</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> col   <span class="o">=</span> <span class="n">i</span> <span class="o">%</span> <span class="n">columns</span><span class="p">,</span>
+        row   <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="n">floor</span><span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="n">columns</span><span class="p">),</span>
+        color <span class="o">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">names</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
 
-<p>```haxe
-var columns = 5,
-    colors  = Color.names.keys().toArray().filter(function(n) return n.indexOf(‘ ‘) &lt; 0),
-    cellw   = w / columns,
-    cellh   = h / Math.ceil(colors.length / columns);
-ctx.textAlign = “center”;
-ctx.textBaseline = “middle”;
-ctx.font = ‘${Math.round(cellh*0.4)}px Verdana, sans-serif’;
-colors.mapi(function(name, i) {
-    var col   = i % columns,
-        row   = Math.floor(i / columns),
-        color = Color.names.get(name);</p>
+    <span class="n">ctx</span><span class="p">.</span><span class="n">fillStyle</span> <span class="o">=</span> <span class="n">color</span><span class="p">.</span><span class="n">toString</span><span class="p">();</span>
+    <span class="n">ctx</span><span class="p">.</span><span class="n">fillRect</span><span class="p">(</span><span class="n">col</span> <span class="o">*</span> <span class="n">cellw</span><span class="p">,</span> <span class="n">row</span> <span class="o">*</span> <span class="n">cellh</span><span class="p">,</span> <span class="n">cellw</span><span class="p">,</span> <span class="n">cellh</span><span class="p">);</span>
 
-<pre><code>ctx.fillStyle = color.toString();
-ctx.fillRect(col * cellw, row * cellh, cellw, cellh);
-
-ctx.fillStyle = color.toRGBX()
-    .toPerceivedGrey()
-    .contrast()
-    .toRGB().toString();
-ctx.fillText(
-    name,
-    Math.round(col * cellw + cellw / 2) + 0.5,
-    Math.round(row * cellh + cellh / 2) + 0.5,
-    cellw); }); ```
-</code></pre>
-
-<p>&lt;img src=”/images/colortable.png?raw=true” alt=”color table” width=”450” height=”600””&gt;</p>
+    <span class="n">ctx</span><span class="p">.</span><span class="n">fillStyle</span> <span class="o">=</span> <span class="n">color</span><span class="p">.</span><span class="n">toRGBX</span><span class="p">()</span>
+        <span class="p">.</span><span class="n">toPerceivedGrey</span><span class="p">()</span>
+        <span class="p">.</span><span class="n">contrast</span><span class="p">()</span>
+        <span class="p">.</span><span class="n">toRGB</span><span class="p">().</span><span class="n">toString</span><span class="p">();</span>
+    <span class="n">ctx</span><span class="p">.</span><span class="n">fillText</span><span class="p">(</span>
+        <span class="n">name</span><span class="p">,</span>
+        <span class="n">Math</span><span class="p">.</span><span class="n">round</span><span class="p">(</span><span class="n">col</span> <span class="o">*</span> <span class="n">cellw</span> <span class="o">+</span> <span class="n">cellw</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">Math</span><span class="p">.</span><span class="n">round</span><span class="p">(</span><span class="n">row</span> <span class="o">*</span> <span class="n">cellh</span> <span class="o">+</span> <span class="n">cellh</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">cellw</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><img src="/images/colortable.png?raw=true" alt="color table" width="450" height="600""></p>
 
 <p>To run <a href="/demo/Demo.hx">Demo</a>, you need <code>nodejs</code> and the Canvas library (<code>npm install canvas</code>);</p>
 

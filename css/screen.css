@@ -196,3 +196,7 @@ ul.info > li {
 ul.info > li:last-child {
   border-bottom: none;
 }
+
+.highlight {
+  padding: 5px 10px;
+}

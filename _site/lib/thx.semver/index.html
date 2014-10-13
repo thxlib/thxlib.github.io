@@ -6,6 +6,7 @@
   <meta name="author" content="Franco Ponticelli" />
   <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" media="all" />
   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/css/highlight.css" type="text/css" media="all" />
 </head>
 <body>
   <div class="site">
@@ -29,48 +30,33 @@
         </ul>
       </li>
     </ul>
-    <h1 id="thxsemver">thx.semver</h1>
+    <h1 id="thx.semver">thx.semver</h1>
 
-<p><a href="https://travis-ci.org/fponticelli/thx.semver"><img src="https://travis-ci.org/fponticelli/thx.semver.svg" alt="Build Status" /></a></p>
+<p><a href="https://travis-ci.org/fponticelli/thx.semver"><img src="https://travis-ci.org/fponticelli/thx.semver.svg" alt="Build Status"></a></p>
 
 <p>Semantic Version library for Haxe. The library provides an abstract type <code>thx.semver.Version</code> that represents a release version as described in the <a href="http://semver.org/">Semantic Versioning Specification 2.0.0</a>.</p>
 
 <p>To create a version you can use a string:
 <code>haxe
-var v : Version = '1.2.3';
+var v : Version = &#39;1.2.3&#39;;
 </code></p>
 
 <p>Or an array:</p>
-
-<p><code>haxe
-var v : Version= [1,2,3];
-</code></p>
-
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> v <span class="p">:</span> <span class="n">Version</span><span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">];</span>
+</code></pre></div>
 <p>In this case you will not be able to specify a pre-release (<code>pre</code>) or a <code>build</code> value. But you can integrate using one of the transformation methods:</p>
-
-<p><code>haxe
-var v = ([1,2,3] : Version).withBuild('abc');
-</code></p>
-
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> v <span class="o">=</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="p">:</span> <span class="n">Version</span><span class="p">).</span><span class="n">withBuild</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">);</span>
+</code></pre></div>
 <p>Versions can be easily compared:</p>
-
-<p><code>haxe
-('1.0.0' : Version) &gt; ('1.0.0-alpha' : Version) // yields true
-</code></p>
-
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="p">(</span><span class="s1">&#39;1.0.0&#39;</span> <span class="p">:</span> <span class="n">Version</span><span class="p">)</span> <span class="o">&gt;</span> <span class="p">(</span><span class="s1">&#39;1.0.0-alpha&#39;</span> <span class="p">:</span> <span class="n">Version</span><span class="p">)</span> <span class="c1">// yields true</span>
+</code></pre></div>
 <p>A version with pre-release and build looks like:</p>
-
-<p><code>haxe
-var v : Version = '1.0.0-alpha+build.12'
-</code></p>
-
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> v <span class="p">:</span> <span class="n">Version</span> <span class="o">=</span> <span class="s1">&#39;1.0.0-alpha+build.12&#39;</span>
+</code></pre></div>
 <p>Also generating new versions is very easy:</p>
-
-<p><code>haxe
-var v : Version = '0.9.17';
-trace(v.nextMinor()); // echoes '0.10.0'
-</code></p>
-
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> v <span class="p">:</span> <span class="n">Version</span> <span class="o">=</span> <span class="s1">&#39;0.9.17&#39;</span><span class="p">;</span>
+<span class="n">trace</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">nextMinor</span><span class="p">());</span> <span class="c1">// echoes &#39;0.10.0&#39;</span>
+</code></pre></div>
     <div class="footer">
       <div class="contact">
         <p>
