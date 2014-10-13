@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-gb">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>thx.promise</title>
+  <meta name="author" content="Franco Ponticelli" />
+  <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/css/screen.css" type="text/css" media="all" />
+</head>
+<body>
+  <div class="site">
+    <div class="title"><a href="/">thx libraries</a></div>
+    <ul class="info">
+      <li><a href="/lib/thx.promise/"><i class="fa fa-github"></i> Github</a></li>
+      <li><a href="/api/thx/promise"><i class="fa fa-code"></i> API doc</a></li>
+      <li>version 0.3.3</li>
+      <li>
+        tags: 
+        <ul class="tags">
+          
+          <li>thx</li>
+          
+          <li>promise</li>
+          
+          <li>async</li>
+          
+          <li>cross</li>
+          
+        </ul>
+      </li>
+    </ul>
+    <h1 id="thxpromise">thx.promise</h1>
+
+<p><a href="https://travis-ci.org/fponticelli/thx.promise"><img src="https://travis-ci.org/fponticelli/thx.promise.svg" alt="Build Status" /></a></p>
+
+<p>Simple reinterpretation of the Promise pattern for Haxe.</p>
+
+<h2 id="intro">intro</h2>
+
+<p>thx.promise doesn’t follow the Promise/A+ specication or any other specification. The libraries simply tries to leverage the Haxe typing system without enforcing any type of obscure magic.</p>
+
+<p>Promises always deal with just one value. If you need multiple values, you can use a <a href="https://github.com/fponticelli/thx.core/blob/master/src/thx/core/Tuple.hx">Tuple</a> and if you don’t need any value use <a href="https://github.com/fponticelli/thx.core/blob/master/src/thx/core/Nil.hx">Nil</a>. This approach allows for a very simple API and implementation.
+mark
+A Promise is a representation of a value that will be available some time in the future. The value can be either any type in case of success or an instance of <a href="https://github.com/fponticelli/thx.core/blob/master/src/thx/core/Error.hx">Error</a> in case of failure. Notice that the Error case can only occur if the Promise has been explicitely rejected. Any error occurring in the promise handlers will not be automatically captured and will propagate normally.</p>
+
+<p>A simple promise look something like this:</p>
+
+<p><code>haxe
+var promise = Promise.create(function(resolve : String -&gt; Void, reject : Error -&gt; Void) {
+    thx.core.Timer.delay(function() {
+        if(Math.random() &lt; 0.5)
+            resolve("success");
+        else
+            reject(new Error("failure"));
+    }, 100);
+});
+</code></p>
+
+<p>This promise resolve randomly to a success/failure 50% of the times.</p>
+
+<p>Usage looks like:</p>
+
+<p><code>haxe
+promise.success(function(value) trace('SUCCESS $value'));
+</code></p>
+
+<p>In this case we decided to only deal with the success cases and to ignore all the rejected values. We can deal with those by doing:</p>
+
+<p><code>haxe
+promise.failure(function(error) trace('ERROR $error'));
+</code></p>
+
+<p>or</p>
+
+<p><code>haxe
+promise.either(
+    function(value) trace('SUCCESS $value'),
+    function(error) trace('ERROR $error')
+);
+</code></p>
+
+<p>All these methods are convenience methods that use <code>.then()</code> internally. <code>.then()</code> method deals with <a href="/src/thx/promise/PromiseValue.hx"><code>PromiseValue&lt;T&gt;</code></a> directly.</p>
+
+<p>All of the above methods return the same Promise instance to enable easy chaining. Notice that handlers are executed in the sequence they have been registered and an uncaught exception in one of the handlers will provoke a termination in the chain.</p>
+
+<p><code>haxe
+promise.success(function(value) { /* ... */ })
+    .success(function(value) { /* ... */ })
+    .failure(function(error) { /* ... */ });
+</code></p>
+
+<p>All of the above are handling the same Promise/Value pair.</p>
+
+<h2 id="values">values</h2>
+
+<p>If you already have a value (or an error) you can instantly fulfill a Promise by doing:</p>
+
+<p><code>haxe
+Promise.value("some value");
+Promise.error(new Error("It's not my fault"));
+</code></p>
+
+<p>They both return a resolved instance of Promise.</p>
+
+<h2 id="transformmap">transform/map</h2>
+
+<p>It seems pretty obvious that a Promise should be easy to transform/map. To that effect you have <code>map</code> and the <code>map*</code> derivative methods. A <code>map</code> method must return a new Promise instance.</p>
+
+<p><code>haxe
+Promise.value(3)
+    // mapping to a new Promise with same type
+    .mapSuccess(function(v) return Promise.value(v * 2))
+    // mapping to a new Promise with a different type
+    .mapSuccess(function(v) return Promise.value(StringTools.rpad('', 'x', v)))
+    .success(function(s) trace(s)); // echoes 'xxxxxx'
+</code></p>
+
+<p>In case of failure, <code>mapSuccess</code> will skip the success handler and push the failure down to the output Promise.</p>
+
+<p><code>mapFailure</code> is useful to be able to recover from an error. Let’s suppose that if an error occurred I still want to be able to perform the promise handler with a default value:</p>
+
+<p>```haxe
+var promise : Promise<int> = ...; // an integer generator of some sort</int></p>
+
+<p>// in case of error I still want to return a promise that holds 0</p>
+
+<p>promise = promise.mapFailure(function(err) return 0);
+```</p>
+
+<p>This promise will always succeed and return an integer result.</p>
+
+<p>To complete the scenario you can also use <code>mapEither</code> that provides a way to map either the success or the failure with two independent handlers.</p>
+
+<p><code>map</code> works as the above except that deals directly with <code>PromiseValue</code>.</p>
+
+<h2 id="always">always</h2>
+
+<p>Sometimes you just want to be notified when a promise has been fulfilled regardless of the value itself. In this case you can use <code>always()</code> (terminal computation like <code>success</code>/<code>failure</code>) or <code>mapAlways()</code> (map method like <code>mapSuccess/mapFailure</code>). Obviously the handlers of these functions will take no arguments because we don’t care about the value of the promise.</p>
+
+<h2 id="more">more</h2>
+
+<p>Promise also provide the following methods for completeness: <code>isResolved()</code>, <code>isFailure()</code> and <code>isComplete()</code>. They all return a <code>Bool</code> value and their behavior seems pretty obvious.</p>
+
+<h2 id="vitamins">vitamins</h2>
+
+<p>Extensions methods are available in the <code>thx.core.Promise</code> module. Using <code>using</code> you can access those directly as instance members of Promise.</p>
+
+<h3 id="log">log()</h3>
+
+<p>Utility function to send the value of a Promise to <code>trace()</code>.</p>
+
+<h3 id="delay">delay()</h3>
+
+<p>Returns a new Promise that passes through the value of the original promise but with a time delay. If time is not specified, the delay will be the shortest allowed by the platform (for JavaScript developers that might be equivalent to ‘setImmediate’).</p>
+
+<p><code>haxe
+var promise = Promise.value(7).delay(50);
+</code></p>
+
+<p>The promise holds the value 7 but its availability is delayed by <code>50ms</code>.</p>
+
+<h3 id="join">join()</h3>
+
+<p>Joins together two promises and returns a new Promise holding both values as members of a Tuple. You can easily ‘unpack’ the members of a Promise<tuplex> by using `tuple()`/`mapTuple()`.</tuplex></p>
+
+<p><code>haxe
+Promise.value(7)
+    .join(Promise.value("test"))
+    .success(function(tuple) {
+        trace('${tuple._0} ${tuple._1}')
+    });
+</code></p>
+
+<p>Even more simple with the <code>tuple()</code> extension method:</p>
+
+<p><code>haxe
+Promise.value(7)
+    .join(Promise.value("test"))
+    .join(Promise.value(true))
+    .tuple(function(number : Int, text : String, flag : Bool) {
+        // do something here
+    });
+</code></p>
+
+<p>To be clear the Promises joined together will run concurrently and the Promise<tuplex> result will be available as soon as all the Promises involved have been resolved.</tuplex></p>
+
+
+    <div class="footer">
+      <div class="contact">
+        <p>
+          copyright © Franco Ponticelli
+        </p>
+      </div>
+    </div>
+  </div>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+        _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+        _gaq.push(['_setAccount', 'UA-589893-18']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</body>
+<html>

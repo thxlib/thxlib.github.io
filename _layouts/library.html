@@ -9,19 +9,25 @@
 </head>
 <body>
   <div class="site">
-    <div class="title">thx libraries</div>
+    <div class="title"><a href="/">thx libraries</a></div>
+    <ul class="info">
+      <li><a href="{{ page.url }}"><i class="fa fa-github"></i> Github</a></li>
+      <li><a href="/api/{{ page.path }}"><i class="fa fa-code"></i> API doc</a></li>
+      <li>version {{ page.version }}</li>
+      <li>
+        tags: 
+        <ul class="tags">
+          {% for tag in page.tags %}
+          <li>{{ tag }}</li>
+          {% endfor %}
+        </ul>
+      </li>
+    </ul>
     {{ content }}
     <div class="footer">
       <div class="contact">
         <p>
           copyright © Franco Ponticelli
-        </p>
-      </div>
-      <div class="contact">
-        <p>
-          <a href="http://github.com/fponticelli/">github.com/fponticelli</a><br />
-          <a href="http://twitter.com/fponticelli/">twitter.com/fponticelli</a><br />
-          <a href="http://linkedin.com/in/francoponticelli/">linkedin.com/in/francoponticelli</a>
         </p>
       </div>
     </div>

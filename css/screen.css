@@ -18,6 +18,7 @@ body {
   font: 13.34px helvetica, arial, clean, sans-serif;
   *font-size: small;
   text-align: center;
+  color: #333;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -26,8 +27,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 110%;
+  font-size: 1.8em;
   margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+
+h3 {
+  font-size: 1.2em;
+  margin-bottom: 0;
 }
 
 p {
@@ -35,7 +46,7 @@ p {
 }
 
 a {
-  color: #00a;
+  color: #008;
 }
 
 a:hover {
@@ -43,7 +54,7 @@ a:hover {
 }
 
 a:visited {
-  color: #008;
+  color: #006;
 }
 
 table {
@@ -72,6 +83,7 @@ blockquote {
   width: 728px;
   margin: 3em auto 2em auto;
   line-height: 1.5em;
+  position: relative;
 }
 
 h1, h2, h3, h4, h5, h6, .comments {
@@ -81,16 +93,17 @@ h1, h2, h3, h4, h5, h6, .comments {
 .title {
   color: #369;
   font-weight: bold;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
-.site .title a {
+a {
   color: #369;
   text-decoration: none;
 }
 
-.site .title a:hover {
+a:hover {
   color: black;
+  text-decoration: underline;
 }
 
 .site .meta {
@@ -132,10 +145,6 @@ ul.libraries {
   margin-bottom: 2em;
 }
 
-ul.libraries li {
-  line-height: 1.75em;
-}
-
 ul.libraries span {
   color: #aaa;
   font-size: 80%;
@@ -143,4 +152,47 @@ ul.libraries span {
 
 ul.libraries a {
   text-align: left;
+}
+
+ul.libraries > li {
+  position: relative;
+  margin-bottom: 3em;
+}
+
+ul.tags {
+  display: inline;
+}
+
+ul.tags li {
+  display: inline;
+  color: #000;
+  font-style: italic;
+}
+
+ul.tags li:after {
+  content: ", ";
+}
+
+ul.tags li:last-child:after {
+  content: ".";
+}
+
+ul.info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  list-style-type: none;
+  background-color: #f6f6f6;
+  padding: 0.2em 0.5em 0;
+  font-size: 90%;
+  width: 16em;
+}
+
+ul.info > li {
+  line-height: 1.5em;
+  border-bottom: 1px solid #fff;
+}
+
+ul.info > li:last-child {
+  border-bottom: none;
 }

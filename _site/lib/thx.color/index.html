@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-gb">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>thx.color</title>
+  <meta name="author" content="Franco Ponticelli" />
+  <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/css/screen.css" type="text/css" media="all" />
+</head>
+<body>
+  <div class="site">
+    <div class="title"><a href="/">thx libraries</a></div>
+    <ul class="info">
+      <li><a href="/lib/thx.color/"><i class="fa fa-github"></i> Github</a></li>
+      <li><a href="/api/thx/color"><i class="fa fa-code"></i> API doc</a></li>
+      <li>version 0.7.1</li>
+      <li>
+        tags: 
+        <ul class="tags">
+          
+          <li>color</li>
+          
+          <li>thx</li>
+          
+          <li>cross</li>
+          
+        </ul>
+      </li>
+    </ul>
+    <h1 id="thxcolor">thx.color</h1>
+
+<p><a href="https://travis-ci.org/fponticelli/thx.color"><img src="https://travis-ci.org/fponticelli/thx.color.svg" alt="Build Status" /></a></p>
+
+<p>General purpose color library for Haxe.</p>
+
+<p>API uses abstracts to make it easy to use colors with strings and numbers.</p>
+
+<p><code>haxe
+    var rgb : RGB = "#cf8700";
+    trace(rgb.green);
+</code></p>
+
+<h2 id="some-examples-from-demodemodemohx">Some examples from <a href="/demo/Demo.hx">Demo</a></h2>
+
+<h3 id="hsl-rainbow">HSL Rainbow</h3>
+
+<p><code>haxe
+var left  : HSL = 'hsl(0,100%,0%)',
+    right : HSL = 'hsl(359.99,100%,0%)',
+    interpolate = left.interpolate.bind(right, _);
+Ints.range(0, w)
+    .map(function(x) {
+        var color = interpolate(x/w);
+        Ints.range(0, h).map(function(y) {
+            ctx.fillStyle = color.lighter(y/h).toRGB().toString();
+            ctx.fillRect(x, y, 1, 1);
+        });
+    });
+</code></p>
+
+<p><img src="/images/rainbow.png?raw=true" alt="Alt text" title="HSL Rainbow" /></p>
+
+<h3 id="hsv-gradient">HSV Gradient</h3>
+
+<p><code>haxe
+var left  : HSV = 'hsv(0,100%,100%)',
+    right : HSV = 'hsv(359.99,100%,100%)';
+return function(t)
+    return left.interpolate(right, t).toRGB();
+</code></p>
+
+<p><img src="/images/gradienthsv.png?raw=true" alt="Alt text" title="HSV Gradient" /></p>
+
+<h3 id="lighter-rgb">Lighter RGB</h3>
+
+<p><code>haxe
+var left : RGB = '#0000ff';
+return left.lighter;
+</code></p>
+
+<p><img src="/images/lighterrgb.png?raw=true" alt="Alt text" title="Lighter RGB" /></p>
+
+<h3 id="named-colors-table">Named Colors Table</h3>
+
+<p>```haxe
+var columns = 5,
+    colors  = Color.names.keys().toArray().filter(function(n) return n.indexOf(‘ ‘) &lt; 0),
+    cellw   = w / columns,
+    cellh   = h / Math.ceil(colors.length / columns);
+ctx.textAlign = “center”;
+ctx.textBaseline = “middle”;
+ctx.font = ‘${Math.round(cellh*0.4)}px Verdana, sans-serif’;
+colors.mapi(function(name, i) {
+    var col   = i % columns,
+        row   = Math.floor(i / columns),
+        color = Color.names.get(name);</p>
+
+<pre><code>ctx.fillStyle = color.toString();
+ctx.fillRect(col * cellw, row * cellh, cellw, cellh);
+
+ctx.fillStyle = color.toRGBX()
+    .toPerceivedGrey()
+    .contrast()
+    .toRGB().toString();
+ctx.fillText(
+    name,
+    Math.round(col * cellw + cellw / 2) + 0.5,
+    Math.round(row * cellh + cellh / 2) + 0.5,
+    cellw); }); ```
+</code></pre>
+
+<p>&lt;img src=”/images/colortable.png?raw=true” alt=”color table” width=”450” height=”600””&gt;</p>
+
+<p>To run <a href="/demo/Demo.hx">Demo</a>, you need <code>nodejs</code> and the Canvas library (<code>npm install canvas</code>);</p>
+
+<p><em>Note:</em> API might still change before version 1.</p>
+
+    <div class="footer">
+      <div class="contact">
+        <p>
+          copyright © Franco Ponticelli
+        </p>
+      </div>
+    </div>
+  </div>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+        _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+        _gaq.push(['_setAccount', 'UA-589893-18']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</body>
+<html>

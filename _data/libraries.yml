@@ -1,35 +1,99 @@
 - name: thx.core
-  title: thx.core
-  apiurl: thx/core
-  github: fponticelli/thx.core
-  description: Core library
-
+  license: MIT
+  path: thx/core
+  tags: 
+    - thx
+    - general
+    - cross
+  classPath: src
+  description: "Generic multi-purpose library"
+  contributors: 
+    - fponticelli
+  releasenote: added Error helper classes
+  version: 0.10.0
+  url: "https://github.com/fponticelli/thx.core"
 - name: thx.color
-  title: thx.color
-  apiurl: thx/color
-  github: fponticelli/thx.color
+  license: MIT
+  path: thx/color
+  tags: 
+    - color
+    - thx
+    - cross
+  classPath: src
   description: Colors library
-
-- name: thx.unit
-  title: thx.unit
-  apiurl: thx/unit
-  github: fponticelli/thx.unit
-  description: Unit library
-
+  contributors: 
+    - fponticelli
+  releasenote: improved documentation
+  version: 0.7.1
+  url: "https://github.com/fponticelli/thx.color"
+  dependencies: 
+    thx.core: ""
 - name: thx.promise
-  title: thx.promise
-  apiurl: thx/promise
-  github: fponticelli/thx.promise
-  description: Promise library
-
+  license: MIT
+  path: thx/promise
+  tags: 
+    - thx
+    - promise
+    - async
+    - cross
+  classPath: src
+  description: Library for lightweight promises
+  contributors: 
+    - fponticelli
+  releasenote: Improved documentation
+  version: 0.3.3
+  url: "https://github.com/fponticelli/thx.promise"
+  dependencies: 
+    thx.core: ""
 - name: thx.stream
-  title: thx.stream
-  apiurl: thx/stream
-  github: fponticelli/thx.stream
-  description: Stream library
-
+  license: MIT
+  path: thx/stream
+  tags: 
+    - thx
+    - stream
+    - async
+    - cross
+  classPath: src
+  description: Streams for Haxe
+  contributors: 
+    - fponticelli
+  releasenote: Better documentation
+  version: 0.3.1
+  url: "https://github.com/fponticelli/thx.stream"
+  dependencies: 
+    thx.core: ""
+    thx.promise: ""
 - name: thx.semver
-  title: thx.semver
-  apiurl: thx/semver
-  github: fponticelli/thx.semver
-  description: Semantic version library
+  license: MIT
+  path: thx/semver
+  tags: 
+    - thx
+    - version
+    - "semantic-version"
+    - semver
+  dependecies: {}
+  classPath: src
+  description: Semantic Version Library for Haxe
+  contributors: 
+    - fponticelli
+  releasenote: better documentation
+  version: 0.1.0
+  url: "https://github.com/fponticelli/thx.semver"
+- name: thx.unit
+  license: MIT
+  path: thx/unit
+  tags: 
+    - thx
+    - math
+    - dimension
+    - unit
+    - cross
+  classPath: src
+  description: Units library
+  contributors: 
+    - fponticelli
+  releasenote: Better documentation
+  version: 0.3.2
+  url: "https://github.com/fponticelli/thx.unit"
+  dependencies: 
+    thx.core: ""

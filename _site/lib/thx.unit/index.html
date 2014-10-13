@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-gb">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>thx.unit</title>
+  <meta name="author" content="Franco Ponticelli" />
+  <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/css/screen.css" type="text/css" media="all" />
+</head>
+<body>
+  <div class="site">
+    <div class="title"><a href="/">thx libraries</a></div>
+    <ul class="info">
+      <li><a href="/lib/thx.unit/"><i class="fa fa-github"></i> Github</a></li>
+      <li><a href="/api/thx/unit"><i class="fa fa-code"></i> API doc</a></li>
+      <li>version 0.3.2</li>
+      <li>
+        tags: 
+        <ul class="tags">
+          
+          <li>thx</li>
+          
+          <li>math</li>
+          
+          <li>dimension</li>
+          
+          <li>unit</li>
+          
+          <li>cross</li>
+          
+        </ul>
+      </li>
+    </ul>
+    <h1 id="thxunit">thx.unit</h1>
+
+<p><a href="https://travis-ci.org/fponticelli/thx.unit"><img src="https://travis-ci.org/fponticelli/thx.unit.svg" alt="Build Status" /></a></p>
+
+<p>The library contains type definitions for several kind of units. They are defined as asbtract types to siplify their usage as much as possible.</p>
+
+<p><code>haxe
+(10 : Millimetre) * 100 == (1 : Metre);
+// other example
+var f = (27 : Celsius).toFahrenheit()
+</code></p>
+
+<p>The following units are currently supported:</p>
+
+<ul>
+  <li>amount of substance: <a href="/src/thx/unit/amountofsubstance/Mole.hx"><code>Mole</code></a>, <a href="/src/thx/unit/amountofsubstance/PoundMole.hx"><code>PoundMole</code></a>.</li>
+  <li>angle: <a href="/src/thx/unit/angle/BinaryDegree.hx"><code>BinaryDegree</code></a>, <a href="/src/thx/unit/angle/Degree.hx"><code>Degree</code></a>, <a href="/src/thx/unit/angle/Grad.hx"><code>Grad</code></a>, <a href="/src/thx/unit/angle/HourAngle.hx"><code>HourAngle</code></a>, <a href="/src/thx/unit/angle/MinuteOfArc.hx"><code>MinuteOfArc</code></a>, <a href="/src/thx/unit/angle/Point.hx"><code>Point</code></a>, <a href="/src/thx/unit/angle/Quadrant.hx"><code>Quadrant</code></a>, <a href="/src/thx/unit/angle/Radian.hx"><code>Radian</code></a>, <a href="/src/thx/unit/angle/Revolution.hx"><code>Revolution</code></a>, <a href="/src/thx/unit/angle/SecondOfArc.hx"><code>SecondOfArc</code></a>, <a href="/src/thx/unit/angle/Sextant.hx"><code>Sextant</code></a>, <a href="/src/thx/unit/angle/Turn.hx"><code>Turn</code></a>.</li>
+  <li>current: <a href="/src/thx/unit/current/Ampere.hx"><code>Ampere</code></a>.</li>
+  <li>digital: <a href="/src/thx/unit/digital/Byte.hx"><code>Byte</code></a>, <a href="/src/thx/unit/digital/Exabit.hx"><code>Exabit</code></a>, <a href="/src/thx/unit/digital/Exabyte.hx"><code>Exabyte</code></a>, <a href="/src/thx/unit/digital/Gigabit.hx"><code>Gigabit</code></a>, <a href="/src/thx/unit/digital/Gigabyte.hx"><code>Gigabyte</code></a>, <a href="/src/thx/unit/digital/Kilobit.hx"><code>Kilobit</code></a>, <a href="/src/thx/unit/digital/Kilobyte.hx"><code>Kilobyte</code></a>, <a href="/src/thx/unit/digital/Megabit.hx"><code>Megabit</code></a>, <a href="/src/thx/unit/digital/Megabyte.hx"><code>Megabyte</code></a>, <a href="/src/thx/unit/digital/Petabit.hx"><code>Petabit</code></a>, <a href="/src/thx/unit/digital/Petabyte.hx"><code>Petabyte</code></a>, <a href="/src/thx/unit/digital/Terabit.hx"><code>Terabit</code></a>, <a href="/src/thx/unit/digital/Terabyte.hx"><code>Terabyte</code></a>, <a href="/src/thx/unit/digital/Yottabit.hx"><code>Yottabit</code></a>, <a href="/src/thx/unit/digital/Yottabyte.hx"><code>Yottabyte</code></a>, <a href="/src/thx/unit/digital/Zettabit.hx"><code>Zettabit</code></a>, <a href="/src/thx/unit/digital/Zettabyte.hx"><code>Zettabyte</code></a>.</li>
+  <li>length:  <a href="/src/thx/unit/length/AstronomicalUnit.hx"><code>AstronomicalUnit</code></a>, <a href="/src/thx/unit/length/Centimeter.hx"><code>Centimeter</code></a>, <a href="/src/thx/unit/length/Centimetre.hx"><code>Centimetre</code></a>, <a href="/src/thx/unit/length/Chain.hx"><code>Chain</code></a>, <a href="/src/thx/unit/length/EarthRadius.hx"><code>EarthRadius</code></a>, <a href="/src/thx/unit/length/Fathom.hx"><code>Fathom</code></a>, <a href="/src/thx/unit/length/Foot.hx"><code>Foot</code></a>, <a href="/src/thx/unit/length/Furlong.hx"><code>Furlong</code></a>, <a href="/src/thx/unit/length/Inch.hx"><code>Inch</code></a>, <a href="/src/thx/unit/length/Kilometer.hx"><code>Kilometer</code></a>, <a href="/src/thx/unit/length/Kilometre.hx"><code>Kilometre</code></a>, <a href="/src/thx/unit/length/League.hx"><code>League</code></a>, <a href="/src/thx/unit/length/LightYear.hx"><code>LightYear</code></a>, <a href="/src/thx/unit/length/Line.hx"><code>Line</code></a>, <a href="/src/thx/unit/length/Meter.hx"><code>Meter</code></a>, <a href="/src/thx/unit/length/Metre.hx"><code>Metre</code></a>, <a href="/src/thx/unit/length/Micrometer.hx"><code>Micrometer</code></a>, <a href="/src/thx/unit/length/Micrometre.hx"><code>Micrometre</code></a>, <a href="/src/thx/unit/length/Mile.hx"><code>Mile</code></a>, <a href="/src/thx/unit/length/Millimeter.hx"><code>Millimeter</code></a>, <a href="/src/thx/unit/length/Millimetre.hx"><code>Millimetre</code></a>, <a href="/src/thx/unit/length/Nanometer.hx"><code>Nanometer</code></a>, <a href="/src/thx/unit/length/Nanometre.hx"><code>Nanometre</code></a>, <a href="/src/thx/unit/length/NauticalMile.hx"><code>NauticalMile</code></a>, <a href="/src/thx/unit/length/Thou.hx"><code>Thou</code></a>, <a href="/src/thx/unit/length/Yard.hx"><code>Yard</code></a>.</li>
+  <li>luminous intensity: <a href="/src/thx/unit/luminousintensity/Candela.hx"><code>Candela</code></a>, <a href="/src/thx/unit/luminousintensity/Candlepower.hx"><code>Candlepower</code></a>.</li>
+  <li>mass: <a href="/src/thx/unit/mass/Centigram.hx"><code>Centigram</code></a>, <a href="/src/thx/unit/mass/Dalton.hx"><code>Dalton</code></a>, <a href="/src/thx/unit/mass/Drachm.hx"><code>Drachm</code></a>, <a href="/src/thx/unit/mass/Grain.hx"><code>Grain</code></a>, <a href="/src/thx/unit/mass/Gram.hx"><code>Gram</code></a>, <a href="/src/thx/unit/mass/Hundredweight.hx"><code>Hundredweight</code></a>, <a href="/src/thx/unit/mass/Kilogram.hx"><code>Kilogram</code></a>, <a href="/src/thx/unit/mass/Megagram.hx"><code>Megagram</code></a>, <a href="/src/thx/unit/mass/Microgram.hx"><code>Microgram</code></a>, <a href="/src/thx/unit/mass/Milligram.hx"><code>Milligram</code></a>, <a href="/src/thx/unit/mass/Nanogram.hx"><code>Nanogram</code></a>, <a href="/src/thx/unit/mass/Ounce.hx"><code>Ounce</code></a>, <a href="/src/thx/unit/mass/Picogram.hx"><code>Picogram</code></a>, <a href="/src/thx/unit/mass/PlankMass.hx"><code>PlankMass</code></a>, <a href="/src/thx/unit/mass/Pound.hx"><code>Pound</code></a>, <a href="/src/thx/unit/mass/Quarter.hx"><code>Quarter</code></a>, <a href="/src/thx/unit/mass/Slug.hx"><code>Slug</code></a>, <a href="/src/thx/unit/mass/SolarMass.hx"><code>SolarMass</code></a>, <a href="/src/thx/unit/mass/Stone.hx"><code>Stone</code></a>, <a href="/src/thx/unit/mass/Ton.hx"><code>Ton</code></a>, <a href="/src/thx/unit/mass/Tonne.hx"><code>Tonne</code></a>, <a href="/src/thx/unit/mass/UnifiedAtomicMassUnit.hx"><code>UnifiedAtomicMassUnit</code></a>.</li>
+  <li>temperature: <a href="/src/thx/unit/temperature/Celsius.hx"><code>Celsius</code></a>, <a href="/src/thx/unit/temperature/Centrigrade.hx"><code>Centrigrade</code></a>, <a href="/src/thx/unit/temperature/Delisle.hx"><code>Delisle</code></a>, <a href="/src/thx/unit/temperature/Fahrenheit.hx"><code>Fahrenheit</code></a>, <a href="/src/thx/unit/temperature/Kelvin.hx"><code>Kelvin</code></a>, <a href="/src/thx/unit/temperature/Newton.hx"><code>Newton</code></a>, <a href="/src/thx/unit/temperature/Rankine.hx"><code>Rankine</code></a>, <a href="/src/thx/unit/temperature/Reaumur.hx"><code>Reaumur</code></a>, <a href="/src/thx/unit/temperature/Romer.hx"><code>Romer</code></a>.</li>
+  <li>time: <a href="/src/thx/unit/time/Centriday.hx"><code>Centriday</code></a>, <a href="/src/thx/unit/time/Day.hx"><code>Day</code></a>, <a href="/src/thx/unit/time/Fortnight.hx"><code>Fortnight</code></a>, <a href="/src/thx/unit/time/Fourth.hx"><code>Fourth</code></a>, <a href="/src/thx/unit/time/Gigasecond.hx"><code>Gigasecond</code></a>, <a href="/src/thx/unit/time/Hour.hx"><code>Hour</code></a>, <a href="/src/thx/unit/time/JiffyPhysics.hx"><code>JiffyPhysics</code></a>, <a href="/src/thx/unit/time/JulianYear.hx"><code>JulianYear</code></a>, <a href="/src/thx/unit/time/Ke.hx"><code>Ke</code></a>, <a href="/src/thx/unit/time/Kilosecond.hx"><code>Kilosecond</code></a>, <a href="/src/thx/unit/time/Megasecond.hx"><code>Megasecond</code></a>, <a href="/src/thx/unit/time/Microsecond.hx"><code>Microsecond</code></a>, <a href="/src/thx/unit/time/Millisecond.hx"><code>Millisecond</code></a>, <a href="/src/thx/unit/time/Minute.hx"><code>Minute</code></a>, <a href="/src/thx/unit/time/Nanosecond.hx"><code>Nanosecond</code></a>, <a href="/src/thx/unit/time/Picosecond.hx"><code>Picosecond</code></a>, <a href="/src/thx/unit/time/PlankTimeUnit.hx"><code>PlankTimeUnit</code></a>, <a href="/src/thx/unit/time/Second.hx"><code>Second</code></a>, <a href="/src/thx/unit/time/Shake.hx"><code>Shake</code></a>, <a href="/src/thx/unit/time/Svedberg.hx"><code>Svedberg</code></a>, <a href="/src/thx/unit/time/SynodicMonth.hx"><code>SynodicMonth</code></a>, <a href="/src/thx/unit/time/Terasecond.hx"><code>Terasecond</code></a>, <a href="/src/thx/unit/time/Third.hx"><code>Third</code></a>, <a href="/src/thx/unit/time/TropicalMonth.hx"><code>TropicalMonth</code></a>, <a href="/src/thx/unit/time/Week.hx"><code>Week</code></a>.</li>
+</ul>
+
+<p>For now the library essentially helps with conversions and math operations. At some point derivative units might be introduced to make things more interesting.</p>
+
+<p>Also notice that the types are automatically generated. If you want to contribute to the library make sure to make changes in the <a href="/definitions/">definitions</a>. The code is generated using this <a href="https://github.com/fponticelli/generator">generator</a>.</p>
+
+<p>The library has not been exhaustively tested, please pay attention to the correctness of the results you get.</p>
+
+<p><em>Important</em>. This library should be used with the consciousness that converting values and perform some operations on the values might result in loss of precision. The limitation come from the fact that the underlying type is a <code>Float</code>. Converting <code>LightYear</code>s to <code>Millimitre</code>s might not work as well as you expect!</p>
+
+    <div class="footer">
+      <div class="contact">
+        <p>
+          copyright © Franco Ponticelli
+        </p>
+      </div>
+    </div>
+  </div>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+        _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+        _gaq.push(['_setAccount', 'UA-589893-18']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</body>
+<html>
