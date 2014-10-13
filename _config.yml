@@ -1,0 +1,9 @@
+url: http://thx-lib.org
+permalink: pretty
+highlighter: pygments
+safe: true
+exclude: ['CNAME', 'README.md']
+lsi: false
+
+collections:
+- libraries

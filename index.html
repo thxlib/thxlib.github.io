@@ -1,0 +1,16 @@
+---
+layout: default
+title: thx libraries
+---
+
+<div class="home">
+  <p><a href="/api/">thx API doc</a></p>
+  <ul class="libraries">
+    {% for library in site.data.libraries %}
+    <li>
+      <h2><a href="/api/{{ library.apiurl }}">{{ library.title }}</a> <a href="https://github.com/{{ library.github }}"><i class="fa fa-github"></i></a></h2>
+      <p>{{ library.description }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

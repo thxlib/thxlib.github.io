@@ -1,0 +1,35 @@
+- name: thx.core
+  title: thx.core
+  apiurl: thx/core
+  github: fponticelli/thx.core
+  description: Core library
+
+- name: thx.color
+  title: thx.color
+  apiurl: thx/color
+  github: fponticelli/thx.color
+  description: Colors library
+
+- name: thx.unit
+  title: thx.unit
+  apiurl: thx/unit
+  github: fponticelli/thx.unit
+  description: Unit library
+
+- name: thx.promise
+  title: thx.promise
+  apiurl: thx/promise
+  github: fponticelli/thx.promise
+  description: Promise library
+
+- name: thx.stream
+  title: thx.stream
+  apiurl: thx/stream
+  github: fponticelli/thx.stream
+  description: Stream library
+
+- name: thx.semver
+  title: thx.semver
+  apiurl: thx/semver
+  github: fponticelli/thx.semver
+  description: Semantic version library
