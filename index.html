@@ -7,7 +7,7 @@ title: thx libraries
   <p><a href="/api/">API doc</a></p>
   <ul class="libraries">
     {% for library in site.data.libraries %}
-    <li>
+    <li id="{{ library.name }}">
       <h2>
         <a href="/lib/{{ library.name }}/">{{ library.name }}</a>
         <span class="version">v.{{ library.version }}</span>
@@ -22,7 +22,7 @@ title: thx libraries
         <li class="list" title="dependencies">
           <i class="fa fa-cubes"></i> <span class="">
           {% for item in library.dependencies %}
-            <a href="/lib/{{ item[0] }}/">{{ item[0] }}{% if item[1].length %} ({{ item[1] }}){% endif %}</a>{% if forloop.last %}{% else %}, {% endif %}
+            <a href="#{{ item[0] }}">{{ item[0] }}{% if item[1].length %} ({{ item[1] }}){% endif %}</a>{% if forloop.last %}{% else %}, {% endif %}
           {% endfor %}
           </span>
         </li>

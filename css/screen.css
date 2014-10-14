@@ -19,6 +19,7 @@ body {
   *font-size: small;
   text-align: center;
   color: #333;
+  padding: 0 2em;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -76,7 +77,6 @@ blockquote {
   text-align: justify;
   max-width: 728px;
   margin: 3em auto 2em;
-  padding: 0 2em;
   line-height: 1.5em;
   position: relative;
 }
@@ -129,11 +129,13 @@ a:hover {
   float: right;
 }
 
-/*****************************************************************************/
-/*
-/* Home
-/*
-/*****************************************************************************/
+.site > ul {
+  padding-left: 2em;
+}
+
+.site > ul > li {
+  margin-bottom: 0.5em;
+}
 
 ul.libraries {
   list-style-type: none;
@@ -185,4 +187,14 @@ ul.info > li:last-child {
 
 .install {
   font-size: 90%;
+}
+
+code {
+  background-color: #eee;
+  padding: 0 0.3em;
+}
+
+pre code {
+  background-color: inherit;
+  padding: 0;
 }
