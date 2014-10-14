@@ -24,7 +24,7 @@
   contributors: 
     - fponticelli
   releasenote: improved documentation
-  version: 0.7.1
+  version: 0.7.3
   url: "https://github.com/fponticelli/thx.color"
   dependencies: 
     thx.core: ""
@@ -93,7 +93,7 @@
   contributors: 
     - fponticelli
   releasenote: Better documentation
-  version: 0.3.2
+  version: 0.3.5
   url: "https://github.com/fponticelli/thx.unit"
   dependencies: 
     thx.core: ""

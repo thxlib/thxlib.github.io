@@ -12,7 +12,7 @@ description: Colors library
 contributors: 
   - fponticelli
 releasenote: improved documentation
-version: 0.7.1
+version: 0.7.3
 url: "https://github.com/fponticelli/thx.color"
 title: thx.color
 dependencies: 
@@ -33,7 +33,7 @@ API uses abstracts to make it easy to use colors with strings and numbers.
     trace(rgb.green);
 ```
 
-## Some examples from [Demo](/demo/Demo.hx)
+## Some examples from [Demo](https://github.com/fponticelli/thx.color/raw/master/demo/Demo.hx)
 
 ### HSL Rainbow
 
@@ -51,7 +51,7 @@ Ints.range(0, w)
     });
 ```
 
-![Alt text](/images/rainbow.png?raw=true "HSL Rainbow")
+![Alt text](https://github.com/fponticelli/thx.color/raw/master/images/rainbow.png?raw=true "HSL Rainbow")
 
 ### HSV Gradient
 
@@ -62,7 +62,7 @@ return function(t)
     return left.interpolate(right, t).toRGB();
 ```
 
-![Alt text](/images/gradienthsv.png?raw=true "HSV Gradient")
+![Alt text](https://github.com/fponticelli/thx.color/raw/master/images/gradienthsv.png?raw=true "HSV Gradient")
 
 ### Lighter RGB
 
@@ -71,7 +71,7 @@ var left : RGB = '#0000ff';
 return left.lighter;
 ```
 
-![Alt text](/images/lighterrgb.png?raw=true "Lighter RGB")
+![Alt text](https://github.com/fponticelli/thx.color/raw/master/images/lighterrgb.png?raw=true "Lighter RGB")
 
 ### Named Colors Table
 
@@ -103,7 +103,7 @@ colors.mapi(function(name, i) {
 });
 ```
 
-<img src="/images/colortable.png?raw=true" alt="color table" width="450" height="600"">
+<img src="https://github.com/fponticelli/thx.color/raw/master/images/colortable.png?raw=true" alt="color table" width="450" height="600"">
 
 To run [Demo](/demo/Demo.hx), you need `nodejs` and the Canvas library (`npm install canvas`);
 
