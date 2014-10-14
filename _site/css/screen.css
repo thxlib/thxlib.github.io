@@ -71,17 +71,12 @@ blockquote {
     background-color: #369;
 }
 
-/*****************************************************************************/
-/*
-/* Site
-/*
-/*****************************************************************************/
-
 .site {
   font-size: 110%;
   text-align: justify;
-  width: 728px;
-  margin: 3em auto 2em auto;
+  max-width: 728px;
+  margin: 3em auto 2em;
+  padding: 0 2em;
   line-height: 1.5em;
   position: relative;
 }
@@ -145,36 +140,23 @@ ul.libraries {
   margin-bottom: 2em;
 }
 
-ul.libraries span {
-  color: #aaa;
-  font-size: 80%;
-}
-
-ul.libraries a {
-  text-align: left;
-}
-
 ul.libraries > li {
   position: relative;
   margin-bottom: 3em;
 }
 
-ul.tags {
-  display: inline;
+ul.libraries > li > p {
+  margin: 1em 240px 1em 0;
 }
 
-ul.tags li {
-  display: inline;
+.tags, .dependencies {
   color: #000;
   font-style: italic;
 }
 
-ul.tags li:after {
-  content: ", ";
-}
-
-ul.tags li:last-child:after {
-  content: ".";
+.version {
+  font-size: 70%;
+  color: #999;
 }
 
 ul.info {
@@ -199,4 +181,8 @@ ul.info > li:last-child {
 
 .highlight {
   padding: 5px 10px;
+}
+
+.install {
+  font-size: 90%;
 }

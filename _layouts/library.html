@@ -15,15 +15,19 @@
     <ul class="info">
       <li><a href="https://github.com/fponticelli/{{ page.title }}"><i class="fa fa-github"></i> Github</a></li>
       <li><a href="/api/{{ page.path }}"><i class="fa fa-code"></i> API doc</a></li>
-      <li>version {{ page.version }}</li>
-      <li>
-        tags: 
-        <ul class="tags">
-          {% for tag in page.tags %}
-          <li>{{ tag }}</li>
-          {% endfor %}
-        </ul>
+      <li title="version"><i class="fa fa-at"></i> {{ page.version }}</li>
+      <li class="list" title="tags">
+        <i class="fa fa-tags"></i> <span class="tags">{{ page.tags | join:', ' }}</span>
       </li>
+      {% if page.dependencies %}
+      <li class="list" title="dependecies">
+        <i class="fa fa-cubes"></i>  <span class="dependencies">
+        {% for item in page.dependencies %}
+          <a href="/lib/{{ item[0] }}/">{{ item[0] }}{% if item[1].length %} ({{ item[1] }}){% endif %}</a>{% if forloop.last %}{% else %}, {% endif %}
+        {% endfor %}
+        </span>
+      </li>
+      {% endif %}
     </ul>
     {{ content }}
     <div class="footer">
