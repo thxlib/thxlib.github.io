@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Set this to the main language of your site -->
+<head>
+<meta charset="utf-8">
+<title>redirect to api</title>
+<script>
+var base = 'https://github.com/fponticelli/',
+    hash = window.location.hash.substr(2),
+    parts = hash.split('/');
+parts.pop();
+var lib = parts.join('.');
+var path = base + lib + '/blob/master/src/' + hash;
+window.location = path;
+</script>
+</head>
+<body>
+</body>
+</html>
