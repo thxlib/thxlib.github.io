@@ -5,12 +5,13 @@
     - thx
     - general
     - cross
+    - std
   classPath: src
-  description: "Generic multi-purpose library"
+  description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
   contributors: 
     - fponticelli
-  releasenote: added Error helper classes
-  version: 0.10.0
+  releasenote: minor
+  version: 0.10.1
   url: "https://github.com/fponticelli/thx.core"
 - name: thx.color
   license: MIT
