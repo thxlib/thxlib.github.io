@@ -11,7 +11,7 @@
   contributors: 
     - fponticelli
   releasenote: minor
-  version: 0.10.1
+  version: 0.10.2
   url: "https://github.com/fponticelli/thx.core"
 - name: thx.color
   license: MIT

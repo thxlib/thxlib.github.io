@@ -13,7 +13,7 @@ description: General purpose library. It contains extensions to many of the type
 contributors: 
   - fponticelli
 releasenote: minor
-version: 0.10.1
+version: 0.10.2
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 
