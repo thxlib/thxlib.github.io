@@ -15,7 +15,7 @@
     <ul class="info">
       <li><a href="https://github.com/fponticelli/thx.core"><i class="fa fa-github"></i> Github</a></li>
       <li><a href="/api/thx/core"><i class="fa fa-code"></i> API doc</a></li>
-      <li title="version"><i class="fa fa-at"></i> 0.10.2</li>
+      <li title="version"><i class="fa fa-at"></i> 0.11.0</li>
       <li class="list" title="tags">
         <i class="fa fa-tags"></i> <span class="tags">thx, general, cross, std</span>
       </li>
@@ -29,19 +29,367 @@
 
 <p>Generic multi-purpose library. <code>thx.core</code> aims to be the <a href="http://lodash.com/">lodash</a> library for Haxe.</p>
 
-<h2 id="helper-classes">helper classes</h2>
+<h2 id="data-structures">Data Structures</h2>
 
-<p>It contains a lot of useful helper classes to simplify dealing with a lot of types from the standard library.</p>
+<p><code>thx.core</code> provides a few data types to complet the standard library.</p>
 
-<h2 id="new-basic-types">new basic types</h2>
+<h3 id="anonymousmap"><a href="http://thx-lib.org/api/thx/core/AnonymousMap.html">AnonymousMap</a></h3>
 
-<p>It also provides new common types that should probably be part of the standard library: <a href="http://thx-lib.org/api/thx/core/Error.html">Error</a>, <a href="http://thx-lib.org/api/thx/core/Nil.html">Nil</a>, <a href="http://thx-lib.org/api/thx/core/Set.html">Set</a> and <a href="http://thx-lib.org/api/thx/core/Tuple.html">Tuple</a>.</p>
+<p>Wraps an anonymous object in <code>Map&lt;String, T&gt;</code> compatible structure.</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> map <span class="o">=</span> <span class="k">new</span> <span class="n">AnonymousMap</span><span class="p">({</span> <span class="n">name</span> <span class="p">:</span> <span class="s2">&quot;Franco&quot;</span> <span class="p">});</span>
 
-<h2 id="macro-helpers">macro helpers</h2>
+<span class="n">map</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">);</span> <span class="c1">// &quot;Franco&quot;</span>
+</code></pre></div>
+<p>The intention of this class is not to encourage anonymous objects as data containers but to simplify the approach to untyped data like JSON results.</p>
 
-<p><code>thx.core</code> also includes a few helpers to more easily write and deal with macros.</p>
+<h3 id="either"><a href="http://thx-lib.org/api/thx/core/Either.html">Either</a></h3>
 
-<h2 id="install">install</h2>
+<p><code>Either</code> is a value container. It can contain values from two different types but only one per instance. It can be handy when you want to manage values that can be in one of two possible states. A classic example is a Result where the wrapped value can be either a success or a failure.</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">typedef</span> <span class="n">MyResult</span> <span class="o">=</span> <span class="n">Either</span><span class="p">&lt;</span><span class="n">Error</span><span class="p">,</span> <span class="n">String</span><span class="p">&gt;;</span>
+
+<span class="kd">var</span> result <span class="p">:</span> <span class="n">MyResult</span> <span class="o">=</span> <span class="n">Left</span><span class="p">(</span><span class="k">new</span> <span class="n">Error</span><span class="p">(</span><span class="s2">&quot;something smells&quot;</span><span class="p">));</span>
+
+<span class="kd">var</span> result <span class="p">:</span> <span class="n">MyResult</span> <span class="o">=</span> <span class="n">Right</span><span class="p">(</span><span class="s2">&quot;the answer is 42&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>Note that <a href="http://thx-lib.org/api/thx/core/Result.html"><code>thx.core.Result</code></a> is an abstract on top of <code>Either</code> with some additional features.</p>
+
+<h3 id="nil"><a href="http://thx-lib.org/api/thx/core/Nil.html">Nil</a></h3>
+
+<p><code>Nil</code> is a special enum that only contains one constructor <code>nil</code> that takes no parameter. It denotes the absence of a value. It is very handy when you want to work on functions of arity 1 and you don&#39;t want to special case them to support an empty list of arguments.</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">function</span> <span class="err">do&lt;T&gt;</span><span class="p">(</span><span class="n">arg</span> <span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* do magic */</span> <span class="p">}</span>
+
+<span class="k">do</span><span class="p">(</span><span class="n">nil</span><span class="p">)</span> <span class="err">{</span> <span class="cm">/* ... */</span> <span class="err">}</span> <span class="c1">// use `do` with an empty argument</span>
+</code></pre></div><div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">typedef</span> <span class="n">F</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="o">=</span> <span class="n">T</span> <span class="p">-&gt;</span> <span class="n">String</span><span class="p">;</span>
+
+<span class="c1">// the following function satisfies the typedef above</span>
+<span class="kd">function</span> <span class="nf">myF</span><span class="p">(</span><span class="n">_</span> <span class="p">:</span> <span class="n">Nil</span><span class="p">)</span> <span class="p">:</span> <span class="n">String</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+</code></pre></div>
+<h3 id="result"><a href="http://thx-lib.org/api/thx/core/Result.html">Result</a></h3>
+
+<p><code>Result</code> is a wrapper (abstract) on top of <code>thx.core.Either</code>. It semantically represents the result of an operation that can either a success or a failure.</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> success <span class="p">:</span> <span class="n">Result</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="p">&gt;</span> <span class="o">=</span> <span class="n">Right</span><span class="p">(</span><span class="s2">&quot;victory!&quot;</span><span class="p">);</span>
+
+<span class="n">success</span><span class="p">.</span><span class="n">isSuccess</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="n">success</span><span class="p">.</span><span class="n">isFailure</span><span class="p">;</span> <span class="c1">// false</span>
+<span class="n">success</span><span class="p">.</span><span class="n">value</span><span class="p">();</span> <span class="c1">// &quot;victory!&quot;</span>
+<span class="n">success</span><span class="p">.</span><span class="n">error</span><span class="p">();</span> <span class="c1">// null</span>
+<span class="n">success</span><span class="p">.</span><span class="n">optionValue</span><span class="p">();</span> <span class="c1">// Some(&quot;victory!&quot;)</span>
+<span class="n">success</span><span class="p">.</span><span class="n">optionError</span><span class="p">();</span> <span class="c1">// None</span>
+
+<span class="kd">var</span> failure <span class="p">:</span> <span class="n">Result</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="p">&gt;</span> <span class="o">=</span> <span class="n">Left</span><span class="p">(</span><span class="s2">&quot;oh, no ...&quot;</span><span class="p">);</span>
+
+<span class="n">failure</span><span class="p">.</span><span class="n">isSuccess</span><span class="p">;</span> <span class="c1">// false</span>
+<span class="n">failure</span><span class="p">.</span><span class="n">isFailure</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="n">failure</span><span class="p">.</span><span class="n">value</span><span class="p">();</span> <span class="c1">// null</span>
+<span class="n">failure</span><span class="p">.</span><span class="n">error</span><span class="p">();</span> <span class="c1">// &quot;oh, no ...&quot;</span>
+<span class="n">failure</span><span class="p">.</span><span class="n">optionValue</span><span class="p">();</span> <span class="c1">// None</span>
+<span class="n">failure</span><span class="p">.</span><span class="n">optionError</span><span class="p">();</span> <span class="c1">// Some(&quot;oh, no ...&quot;)</span>
+</code></pre></div>
+<p><code>thx.promise.Future</code> always bring a result and <code>thx.promise.Promise</code> extend the concept by adding the possibility of a failure.</p>
+
+<h3 id="set"><a href="http://thx-lib.org/api/thx/core/Set.html">Set</a></h3>
+
+<p>A <code>Set</code> is a list of unique values. Values are unique in a way that no duplicates can exist in the same <code>Set</code>. Note that uniqueness is enforced by strict phisical equality. That means that is perfectly possible to have a <code>Set</code> of class instances where the instances contain exactly the same values but are referring different objects. Primitive values like <code>Int</code>, <code>Float</code>, <code>String</code> do not incur in such cases.</p>
+
+<p><code>Set&lt;T&gt;</code> is an abstract built on top of <code>Array&lt;T&gt;</code>. Like <code>Array</code>, it is a mutable structure and shares with it most of its methods with.</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> set <span class="o">=</span> <span class="n">Set</span><span class="p">.</span><span class="n">create</span><span class="p">();</span>
+<span class="n">set</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">set</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">set</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="c1">// again one!</span>
+<span class="n">set</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="n">set</span><span class="p">.</span><span class="n">length</span> <span class="o">==</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// true!</span>
+</code></pre></div>
+<p>A <code>Set</code> can be easily created from an <code>Array</code>:</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> s <span class="p">:</span> <span class="n">Set</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span> <span class="c1">// note that the repetead value will be removed</span>
+</code></pre></div>
+<p><code>Set</code> supports boolean operations like <code>union</code>, <code>intersection</code> and <code>difference</code>:</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> s <span class="o">=</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="p">:</span> <span class="n">Set</span><span class="p">&lt;</span><span class="n">Int</span><span class="p">&gt;).</span><span class="n">union</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]).</span><span class="n">difference</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]);</span>
+<span class="c1">// s contains [1,4]</span>
+</code></pre></div>
+<p>Note that boolean operations return new <code>Set</code> instances and do not change the original instances.</p>
+
+<h3 id="tuple"><a href="http://thx-lib.org/api/thx/core/Tuple2.html">Tuple</a></h3>
+
+<p>A <code>Tuple</code> is a value containing multiple values of potentially different types. All tuples are immutable; that means that any tuple operation that seems to change the Tuple it is creating a new structure instead.</p>
+
+<p>A <a href="http://thx-lib.org/api/thx/core/Tuple0.html"><code>Tuple0</code></a> contains no value and it is equivalent to <code>thx.core.Nil.nil</code>.</p>
+
+<p>A <a href="http://thx-lib.org/api/thx/core/Tuple1.html"><code>Tuple1</code></a> contains one value and it is a wrapper to the value type itself.</p>
+
+<p>A <a href="http://thx-lib.org/api/thx/core/Tuple2.html"><code>Tuple2</code></a>, the most conventional of the tuples, is an abstract wrapper around an object of type <code>{ _0 : T0, _1 : T1 }</code>.</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> t <span class="o">=</span> <span class="k">new</span> <span class="n">Tuple2</span><span class="p">(</span><span class="s2">&quot;thx&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">t</span><span class="p">.</span><span class="n">_0</span><span class="p">;</span> <span class="c1">// &quot;thx&quot;, same as t.left</span>
+<span class="n">t</span><span class="p">.</span><span class="n">_1</span><span class="p">;</span> <span class="c1">// 1, same as t.right</span>
+
+<span class="n">t</span><span class="p">.</span><span class="n">flip</span><span class="p">().</span><span class="n">left</span><span class="p">;</span> <span class="c1">// `flip` inverts the terms of the tuple and `left` is now 1</span>
+
+<span class="n">t</span><span class="p">.</span><span class="n">dropRight</span><span class="p">();</span> <span class="c1">// return a Tuple1 which in this case results in &quot;thx&quot;</span>
+
+<span class="n">t</span><span class="p">.</span><span class="n">with</span><span class="p">(</span><span class="s2">&quot;0.123&quot;</span><span class="p">)</span> <span class="c1">// appends a new value to the right creating a new Tuple3</span>
+</code></pre></div>
+<p><a href="http://thx-lib.org/api/thx/core/Tuple3.html"><code>Tuple3</code></a>, <a href="http://thx-lib.org/api/thx/core/Tuple4.html"><code>Tuple4</code></a>, <a href="http://thx-lib.org/api/thx/core/Tuple5.html"><code>Tuple5</code></a> and <a href="http://thx-lib.org/api/thx/core/Tuple6.html"><code>Tuple6</code></a> work much like <a href="http://thx-lib.org/api/thx/core/Tuple2.html"><code>Tuple</code></a> but bring more values.</p>
+
+<h2 id="type-helpers">Type Helpers</h2>
+
+<p><code>thx.core</code> also contains a lot of useful helper classes to simplify dealing with a lot of types from the standard library.</p>
+
+<p>Most methods described below assume that the respective types have been required using <code>using</code> and are used as type extensions.</p>
+
+<h3 id="arrays/iterators/iterables">Arrays/Iterators/Iterables</h3>
+
+<p>Similarly to <code>Lambda</code>, <code>Arrays</code>/<code>Iterators</code>/<code>Iterables</code> provide extension methods to work with collections. They share most of the methods and are repeated to avoid useless casting or conversions and to provide optimizations where possible.</p>
+
+<p>Some examples of the common features:</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">].</span><span class="n">all</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">return</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// false</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">].</span><span class="n">any</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">return</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// true</span>
+
+<span class="c1">// filter works for any Iterator/Iterable like the normal Array.filter</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">].</span><span class="n">filter</span><span class="p">(</span><span class="n">Ints</span><span class="p">.</span><span class="n">isOdd</span><span class="p">);</span> <span class="c1">// [1,3]</span>
+
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">].</span><span class="n">filterPluck</span><span class="p">(</span><span class="n">_</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// equivalent to [1,2,3].filter(function(i) return i != 2)</span>
+
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">].</span><span class="n">isEmpty</span><span class="p">();</span> <span class="c1">// false</span>
+
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">].</span><span class="n">pluck</span><span class="p">(</span><span class="n">_</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// [2,4,6]</span>
+</code></pre></div>
+<h3 id="arrays"><a href="http://thx-lib.org/api/thx/core/Arrays.html">Arrays</a></h3>
+
+<p>Beside the usual methods to traverse, reduce, slice and arrange arrays, <code>Arrays</code> contains peculiar things like:</p>
+
+<ul>
+<li><code>compact</code> to filter out null values</li>
+<li><code>cross</code> to create cross products between 2 arrays</li>
+<li><code>equals</code> to compare each element of two arrays</li>
+<li><code>flatMap</code> and <code>flatten</code> to reduce nested arrays into flat arrays</li>
+<li><code>groupBy</code> to create <code>Map</code> from arrays</li>
+<li><code>sample</code> and <code>sampleOne</code> to extract random elements from one array</li>
+<li><code>shuffle</code> to reorder randomly an array</li>
+<li><code>zip</code>/<code>unzip</code> to create/deconstruct arrays of <code>Tuple</code></li>
+</ul>
+
+<p>In the <code>thx.core.Arrays</code> module are also defined a few specialized operations for specific type of arrays: <a href="http://thx-lib.org/api/thx/core/ArrayFloats.html">ArrayFloats</a>, <a href="http://thx-lib.org/api/thx/core/ArrayInts.html">ArrayInts</a> and <a href="http://thx-lib.org/api/thx/core/ArrayStrings.html">ArrayStrings</a>. The numeric array variations provide methods for <code>average</code>, <code>sum</code>, <code>min</code> and <code>max</code> (plus <code>compact</code> for <code>Float</code> that removes non-finite numbers).</p>
+
+<h3 id="iterators"><a href="http://thx-lib.org/api/thx/core/Iterators.html">Iterators</a></h3>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="n">it</span><span class="p">.</span><span class="n">isIterator</span><span class="p">()</span> <span class="c1">// checks that the instance has the right members to be an Iterator</span>
+</code></pre></div>
+<h3 id="iterables"><a href="http://thx-lib.org/api/thx/core/Iterables.html">Iterables</a></h3>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="n">it</span><span class="p">.</span><span class="n">isIterable</span><span class="p">()</span> <span class="c1">// checks that the instance has the right members to be an Iterable</span>
+</code></pre></div>
+<h3 id="floats"><a href="http://thx-lib.org/api/thx/core/Floats.html">Floats</a></h3>
+
+<p><code>Floats</code> contains extension methods to work with <code>Float</code> values. Some examples:</p>
+
+<ul>
+<li><code>canParse</code> checks if a string can be safely parsed into a <code>Float</code>. Use <code>parse</code> for the final conversion</li>
+<li><code>clamp</code> restricts a value within a given range</li>
+<li><code>compare</code> returns a value suitable for comparison</li>
+<li><code>interpolate</code> does exactly that :)</li>
+<li><code>nearEquals</code> compare two values with a small margin to account for floating precision issues</li>
+<li><code>wrap</code> ensure that the passed valeu will be included in the boundaries. If the value exceeds <code>max</code>, the value is reduced by <code>min</code> repeatedely until it falls within the range. Similar and inverted treatment is performed if the value is below <code>min</code></li>
+</ul>
+
+<h3 id="functions"><a href="http://thx-lib.org/api/thx/core/Functions.html">Functions</a></h3>
+
+<p>Extension methods for functions. Methods are roughly distributed between <a href="http://thx-lib.org/api/thx/core/Functions.html"><code>Functions</code></a>,  <a href="http://thx-lib.org/api/thx/core/Functions0.html"><code>Functions0</code></a>,  <a href="http://thx-lib.org/api/thx/core/Functions1.html"><code>Functions1</code></a>,  <a href="http://thx-lib.org/api/thx/core/Functions2.html"><code>Functions2</code></a> and  <a href="http://thx-lib.org/api/thx/core/Functions3.html"><code>Functions3</code></a> where the number suffix denotes the arity (number of arguments) of the function that are going to be extended.</p>
+
+<ul>
+<li><code>after</code> returns a function that wraps the passed function. The original function will be executed only after it has been called <code>n</code> times</li>
+<li><code>compose</code> returns a function that calls the first arguemnt function with the result of the following one.</li>
+<li><code>equality</code> performs strict physical equality</li>
+<li><code>identity</code> is a function that returns its first argument</li>
+<li><code>join</code> creates a function that calls the 2 functions passed as arguments in sequence</li>
+<li><code>memoize</code> returns a new version of the argument function that stores the computation from the function and recycles it whenever called again</li>
+<li><code>negate</code> return a new version of a function that returns a <code>Bool</code> and transforms it so that it will return the negation of its result</li>
+<li><code>noop</code> its a function that performs no computations and doesn&#39;t return a value</li>
+<li><code>once</code> wraps and returns the argument function. <code>once</code> ensures that <code>f</code> will be called at most once even if the returned function is invoked multiple times</li>
+<li><code>times</code> creates a function that calls <code>callback</code> <code>n</code> times and returns an array of results.</li>
+</ul>
+
+<h3 id="ints"><a href="http://thx-lib.org/api/thx/core/Ints.html">Ints</a></h3>
+
+<p>Extension methods for integer values. Many methods are implemented the same as in <code>thx.core.Floats</code> but specialized for <code>Int</code> values. Some are methods available in <code>Std</code> or <code>Math</code> but only available for <code>Float</code>.</p>
+
+<h3 id="maps"><a href="http://thx-lib.org/api/thx/core/Maps.html">Maps</a></h3>
+
+<p>Extension methods for Maps.</p>
+
+<ul>
+<li><code>tuples</code> transforms a <code>Map&lt;TKey, TValue&gt;</code> in an <code>Array</code> of <code>Tuple2&lt;TKey, TValue&gt;</code></li>
+<li><code>mapToObject</code> transforms a <code>Map&lt;String, T&gt;</code> into an anonymous object.</li>
+</ul>
+
+<h3 id="objects"><a href="http://thx-lib.org/api/thx/core/Objects.html">Objects</a></h3>
+
+<p>Extension methods for objects.</p>
+
+<ul>
+<li><code>isEmpty</code> returns true if the object contains no fields</li>
+<li><code>objectToMap</code> transform an object in to a map of type <code>Map&lt;String, Dynamic&gt;</code></li>
+<li><code>size</code> counts the number of fields in an object</li>
+<li><code>values</code> returns an array with the values of each field (order is not guaranteed)</li>
+<li><code>tuples</code> returns an array of <code>Tuple2&lt;String, Dynamic&gt;</code> containing pairs of fields/values (order is not guaranteed)</li>
+</ul>
+
+<h3 id="options"><a href="http://thx-lib.org/api/thx/core/Options.html">Options</a></h3>
+
+<p>Extension methods for the <code>haxe.ds.Option</code> type.</p>
+
+<ul>
+<li><code>equals</code> campares two <code>Option</code> values of the same type</li>
+<li><code>flatMap</code> reduces an <code>Option&lt;T&gt;</code> value into an <code>Array&lt;T&gt;</code></li>
+<li><code>map</code> transforms a value contained in <code>Option&lt;T&gt;</code> to <code>Option&lt;TOut&gt;</code></li>
+<li><code>toArray</code> transforms an <code>Option</code> value to an <code>Array</code></li>
+<li><code>toBool</code> transforms an <code>Option</code> to <code>true</code> (<code>Some(_)</code>) or <code>false</code> (<code>None</code>)</li>
+<li><code>toOption</code> transforms any type T into <code>Option&lt;T&gt;</code></li>
+<li><code>toValue</code> extracts the value from <code>Option</code> or returns <code>null</code></li>
+</ul>
+
+<h3 id="nulls"><a href="http://thx-lib.org/api/thx/core/Nulls.html">Nulls</a></h3>
+
+<p><code>Nulls</code> provides extension methods that help to deal with nullable values.</p>
+
+<ul>
+<li><code>isNull</code> checks if a chain of identifier is null at any point</li>
+<li><code>notNull</code> is the negation of <code>isNull</code></li>
+<li><code>opt</code> traverses a chain of dot/array identifiers and it returns the last value in the chain or null if any of the identifiers is not set</li>
+<li><code>or</code> is like <code>opt</code> but allows an <code>alt</code> value that replaces a <code>null</code> occurrance</li>
+</ul>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> s <span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="n">trace</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">or</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">));</span> <span class="c1">// prints &#39;b&#39;</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span><span class="p">;</span>
+<span class="n">trace</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">or</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">));</span> <span class="c1">// prints &#39;a&#39;</span>
+
+<span class="c1">// or more complex</span>
+<span class="kd">var</span> o <span class="p">:</span> <span class="p">{</span> <span class="n">a</span> <span class="p">:</span> <span class="p">{</span> <span class="n">b</span> <span class="p">:</span> <span class="p">{</span> <span class="n">c</span> <span class="p">:</span> <span class="n">String</span> <span class="p">}}}</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="n">trace</span><span class="p">((</span><span class="n">o</span><span class="p">.</span><span class="n">a</span><span class="p">.</span><span class="n">b</span><span class="p">.</span><span class="n">c</span><span class="p">).</span><span class="n">or</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">));</span> <span class="c1">// prints &#39;B&#39;</span>
+<span class="kd">var</span> o <span class="o">=</span> <span class="p">{</span> <span class="n">a</span> <span class="p">:</span> <span class="p">{</span> <span class="n">b</span> <span class="p">:</span> <span class="p">{</span> <span class="n">c</span> <span class="p">:</span> <span class="s1">&#39;A&#39;</span> <span class="p">}}};</span>
+<span class="n">trace</span><span class="p">((</span><span class="n">o</span><span class="p">.</span><span class="n">a</span><span class="p">.</span><span class="n">b</span><span class="p">.</span><span class="n">c</span><span class="p">).</span><span class="n">or</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">));</span> <span class="c1">// prints &#39;A&#39;</span>
+</code></pre></div>
+<p>Note that the parenthesis wrap the entire chain of identifiers. That means that a null check will be performed for each identifier in the chain.</p>
+
+<p>Identifiers can also be getters and methods (both are invoked only once and only if the check reaches them). <code>Python</code> seems to struggle with some native methods like methods on strings.</p>
+
+<h3 id="strings"><a href="http://thx-lib.org/api/thx/core/Strings.html">Strings</a></h3>
+
+<p>Extension methods for <code>String</code>. Some examples:</p>
+
+<ul>
+<li><code>after</code> returns the text after the first occurance of a certain string</li>
+<li><code>capitalizeWords</code> each word in a text</li>
+<li><code>collapse</code> trims white spaces from the beginning/end of a text and reduces any sequence of more than white space to just one inside a given text</li>
+<li><code>isAlphaNum</code> returns true if the text contains only alpha-numeric characters</li>
+<li><code>ifEmpty</code> returns the either the passed value if not empty (null or &quot;&quot;) or an alternative value.</li>
+<li><code>isDigitsOnly</code> returns true if the string contains only digits</li>
+<li><code>map</code> iterates on each character individually</li>
+<li><code>repeat</code> creates a string repeating a certain pattern <code>n</code> times</li>
+<li><code>stripTags</code> sanitize html string by removing any tag-like information</li>
+<li><code>wrapColumns</code> breaks a long string into consistently sized lines without breaking words apart.</li>
+</ul>
+
+<h3 id="types"><a href="http://thx-lib.org/api/thx/core/Types.html">Types</a></h3>
+
+<p>Extension methods to use on values, types and classes.</p>
+
+<p><code>isAnonymousObject</code> returns true if the passed argument is an anonymous object.</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="n">Types</span><span class="p">.</span><span class="n">isAnonymousObject</span><span class="p">({});</span> <span class="c1">// true</span>
+</code></pre></div>
+<p><code>valueTypeToString</code> returns a string describing the type of any <code>value</code>.</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="n">Types</span><span class="p">.</span><span class="n">valueTypeToString</span><span class="p">(</span><span class="s2">&quot;thx&quot;</span><span class="p">);</span> <span class="c1">// &quot;String&quot;</span>
+<span class="n">Types</span><span class="p">.</span><span class="n">valueTypeToString</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// &quot;Int&quot;</span>
+<span class="n">Types</span><span class="p">.</span><span class="n">valueTypeToString</span><span class="p">(</span><span class="n">Left</span><span class="p">(</span><span class="s2">&quot;some&quot;</span><span class="p">));</span> <span class="c1">// &quot;thx.core.Either&quot;</span>
+</code></pre></div>
+<p><code>valueTypeInheritance</code> returns an array of string describing the entire inheritance
+chain of the passed <code>value</code>.</p>
+
+<p><code>valueTypeInheritance</code> works on any value, not just class instances. Obviously most types will return an array of just one value.</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">class</span> <span class="n">B</span> <span class="kd">extends</span> <span class="n">A</span> <span class="p">{}</span><span class="err">;</span>
+
+<span class="n">Types</span><span class="p">.</span><span class="n">valueTypeInheritance</span><span class="p">(</span><span class="k">new</span> <span class="n">B</span><span class="p">());</span> <span class="c1">// [&quot;B&quot;, &quot;A&quot;]</span>
+</code></pre></div>
+<h3 id="dynamics.equals"><a href="http://thx-lib.org/api/thx/core/Dynamics.html">Dynamics</a>.equals</h3>
+
+<p>Compares any two values checking their type first and recursively all their members for structural equality. It should work on any type. If the values passed are objects and they contain a method <code>equals</code>, it will be used to decide if the two objects match.</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="n">Dynamics</span><span class="p">.</span><span class="n">equals</span><span class="p">({</span> <span class="n">a</span> <span class="p">:</span> <span class="mi">1</span> <span class="p">},</span> <span class="p">{</span> <span class="n">a</span> <span class="p">:</span> <span class="mi">1</span> <span class="p">});</span> <span class="c1">// true</span>
+<span class="n">Dynamics</span><span class="p">.</span><span class="n">equals</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// false</span>
+</code></pre></div>
+<h3 id="eregs.escape"><a href="http://thx-lib.org/api/thx/core/ERegs.html">ERegs</a>.escape</h3>
+
+<p>It escapes any characer in a string that has a special meaning when used in a regular expression.</p>
+
+<h2 id="general-purpose-features">General Purpose Features</h2>
+
+<p>The following utilities have no direct relationship with standard types and just provides commonly required functionalities.</p>
+
+<h3 id="timer"><a href="http://thx-lib.org/api/thx/core/Timer.html">Timer</a></h3>
+
+<p><code>Timer</code> provides several meaning to delay the execution of code. At the moment it is only implemented for platforms that have a native concept of Timer like Swf and JavaScript or c++/Neko with OpenFL or NME.</p>
+
+<p>All of the Timer methods return a function with signature <code>Void -&gt; Void</code> that can be used to cancel the timer.</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="c1">// set the execution delayed by 200ms</span>
+<span class="kd">var</span> cancel <span class="o">=</span> <span class="n">Timer</span><span class="p">.</span><span class="n">delay</span><span class="p">(</span><span class="n">doSomethingLater</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
+
+<span class="c1">// cancel immediately (`doSomethingLater` will never be executed)</span>
+<span class="n">cancel</span><span class="p">();</span>
+</code></pre></div>
+<p>Note that calling the cancel function multiple times have no effect after the first execution.</p>
+
+<h3 id="uuid"><a href="http://thx-lib.org/api/thx/core/UUID.html">UUID</a></h3>
+
+<p>Helper class to generate <a href="http://en.wikipedia.org/wiki/Universally_unique_identifier">UUID</a> strings (version 4).</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="n">UUID</span><span class="p">.</span><span class="n">create</span><span class="p">();</span> <span class="c1">// generates something like f47ac10b-58cc-4372-a567-0e02b2c3d479</span>
+</code></pre></div>
+<h2 id="errors">Errors</h2>
+
+<p>Haxe brings the power of being able to use any type to throw an exception. It is not uncommon to find code that simply does <code>throw &quot;my error</code>. There is nothing wrong with that approach except that some times, most commonly in bigger applications that use many libraries, you need to be conservative when you want to catch an exception and introduce a <code>catch(e : Dynamic)</code> to be sure to not forget any possible error. The problem with Dynamic is that you don&#39;t really know how to access the error info. The type <code>thx.core.Error</code> described below tries to solve this problem providing a common and generic implementation.</p>
+
+<h3 id="error"><a href="http://thx-lib.org/api/thx/core/Error.html">Error</a></h3>
+
+<p>Represent a Runtime error or exception. When used with JS it inherits from the native <code>Error</code> type. It tries to bring information like error message and error location. Usage is super easy:</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="k">throw</span> <span class="k">new</span> <span class="n">Error</span><span class="p">(</span><span class="s1">&#39;my error message&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>Note that <code>Error</code> will try to collect (if possible) information about the error stack and the error location using <code>haxe.PosInfos</code>.</p>
+
+<p>On top of <code>thx.core.Error</code> a few definitions are built for very common situations.</p>
+
+<h3 id="abstractmethod"><a href="http://thx-lib.org/api/thx/core/error/AbstractMethod.html">AbstractMethod</a></h3>
+
+<p>Mark a method as <code>abstract</code>. If it is not implemented by a sub-type a runtime exception is thrown indicating the class/method name that is abstract and has no implementation.</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">function</span> <span class="nf">myAbstract</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="n">AbstractMethod</span><span class="p">();</span> <span class="c1">// no argument required</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="notimplemented"><a href="http://thx-lib.org/api/thx/core/error/NotImplemented.html">NotImplemented</a></h3>
+
+<p>Similarly to <code>AbstracMethod</code> it is used to mark method that have not been implementd yet.</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">function</span> <span class="nf">myNotImplemented</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="n">NotImplemented</span><span class="p">();</span> <span class="c1">// no argument required</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="nullargument"><a href="http://thx-lib.org/api/thx/core/error/NullArgument.html">NullArgument</a></h3>
+
+<p>Checks that a certain argument of a function is not <code>null</code> and throws an exception otherwise.</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">function</span> <span class="nf">myMethod</span><span class="p">(</span><span class="n">value</span> <span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NullArgument</span><span class="p">.</span><span class="n">throwIfNull</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>With arguments of type <code>Array</code>, <code>String</code>, <code>Iterator</code> or <code>Iterable</code>, it is also possible to check for emptyness:</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">function</span> <span class="nf">myMethod</span><span class="p">(</span><span class="n">value</span> <span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NullArgument</span><span class="p">.</span><span class="n">throwIfEmpty</span><span class="p">(</span><span class="n">value</span><span class="p">);</span> <span class="c1">// check that value is not `null` but also not empty (&quot;&quot;)</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="macro-helpers">Macro Helpers</h2>
+
+<h3 id="macros"><a href="http://thx-lib.org/api/thx/macro/Macros.html">Macros</a></h3>
+
+<p>Helper methods to use inside macro context.</p>
+
+<h3 id="macrotypes"><a href="http://thx-lib.org/api/thx/macro/MacroTypes.html">MacroTypes</a></h3>
+
+<p>Several utility function to extract type information from macro types and expressions.</p>
+
+<h2 id="install">Install</h2>
 
 <p>From the command line just type:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">haxelib install thx.core
