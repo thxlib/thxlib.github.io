@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-gb">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>thx.format</title>
+  <meta name="author" content="Franco Ponticelli" />
+  <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/css/screen.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/css/highlight.css" type="text/css" media="all" />
+<!--  <base href="https://github.com/fponticelli/thx.format/" /> -->
+</head>
+<body>
+  <div class="site">
+    <div class="title"><a href="/">thx libraries</a></div>
+    <ul class="info">
+      <li><a href="https://github.com/fponticelli/thx.format"><i class="fa fa-github"></i> Github</a></li>
+      <li><a href="/api/thx/format"><i class="fa fa-code"></i> API doc</a></li>
+      <li title="version"><i class="fa fa-at"></i> 0.1.1</li>
+      <li class="list" title="tags">
+        <i class="fa fa-tags"></i> <span class="tags">format, localization, thx, cross</span>
+      </li>
+      
+      <li class="list" title="dependecies">
+        <i class="fa fa-cubes"></i>  <span class="dependencies">
+        
+          <a href="/lib/thx.culture/">thx.culture</a>, 
+        
+          <a href="/lib/thx.core/">thx.core</a>
+        
+        </span>
+      </li>
+      
+    </ul>
+    <h1 id="thx.format">thx.format</h1>
+
+<p><a href="https://travis-ci.org/fponticelli/thx.format"><img src="https://travis-ci.org/fponticelli/thx.format.svg" alt="Build Status"></a></p>
+
+<p>Format library for Haxe.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p><code>thx.format</code> adds formatting options on top of common Haxe types. To use  require (<code>using</code> or <code>import</code>) the right formatter (ex: <code>thx.format.DateFormat</code> or <code>thx.format.DateFormat</code>).</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> it <span class="o">=</span> <span class="n">Embed</span><span class="p">.</span><span class="n">culture</span><span class="p">(</span><span class="s1">&#39;it-it&#39;</span><span class="p">);</span>
+<span class="kd">var</span> ch <span class="o">=</span> <span class="n">Embed</span><span class="p">.</span><span class="n">culture</span><span class="p">(</span><span class="s1">&#39;it-ch&#39;</span><span class="p">);</span>
+<span class="kd">var</span> us <span class="o">=</span> <span class="n">Embed</span><span class="p">.</span><span class="n">culture</span><span class="p">(</span><span class="s1">&#39;en-us&#39;</span><span class="p">);</span>
+<span class="kd">var</span> ru <span class="o">=</span> <span class="n">Embed</span><span class="p">.</span><span class="n">culture</span><span class="p">(</span><span class="s1">&#39;ru-ru&#39;</span><span class="p">);</span>
+<span class="kd">var</span> fr <span class="o">=</span> <span class="n">Embed</span><span class="p">.</span><span class="n">culture</span><span class="p">(</span><span class="s1">&#39;fr-fr&#39;</span><span class="p">);</span>
+<span class="kd">var</span> jp <span class="o">=</span> <span class="n">Embed</span><span class="p">.</span><span class="n">culture</span><span class="p">(</span><span class="s1">&#39;ja-jp&#39;</span><span class="p">);</span>
+<span class="kd">var</span> d  <span class="o">=</span> <span class="n">Date</span><span class="p">.</span><span class="n">fromString</span><span class="p">(</span><span class="s1">&#39;2009-06-01 13:45:30&#39;</span><span class="p">);</span>
+
+<span class="c1">// dates</span>
+<span class="n">d</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;U&#39;</span><span class="p">);</span>     <span class="c1">// Monday, 01 June 2009 13:45:30</span>
+<span class="n">d</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="n">it</span><span class="p">);</span> <span class="c1">// lunedì 1 Giugno 2009 13:45:30</span>
+<span class="n">d</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="n">ch</span><span class="p">);</span> <span class="c1">// lunedì, 1. Giugno 2009 13:45:30</span>
+<span class="n">d</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="n">us</span><span class="p">);</span> <span class="c1">// Monday, June 1, 2009 1:45:30 PM</span>
+<span class="n">d</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="n">ru</span><span class="p">);</span> <span class="c1">// 1 Июнь 2009 г. 13:45:30</span>
+<span class="n">d</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="n">fr</span><span class="p">);</span> <span class="c1">// lundi 1 juin 2009 13:45:30</span>
+<span class="n">d</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="n">jp</span><span class="p">);</span> <span class="c1">// 2009年6月1日 13:45:30</span>
+</code></pre></div>
+<p>And numbers:</p>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="p">(</span><span class="o">-</span><span class="mf">12345.6789</span><span class="p">).</span><span class="n">currency</span><span class="p">();</span>   <span class="c1">// (¤12,345.67)</span>
+<span class="p">(</span><span class="o">-</span><span class="mf">12345.6789</span><span class="p">).</span><span class="n">currency</span><span class="p">(</span><span class="n">it</span><span class="p">);</span> <span class="c1">// -€ 12.345,67</span>
+<span class="p">(</span><span class="o">-</span><span class="mf">12345.6789</span><span class="p">).</span><span class="n">currency</span><span class="p">(</span><span class="n">us</span><span class="p">);</span> <span class="c1">// ($12,345.67)</span>
+<span class="mf">12345.6789</span><span class="p">.</span><span class="n">integer</span><span class="p">();</span>       <span class="c1">// 12,345</span>
+<span class="mf">0.02333</span><span class="p">.</span><span class="n">percent</span><span class="p">();</span>          <span class="c1">// 2.33 %</span>
+<span class="mf">0.02333</span><span class="p">.</span><span class="n">percent</span><span class="p">(</span><span class="n">it</span><span class="p">);</span>        <span class="c1">// 2,33%</span>
+<span class="mf">0.02333</span><span class="p">.</span><span class="n">permille</span><span class="p">();</span>         <span class="c1">// 23.33 ‰</span>
+<span class="mf">0.02333</span><span class="p">.</span><span class="n">permille</span><span class="p">(</span><span class="n">it</span><span class="p">);</span>       <span class="c1">// 23,33‰</span>
+<span class="mf">23.3333</span><span class="p">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;kg.&#39;</span><span class="p">);</span>     <span class="c1">// 23.33 kg.</span>
+<span class="mf">23.3333</span><span class="p">.</span><span class="n">unit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;kg.&#39;</span><span class="p">,</span> <span class="n">it</span><span class="p">);</span> <span class="c1">// 23,33kg.</span>
+</code></pre></div>
+<h2 id="date-formats">Date Formats</h2>
+
+<h3 id="one-letter-format-(date.format)">One Letter Format (<code>Date.format</code>)</h3>
+
+<table><thead>
+<tr>
+<th>pattern</th>
+<th>description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>d</code></td>
+<td>short date pattern</td>
+</tr>
+<tr>
+<td><code>D</code></td>
+<td>long date pattern</td>
+</tr>
+<tr>
+<td><code>f</code></td>
+<td>long date + short time pattern</td>
+</tr>
+<tr>
+<td><code>F</code></td>
+<td>long date + long time pattern</td>
+</tr>
+<tr>
+<td><code>g</code></td>
+<td>short date + short time pattern</td>
+</tr>
+<tr>
+<td><code>G</code></td>
+<td>short date + long time pattern</td>
+</tr>
+<tr>
+<td><code>M</code>, <code>m</code></td>
+<td>month/day pattern</td>
+</tr>
+<tr>
+<td><code>R</code>, <code>r</code></td>
+<td>RFC1123 pattern</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td>sortable date/time pattern</td>
+</tr>
+<tr>
+<td><code>t</code></td>
+<td>short time pattern</td>
+</tr>
+<tr>
+<td><code>T</code></td>
+<td>long time pattern</td>
+</tr>
+<tr>
+<td><code>u</code></td>
+<td>universal sortable date/time pattern</td>
+</tr>
+<tr>
+<td><code>U</code></td>
+<td>universal full date/time pattern</td>
+</tr>
+<tr>
+<td><code>Y</code>, <code>y</code></td>
+<td>year/month pattern</td>
+</tr>
+<tr>
+<td>...</td>
+<td>custom pattern.</td>
+</tr>
+</tbody></table>
+
+<h3 id="custom-patterns-(date.customformat-or-date.strftime)">Custom Patterns (<code>Date.customFormat</code> or <code>Date.strftime</code>)</h3>
+
+<table><thead>
+<tr>
+<th style="text-align: left">MS</th>
+<th style="text-align: center">strftime</th>
+<th>description</th>
+<th style="text-align: right">example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code>ddd</code></td>
+<td style="text-align: center"><code>%a</code></td>
+<td>The abbreviated weekday name according to the current locale.</td>
+<td style="text-align: right">Wed</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>dddd</code></td>
+<td style="text-align: center"><code>%A</code></td>
+<td>The full weekday name according to the current locale.</td>
+<td style="text-align: right">Wednesday</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>MMM</code></td>
+<td style="text-align: center"><code>%b</code></td>
+<td>The abbreviated month name according to the current locale.</td>
+<td style="text-align: right">Jan</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>MMMM</code></td>
+<td style="text-align: center"><code>%B</code></td>
+<td>The full month name according to the current locale.</td>
+<td style="text-align: right">January</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%c</code></td>
+<td>The preferred date and time representation for the current locale.</td>
+<td style="text-align: right"></td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%C</code></td>
+<td>The century number (year/100) as a 2-digit integer.</td>
+<td style="text-align: right">19</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>dd</code></td>
+<td style="text-align: center"><code>%d</code></td>
+<td>The day of the month as a decimal number (range 01 to 31).</td>
+<td style="text-align: right">07</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%D</code></td>
+<td>Equivalent to %m/%d/%y. (This is the USA date format. In many countries %d/%m/%y is the standard date format. Thus, in an international context, both of these formats are ambiguous and should be avoided).</td>
+<td style="text-align: right">06/25/04</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%e</code></td>
+<td>Like %d, the day of the month as a decimal number, but a leading zero may be replaced by a leadingspace.</td>
+<td style="text-align: right">&quot; 7&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%f</code></td>
+<td>The month. Single-digit months may be prefixed by leadingspace.*</td>
+<td style="text-align: right">&quot; 6&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>MMM</code></td>
+<td style="text-align: center"><code>%h</code></td>
+<td>Equivalent to %b.</td>
+<td style="text-align: right">Jan</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>HH</code></td>
+<td style="text-align: center"><code>%H</code></td>
+<td>The hour as a decimal number using a 24-hour clock (range 00 to 23).</td>
+<td style="text-align: right">22</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%i</code></td>
+<td>The minute. Single-digit minutes may be prefixed by leadingspace.*</td>
+<td style="text-align: right">&quot; 8&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>hh</code></td>
+<td style="text-align: center"><code>%I</code></td>
+<td>The hour as a decimal number using a 12-hour clock (range 01 to 12).</td>
+<td style="text-align: right">07</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%k</code></td>
+<td>The hour (24-hour clock) as a decimal number (range 0 to 23); single-digits are optionally prefixed by leadingspace. (See also %H).</td>
+<td style="text-align: right">7</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%l</code></td>
+<td>The hour (12-hour clock) as a decimal number (range 1 to 12); single-digits are optionally prefixed by leadingspace. (See also %I).</td>
+<td style="text-align: right">7</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>MM</code></td>
+<td style="text-align: center"><code>%m</code></td>
+<td>The month as a decimal number (range 01 to 12).</td>
+<td style="text-align: right">04</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>mm</code></td>
+<td style="text-align: center"><code>%M</code></td>
+<td>The minute as a decimal number (range 00 to 59).</td>
+<td style="text-align: right">08</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%n</code></td>
+<td>A newline character.</td>
+<td style="text-align: right"></td>
+</tr>
+<tr>
+<td style="text-align: left"><code>tt</code></td>
+<td style="text-align: center"><code>%p</code></td>
+<td>Either &#39;AM&#39; or &#39;PM&#39; according to the given time value, or the corresponding strings for the current locale. Noon is treated as &#39;pm&#39; and midnight as &#39;am&#39;.</td>
+<td style="text-align: right">AM</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%P</code></td>
+<td>Like %p but in lowercase: &#39;am&#39; or &#39;pm&#39; or a corresponding string for the current locale.</td>
+<td style="text-align: right">AM</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%q</code></td>
+<td>The second. Single-digit seconds may be prefixed by leadingspace.*</td>
+<td style="text-align: right">&quot; 9&quot;</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%r</code></td>
+<td>The time in a.m. or p.m. notation. In the POSIX locale this is equivalent to &#39;%I:%M:%S %p&#39;.</td>
+<td style="text-align: right">07:08:09 am</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%R</code></td>
+<td>The time in 24-hour notation (%H:%M). For a version including the seconds, see %T below.</td>
+<td style="text-align: right">07:08</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%s</code></td>
+<td>The number of seconds since the Epoch, i.e., since 1970-01-01 00:00:00 UTC.</td>
+<td style="text-align: right">1099928130</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>ss</code></td>
+<td style="text-align: center"><code>%S</code></td>
+<td>The second as a decimal number (range 00 to 61). the upper level of the range 61 rather than 59 to allow for the occasional leap second and even more occasional double leap second.</td>
+<td style="text-align: right">07</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%t</code></td>
+<td>A tab character.</td>
+<td style="text-align: right"></td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%T</code></td>
+<td>The time in 24-hour notation (%H:%M:%S).</td>
+<td style="text-align: right">17:08:09</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%u</code></td>
+<td>The day of the week as a decimal, range 1 to 7, Monday being 1. See also %w.</td>
+<td style="text-align: right"></td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%w</code></td>
+<td>The day of the week as a decimal, range 0 to 6, Sunday being 0. See also %u.</td>
+<td style="text-align: right"></td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%x</code></td>
+<td>The preferred date representation for the current locale without the time.</td>
+<td style="text-align: right"></td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%X</code></td>
+<td>The preferred time representation for the current locale without the date.</td>
+<td style="text-align: right"></td>
+</tr>
+<tr>
+<td style="text-align: left"><code>y</code></td>
+<td style="text-align: center"><code>%y</code></td>
+<td>The year as a decimal number without a century (range 00 to 99).</td>
+<td style="text-align: right">04</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%Y</code></td>
+<td>The year as a decimal number including the century.</td>
+<td style="text-align: right">2004</td>
+</tr>
+<tr>
+<td style="text-align: left"></td>
+<td style="text-align: center"><code>%%</code></td>
+<td>A literal &#39;%&#39; character.</td>
+<td style="text-align: right">%</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>d</code></td>
+<td style="text-align: center"></td>
+<td>The day of the month (1 to 31).</td>
+<td style="text-align: right">7</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>h</code></td>
+<td style="text-align: center"></td>
+<td>The hour on a 12-hour clock (1 to 12).</td>
+<td style="text-align: right">11</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>H</code></td>
+<td style="text-align: center"></td>
+<td>Same as <code>h</code> but <code>0</code> padded (01 to 12).</td>
+<td style="text-align: right">07</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>m</code></td>
+<td style="text-align: center"></td>
+<td>Minute (0 to 59).</td>
+<td style="text-align: right">7</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>M</code></td>
+<td style="text-align: center"></td>
+<td>Same as <code>m</code> but <code>0</code> padded (00 to 59).</td>
+<td style="text-align: right">07</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>s</code></td>
+<td style="text-align: center"></td>
+<td>Seconds (0 to 59).</td>
+<td style="text-align: right">7</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>t</code></td>
+<td style="text-align: center"></td>
+<td>Same as <code>s</code> but <code>0</code> padded (00 to 59).</td>
+<td style="text-align: right">07</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>yy</code></td>
+<td style="text-align: center"></td>
+<td>Year from 00 to 99.</td>
+<td style="text-align: right">99</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>yyy</code></td>
+<td style="text-align: center"></td>
+<td>Year with at least 3 digits.</td>
+<td style="text-align: right">1999</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>yyyy</code></td>
+<td style="text-align: center"></td>
+<td>Four digits year.</td>
+<td style="text-align: right">1999</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>:</code></td>
+<td style="text-align: center"></td>
+<td>Time separator.</td>
+<td style="text-align: right">%</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>/</code></td>
+<td style="text-align: center"></td>
+<td>Date separator.</td>
+<td style="text-align: right">/</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>&#39;...&#39;</code></td>
+<td style="text-align: center"></td>
+<td>Single quoted text is not processed (except for removing the quotes)</td>
+<td style="text-align: right">...</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>&quot;...&quot;</code></td>
+<td style="text-align: center"></td>
+<td>Double quoted text is not processed (except for removing the quotes)</td>
+<td style="text-align: right">...</td>
+</tr>
+</tbody></table>
+
+<p>*customs for missing features</p>
+
+<h2 id="number-formats">Number Formats</h2>
+
+<h3 id="one-letter-format-(numberformat.format)">One Letter Format (<code>NumberFormat.format</code>)</h3>
+
+<p>Formats a number using the specified pattern.</p>
+
+<p>A <code>printf</code> format is formatted using the rules described for <code>NumberFormat.printf</code>.</p>
+
+<p>A multi character format uses the formatting rules described for <code>NumberFormat.customFormat</code>.</p>
+
+<p>A single character format adopts the following options:</p>
+
+<table><thead>
+<tr>
+<th>format</th>
+<th>description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>C</code> or <code>c</code></td>
+<td>Currency format.</td>
+</tr>
+<tr>
+<td><code>D</code> or <code>d</code></td>
+<td>Decimal format.</td>
+</tr>
+<tr>
+<td><code>e</code></td>
+<td>Exponential (scientific) format.</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td>Like <code>e</code> but with capitalized <code>E</code> symbol</td>
+</tr>
+<tr>
+<td><code>F</code> or <code>f</code></td>
+<td>Fixed decimal format (no thousand separators).</td>
+</tr>
+<tr>
+<td><code>g</code></td>
+<td>General format (shortest between <code>e</code> and <code>f</code>).</td>
+</tr>
+<tr>
+<td><code>G</code></td>
+<td>Like <code>g</code> but if format is exponential uses the upper case <code>E</code> symbol</td>
+</tr>
+<tr>
+<td><code>N</code> or <code>n</code></td>
+<td>Number format (uses thousand separators if required).</td>
+</tr>
+<tr>
+<td><code>P</code> or <code>p</code></td>
+<td>Percent format.</td>
+</tr>
+<tr>
+<td><code>R</code> or <code>r</code></td>
+<td>Roundtrip format.</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>Hexadecimal format.</td>
+</tr>
+<tr>
+<td><code>X</code></td>
+<td>Same as <code>x</code> but prefixed with <code>0X</code>.</td>
+</tr>
+<tr>
+<td><code>%</code>...</td>
+<td>Delegates to <code>printf</code></td>
+</tr>
+<tr>
+<td>...</td>
+<td>Delegates to <code>customFormat</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="printf-formats-(numberformat.printf)">Printf Formats (<code>NumberFormat.printf</code>)</h3>
+
+<p>The <code>printf</code> format uses the following pattern:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">%[flags][width][.precision]specifier
+</code></pre></div>
+<table><thead>
+<tr>
+<th>specifier</th>
+<th>Output</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>b</code></td>
+<td>an unsigned integer, in binary</td>
+</tr>
+<tr>
+<td><code>B</code></td>
+<td>like %b, but using an upper-case &quot;B&quot; with the # flag</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>Character.</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>Signed decimal integer</td>
+</tr>
+<tr>
+<td><code>e</code></td>
+<td>Scientific notation (mantissa/exponent) using e character</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td>Like %e, but using an upper-case &quot;E&quot;</td>
+</tr>
+<tr>
+<td><code>f</code></td>
+<td>Decimal floating point</td>
+</tr>
+<tr>
+<td><code>g</code></td>
+<td>Use the shorter of %e or %f.</td>
+</tr>
+<tr>
+<td><code>G</code></td>
+<td>Like %g, but with an upper-case &quot;E&quot; (if applicable)</td>
+</tr>
+<tr>
+<td><code>i</code></td>
+<td>Same as <code>d</code></td>
+</tr>
+<tr>
+<td><code>o</code></td>
+<td>Signed octal</td>
+</tr>
+<tr>
+<td><code>u</code></td>
+<td>Unsigned decimal integer</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>Unsigned hexadecimal integer</td>
+</tr>
+<tr>
+<td><code>X</code></td>
+<td>Like %x, but using upper-case letters</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td><code>%</code> Character</td>
+</tr>
+</tbody></table>
+
+<p><a href="http://perldoc.perl.org/functions/sprintf.html">http://perldoc.perl.org/functions/sprintf.html</a></p>
+
+<table><thead>
+<tr>
+<th>flags</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>-</code></td>
+<td>Left-justify within the given field width; Right justification is the default (see width sub-specifier).</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>Forces to preceed the result with a plus or minus sign (+ or -) even for positive numbers. By default, only negative numbers are preceded with a - sign..</td>
+</tr>
+<tr>
+<td><code></code> (space)</td>
+<td>If no sign is going to be written, a blank space is inserted before the value.</td>
+</tr>
+<tr>
+<td><code>#</code></td>
+<td>Used with o, x or X specifiers the value is preceeded with 0, 0x or 0X respectively for values different than zero. If b or B prefixes the output with either.</td>
+</tr>
+<tr>
+<td><code>0</code></td>
+<td>Left-pads the number with zeroes (0) instead of spaces, where padding is specified (see width sub-specifier).</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>width</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>(number)</td>
+<td>Minimum number of characters to be printed. If the value to be printed is shorter than this number, the result is padded with blank spaces. The value is not truncated even if the result is larger.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>.precision</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>.number</td>
+<td>For integer specifiers (d, i, o, u, x, X): precision specifies the minimum number of digits to be written. If the value to be written is shorter than this number, the result is padded with leading zeros. The value is not truncated even if the result is longer. A precision of 0 means that no character is written for the value 0. For e, E and f specifiers: this is the number of digits to be printed after de decimal point. For g and G specifiers: This is the maximum number of significant digits to be printed. By default all characters are printed until the ending null character is encountered. For c type: it has no effect. When no precision is specified, the default is 1. If the period is specified without an explicit value for precision, 0 is assumed.</td>
+</tr>
+</tbody></table>
+
+<p>Differences with classic printf:</p>
+
+<ul>
+<li><code>length</code> parameter is not supported to set the type of the integer argument (eg. short or unsigned)</li>
+<li><code>*</code> width is not supported</li>
+<li><code>.*</code> precision is not supported</li>
+<li><code>%p</code> pointer address is not supported</li>
+<li><code>%n</code> is not supported</li>
+<li><code>%s</code> is not supported since this function is to format numeric values only</li>
+</ul>
+
+<h3 id="custom-formats-(numberformat.customformat)">Custom Formats (<code>NumberFormat.customFormat</code>)</h3>
+
+<p>Custom format uses a pattern composed of the format options described below.</p>
+
+<table><thead>
+<tr>
+<th>format</th>
+<th>description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>0</code></td>
+<td>Zero placeholder is replaced with a corresponding digits if present, otherwise a <code>0</code> is printed.</td>
+</tr>
+<tr>
+<td><code>#</code></td>
+<td>Digit placeholder is replaced with a corresponding digits if present or nothing.</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>Localized decimal separator.</td>
+</tr>
+<tr>
+<td><code>,</code></td>
+<td>Localized group separator. If added to the end of the pattern it multiplies the number by 1000 for every comma.</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>Includes the percentage symbol and multiplies the number by 100.</td>
+</tr>
+<tr>
+<td><code>‰</code></td>
+<td>Includes the permille symbol and multiplies the number by 1000.</td>
+</tr>
+<tr>
+<td><code>E0</code>, <code>E+0</code>, <code>E-0</code>, <code>e0</code>, <code>e+0</code>, <code>e-0</code></td>
+<td>Exponential notation.</td>
+</tr>
+<tr>
+<td><code>\</code></td>
+<td>Escapes the following character.</td>
+</tr>
+<tr>
+<td><code>&#39;...&#39;</code>, <code>&quot;...&quot;</code></td>
+<td>Escape an entire sequence of characters.</td>
+</tr>
+<tr>
+<td><code>;</code></td>
+<td>Section separator. There are three possible sections (positive, negative, zero). If two are specified zero numbers use the format from the first section.</td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>Anything else is left untouched and put in the output as it is.</td>
+</tr>
+</tbody></table>
+
+<h2 id="install">Install</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">haxelib install thx.format
+</code></pre></div>
+    <div class="footer">
+      <div class="contact">
+        <p>
+          copyright © Franco Ponticelli
+        </p>
+      </div>
+    </div>
+  </div>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+        _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+        _gaq.push(['_setAccount', 'UA-589893-18']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</body>
+<html>

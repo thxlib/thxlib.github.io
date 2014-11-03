@@ -15,7 +15,7 @@
     <ul class="info">
       <li><a href="https://github.com/fponticelli/thx.color"><i class="fa fa-github"></i> Github</a></li>
       <li><a href="/api/thx/color"><i class="fa fa-code"></i> API doc</a></li>
-      <li title="version"><i class="fa fa-at"></i> 0.7.3</li>
+      <li title="version"><i class="fa fa-at"></i> 0.7.4</li>
       <li class="list" title="tags">
         <i class="fa fa-tags"></i> <span class="tags">color, thx, cross</span>
       </li>
@@ -35,11 +35,13 @@
 
 <p>General purpose color library for Haxe.</p>
 
+<h2 id="intro">intro</h2>
+
 <p>API uses abstracts to make it easy to use colors with strings and numbers.</p>
 <div class="highlight"><pre><code class="language-haxe" data-lang="haxe">    <span class="kd">var</span> rgb <span class="p">:</span> <span class="n">RGB</span> <span class="o">=</span> <span class="s2">&quot;#cf8700&quot;</span><span class="p">;</span>
     <span class="n">trace</span><span class="p">(</span><span class="n">rgb</span><span class="p">.</span><span class="n">green</span><span class="p">);</span>
 </code></pre></div>
-<h2 id="some-examples-from-demo">Some examples from <a href="https://github.com/fponticelli/thx.color/raw/master/demo/Demo.hx">Demo</a></h2>
+<p>Some examples from <a href="https://github.com/fponticelli/thx.color/raw/master/demo/Demo.hx">Demo</a>.</p>
 
 <h3 id="hsl-rainbow">HSL Rainbow</h3>
 <div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> left  <span class="p">:</span> <span class="n">HSL</span> <span class="o">=</span> <span class="s1">&#39;hsl(0,100%,0%)&#39;</span><span class="p">,</span>
@@ -97,12 +99,20 @@
         <span class="n">cellw</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
-<p><img src="https://github.com/fponticelli/thx.color/raw/master/images/colortable.png?raw=true" alt="color table" width="450" height="600""></p>
+<p><img src="https://github.com/fponticelli/thx.color/raw/master/images/colortable.png?raw=true" alt="color table" width="450" height="600"></p>
 
 <p>To run <a href="/demo/Demo.hx">Demo</a>, you need <code>nodejs</code> and the Canvas library (<code>npm install canvas</code>);</p>
 
 <p><em>Note:</em> API might still change before version 1.</p>
 
+<h2 id="install">install</h2>
+
+<p>From the command line just type:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">haxelib install thx.color
+</code></pre></div>
+<p>To use the <code>dev</code> version do:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">haxelib git thx.core https://github.com/fponticelli/thx.color.git
+</code></pre></div>
     <div class="footer">
       <div class="contact">
         <p>

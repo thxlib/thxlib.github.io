@@ -1,0 +1,2908 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-gb">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>thx.culture</title>
+  <meta name="author" content="Franco Ponticelli" />
+  <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/css/screen.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/css/highlight.css" type="text/css" media="all" />
+<!--  <base href="https://github.com/fponticelli/thx.culture/" /> -->
+</head>
+<body>
+  <div class="site">
+    <div class="title"><a href="/">thx libraries</a></div>
+    <ul class="info">
+      <li><a href="https://github.com/fponticelli/thx.culture"><i class="fa fa-github"></i> Github</a></li>
+      <li><a href="/api/thx/culture"><i class="fa fa-code"></i> API doc</a></li>
+      <li title="version"><i class="fa fa-at"></i> 0.2.1</li>
+      <li class="list" title="tags">
+        <i class="fa fa-tags"></i> <span class="tags">localization, thx, cross</span>
+      </li>
+      
+      <li class="list" title="dependecies">
+        <i class="fa fa-cubes"></i>  <span class="dependencies">
+        
+          <a href="/lib/thx.core/">thx.core</a>
+        
+        </span>
+      </li>
+      
+    </ul>
+    <h1 id="thx.culture">thx.culture</h1>
+
+<p><a href="https://travis-ci.org/fponticelli/thx.culture"><img src="https://travis-ci.org/fponticelli/thx.culture.svg" alt="Build Status"></a></p>
+
+<p>Localization library for Haxe. Strongly based on <a href="http://msdn.microsoft.com/en-us/library/System.Globalization.aspx">.Net globalization</a> implementation.</p>
+
+<h2 id="cultures">cultures</h2>
+
+<p>List of supported cultures.</p>
+
+<!-- BEGIN_CULTURES -->
+
+<table><thead>
+<tr>
+<th>code</th>
+<th>english</th>
+<th>native</th>
+<th>ISO2</th>
+<th>ISO3</th>
+<th>currency</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>af</td>
+<td>Afrikaans</td>
+<td>Afrikaans</td>
+<td>af</td>
+<td>afr</td>
+<td>-</td>
+</tr>
+<tr>
+<td>af-ZA</td>
+<td>Afrikaans (South Africa)</td>
+<td>Afrikaans (Suid Afrika)</td>
+<td>af</td>
+<td>afr</td>
+<td>R</td>
+</tr>
+<tr>
+<td>am</td>
+<td>Amharic</td>
+<td>አማርኛ</td>
+<td>am</td>
+<td>amh</td>
+<td>-</td>
+</tr>
+<tr>
+<td>am-ET</td>
+<td>Amharic (Ethiopia)</td>
+<td>አማርኛ (ኢትዮጵያ)</td>
+<td>am</td>
+<td>amh</td>
+<td>ETB</td>
+</tr>
+<tr>
+<td>ar</td>
+<td>Arabic</td>
+<td>&#x202b;العربية</td>
+<td>ar</td>
+<td>ara</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ar-AE</td>
+<td>Arabic (U.A.E.)</td>
+<td>&#x202b;العربية (الإمارات العربية المتحدة)</td>
+<td>ar</td>
+<td>ara</td>
+<td>&#x202b;د.إ.‏</td>
+</tr>
+<tr>
+<td>ar-BH</td>
+<td>Arabic (Bahrain)</td>
+<td>&#x202b;العربية (البحرين)</td>
+<td>ar</td>
+<td>ara</td>
+<td>&#x202b;د.ب.‏</td>
+</tr>
+<tr>
+<td>ar-DZ</td>
+<td>Arabic (Algeria)</td>
+<td>&#x202b;العربية (الجزائر)</td>
+<td>ar</td>
+<td>ara</td>
+<td>&#x202b;د.ج.‏</td>
+</tr>
+<tr>
+<td>ar-EG</td>
+<td>Arabic (Egypt)</td>
+<td>&#x202b;العربية (مصر)</td>
+<td>ar</td>
+<td>ara</td>
+<td>&#x202b;ج.م.‏</td>
+</tr>
+<tr>
+<td>ar-IQ</td>
+<td>Arabic (Iraq)</td>
+<td>&#x202b;العربية (العراق)</td>
+<td>ar</td>
+<td>ara</td>
+<td>&#x202b;د.ع.‏</td>
+</tr>
+<tr>
+<td>ar-JO</td>
+<td>Arabic (Jordan)</td>
+<td>&#x202b;العربية (الأردن)</td>
+<td>ar</td>
+<td>ara</td>
+<td>&#x202b;د.ا.‏</td>
+</tr>
+<tr>
+<td>ar-KW</td>
+<td>Arabic (Kuwait)</td>
+<td>&#x202b;العربية (الكويت)</td>
+<td>ar</td>
+<td>ara</td>
+<td>&#x202b;د.ك.‏</td>
+</tr>
+<tr>
+<td>ar-LB</td>
+<td>Arabic (Lebanon)</td>
+<td>&#x202b;العربية (لبنان)</td>
+<td>ar</td>
+<td>ara</td>
+<td>&#x202b;ل.ل.‏</td>
+</tr>
+<tr>
+<td>ar-LY</td>
+<td>Arabic (Libya)</td>
+<td>&#x202b;العربية (ليبيا)</td>
+<td>ar</td>
+<td>ara</td>
+<td>&#x202b;د.ل.‏</td>
+</tr>
+<tr>
+<td>ar-MA</td>
+<td>Arabic (Morocco)</td>
+<td>&#x202b;العربية (المملكة المغربية)</td>
+<td>ar</td>
+<td>ara</td>
+<td>&#x202b;د.م.‏</td>
+</tr>
+<tr>
+<td>ar-OM</td>
+<td>Arabic (Oman)</td>
+<td>&#x202b;العربية (عمان)</td>
+<td>ar</td>
+<td>ara</td>
+<td>&#x202b;ر.ع.‏</td>
+</tr>
+<tr>
+<td>ar-QA</td>
+<td>Arabic (Qatar)</td>
+<td>&#x202b;العربية (قطر)</td>
+<td>ar</td>
+<td>ara</td>
+<td>&#x202b;ر.ق.‏</td>
+</tr>
+<tr>
+<td>ar-SA</td>
+<td>Arabic (Saudi Arabia)</td>
+<td>&#x202b;العربية (المملكة العربية السعودية)</td>
+<td>ar</td>
+<td>ara</td>
+<td>&#x202b;ر.س.‏</td>
+</tr>
+<tr>
+<td>ar-SY</td>
+<td>Arabic (Syria)</td>
+<td>&#x202b;العربية (سوريا)</td>
+<td>ar</td>
+<td>ara</td>
+<td>&#x202b;ل.س.‏</td>
+</tr>
+<tr>
+<td>ar-TN</td>
+<td>Arabic (Tunisia)</td>
+<td>&#x202b;العربية (تونس)</td>
+<td>ar</td>
+<td>ara</td>
+<td>&#x202b;د.ت.‏</td>
+</tr>
+<tr>
+<td>ar-YE</td>
+<td>Arabic (Yemen)</td>
+<td>&#x202b;العربية (اليمن)</td>
+<td>ar</td>
+<td>ara</td>
+<td>&#x202b;ر.ي.‏</td>
+</tr>
+<tr>
+<td>arn</td>
+<td>Mapudungun</td>
+<td>Mapudungun</td>
+<td>arn</td>
+<td>arn</td>
+<td>-</td>
+</tr>
+<tr>
+<td>arn-CL</td>
+<td>Mapudungun (Chile)</td>
+<td>Mapudungun (Chile)</td>
+<td>arn</td>
+<td>arn</td>
+<td>$</td>
+</tr>
+<tr>
+<td>as</td>
+<td>Assamese</td>
+<td>অসমীয়া</td>
+<td>as</td>
+<td>asm</td>
+<td>-</td>
+</tr>
+<tr>
+<td>as-IN</td>
+<td>Assamese (India)</td>
+<td>অসমীয়া (ভাৰত)</td>
+<td>as</td>
+<td>asm</td>
+<td>₹</td>
+</tr>
+<tr>
+<td>az</td>
+<td>Azeri</td>
+<td>Azərbaycan­ılı</td>
+<td>az</td>
+<td>aze</td>
+<td>-</td>
+</tr>
+<tr>
+<td>az-Cyrl</td>
+<td>Azeri (Cyrillic)</td>
+<td>Азәрбајҹан дили</td>
+<td>az</td>
+<td>aze</td>
+<td>-</td>
+</tr>
+<tr>
+<td>az-Cyrl-AZ</td>
+<td>Azeri (Cyrillic, Azerbaijan)</td>
+<td>Азәрбајҹан (Азәрбајҹан)</td>
+<td>az</td>
+<td>aze</td>
+<td>ман.</td>
+</tr>
+<tr>
+<td>az-Latn</td>
+<td>Azeri (Latin)</td>
+<td>Azərbaycan­ılı</td>
+<td>az</td>
+<td>aze</td>
+<td>-</td>
+</tr>
+<tr>
+<td>az-Latn-AZ</td>
+<td>Azeri (Latin, Azerbaijan)</td>
+<td>Azərbaycan­ılı (Azərbaycan)</td>
+<td>az</td>
+<td>aze</td>
+<td>man.</td>
+</tr>
+<tr>
+<td>ba</td>
+<td>Bashkir</td>
+<td>Башҡорт</td>
+<td>ba</td>
+<td>bak</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ba-RU</td>
+<td>Bashkir (Russia)</td>
+<td>Башҡорт (Россия)</td>
+<td>ba</td>
+<td>bak</td>
+<td>һ.</td>
+</tr>
+<tr>
+<td>be</td>
+<td>Belarusian</td>
+<td>Беларускі</td>
+<td>be</td>
+<td>bel</td>
+<td>-</td>
+</tr>
+<tr>
+<td>be-BY</td>
+<td>Belarusian (Belarus)</td>
+<td>Беларускі (Беларусь)</td>
+<td>be</td>
+<td>bel</td>
+<td>р.</td>
+</tr>
+<tr>
+<td>bg</td>
+<td>Bulgarian</td>
+<td>български</td>
+<td>bg</td>
+<td>bul</td>
+<td>-</td>
+</tr>
+<tr>
+<td>bg-BG</td>
+<td>Bulgarian (Bulgaria)</td>
+<td>български (България)</td>
+<td>bg</td>
+<td>bul</td>
+<td>лв.</td>
+</tr>
+<tr>
+<td>bn</td>
+<td>Bengali</td>
+<td>বাংলা</td>
+<td>bn</td>
+<td>bng</td>
+<td>-</td>
+</tr>
+<tr>
+<td>bn-BD</td>
+<td>Bengali (Bangladesh)</td>
+<td>বাংলা (বাংলাদেশ)</td>
+<td>bn</td>
+<td>bng</td>
+<td>৳</td>
+</tr>
+<tr>
+<td>bn-IN</td>
+<td>Bengali (India)</td>
+<td>বাংলা (ভারত)</td>
+<td>bn</td>
+<td>bng</td>
+<td>₹</td>
+</tr>
+<tr>
+<td>bo</td>
+<td>Tibetan</td>
+<td>བོད་ཡིག</td>
+<td>bo</td>
+<td>bod</td>
+<td>-</td>
+</tr>
+<tr>
+<td>bo-CN</td>
+<td>Tibetan (PRC)</td>
+<td>བོད་ཡིག (ཀྲུང་ཧྭ་མི་དམངས་སྤྱི་མཐུན་རྒྱལ་ཁབ།)</td>
+<td>bo</td>
+<td>bod</td>
+<td>¥</td>
+</tr>
+<tr>
+<td>br</td>
+<td>Breton</td>
+<td>brezhoneg</td>
+<td>br</td>
+<td>bre</td>
+<td>-</td>
+</tr>
+<tr>
+<td>br-FR</td>
+<td>Breton (France)</td>
+<td>brezhoneg (Frañs)</td>
+<td>br</td>
+<td>bre</td>
+<td>€</td>
+</tr>
+<tr>
+<td>bs</td>
+<td>Bosnian</td>
+<td>bosanski</td>
+<td>bs</td>
+<td>bsb</td>
+<td>-</td>
+</tr>
+<tr>
+<td>bs-Cyrl</td>
+<td>Bosnian (Cyrillic)</td>
+<td>босански</td>
+<td>bs</td>
+<td>bsc</td>
+<td>-</td>
+</tr>
+<tr>
+<td>bs-Cyrl-BA</td>
+<td>Bosnian (Cyrillic, Bosnia and Herzegovina)</td>
+<td>босански (Босна и Херцеговина)</td>
+<td>bs</td>
+<td>bsc</td>
+<td>КМ</td>
+</tr>
+<tr>
+<td>bs-Latn</td>
+<td>Bosnian (Latin)</td>
+<td>bosanski</td>
+<td>bs</td>
+<td>bsb</td>
+<td>-</td>
+</tr>
+<tr>
+<td>bs-Latn-BA</td>
+<td>Bosnian (Latin, Bosnia and Herzegovina)</td>
+<td>bosanski (Bosna i Hercegovina)</td>
+<td>bs</td>
+<td>bsb</td>
+<td>KM</td>
+</tr>
+<tr>
+<td>ca</td>
+<td>Catalan</td>
+<td>català</td>
+<td>ca</td>
+<td>cat</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ca-ES</td>
+<td>Catalan (Catalan)</td>
+<td>català (català)</td>
+<td>ca</td>
+<td>cat</td>
+<td>€</td>
+</tr>
+<tr>
+<td>co</td>
+<td>Corsican</td>
+<td>Corsu</td>
+<td>co</td>
+<td>cos</td>
+<td>-</td>
+</tr>
+<tr>
+<td>co-FR</td>
+<td>Corsican (France)</td>
+<td>Corsu (France)</td>
+<td>co</td>
+<td>cos</td>
+<td>€</td>
+</tr>
+<tr>
+<td>cs</td>
+<td>Czech</td>
+<td>čeština</td>
+<td>cs</td>
+<td>ces</td>
+<td>-</td>
+</tr>
+<tr>
+<td>cs-CZ</td>
+<td>Czech (Czech Republic)</td>
+<td>čeština (Česká republika)</td>
+<td>cs</td>
+<td>ces</td>
+<td>Kč</td>
+</tr>
+<tr>
+<td>cy</td>
+<td>Welsh</td>
+<td>Cymraeg</td>
+<td>cy</td>
+<td>cym</td>
+<td>-</td>
+</tr>
+<tr>
+<td>cy-GB</td>
+<td>Welsh (United Kingdom)</td>
+<td>Cymraeg (y Deyrnas Unedig)</td>
+<td>cy</td>
+<td>cym</td>
+<td>£</td>
+</tr>
+<tr>
+<td>da</td>
+<td>Danish</td>
+<td>dansk</td>
+<td>da</td>
+<td>dan</td>
+<td>-</td>
+</tr>
+<tr>
+<td>da-DK</td>
+<td>Danish (Denmark)</td>
+<td>dansk (Danmark)</td>
+<td>da</td>
+<td>dan</td>
+<td>kr.</td>
+</tr>
+<tr>
+<td>de</td>
+<td>German</td>
+<td>Deutsch</td>
+<td>de</td>
+<td>deu</td>
+<td>-</td>
+</tr>
+<tr>
+<td>de-AT</td>
+<td>German (Austria)</td>
+<td>Deutsch (Österreich)</td>
+<td>de</td>
+<td>deu</td>
+<td>€</td>
+</tr>
+<tr>
+<td>de-CH</td>
+<td>German (Switzerland)</td>
+<td>Deutsch (Schweiz)</td>
+<td>de</td>
+<td>deu</td>
+<td>Fr.</td>
+</tr>
+<tr>
+<td>de-DE</td>
+<td>German (Germany)</td>
+<td>Deutsch (Deutschland)</td>
+<td>de</td>
+<td>deu</td>
+<td>€</td>
+</tr>
+<tr>
+<td>de-LI</td>
+<td>German (Liechtenstein)</td>
+<td>Deutsch (Liechtenstein)</td>
+<td>de</td>
+<td>deu</td>
+<td>CHF</td>
+</tr>
+<tr>
+<td>de-LU</td>
+<td>German (Luxembourg)</td>
+<td>Deutsch (Luxemburg)</td>
+<td>de</td>
+<td>deu</td>
+<td>€</td>
+</tr>
+<tr>
+<td>dsb</td>
+<td>Lower Sorbian</td>
+<td>dolnoserbšćina</td>
+<td>dsb</td>
+<td>dsb</td>
+<td>-</td>
+</tr>
+<tr>
+<td>dsb-DE</td>
+<td>Lower Sorbian (Germany)</td>
+<td>dolnoserbšćina (Nimska)</td>
+<td>dsb</td>
+<td>dsb</td>
+<td>€</td>
+</tr>
+<tr>
+<td>dv</td>
+<td>Divehi</td>
+<td>-</td>
+<td>dv</td>
+<td>div</td>
+<td>-</td>
+</tr>
+<tr>
+<td>dv-MV</td>
+<td>Divehi (Maldives)</td>
+<td>-</td>
+<td>dv</td>
+<td>div</td>
+<td>-</td>
+</tr>
+<tr>
+<td>el</td>
+<td>Greek</td>
+<td>Ελληνικά</td>
+<td>el</td>
+<td>ell</td>
+<td>-</td>
+</tr>
+<tr>
+<td>el-GR</td>
+<td>Greek (Greece)</td>
+<td>Ελληνικά (Ελλάδα)</td>
+<td>el</td>
+<td>ell</td>
+<td>€</td>
+</tr>
+<tr>
+<td>en</td>
+<td>English</td>
+<td>English</td>
+<td>en</td>
+<td>eng</td>
+<td>-</td>
+</tr>
+<tr>
+<td>en-029</td>
+<td>English (Caribbean)</td>
+<td>English (Caribbean)</td>
+<td>en</td>
+<td>eng</td>
+<td>$</td>
+</tr>
+<tr>
+<td>en-AU</td>
+<td>English (Australia)</td>
+<td>English (Australia)</td>
+<td>en</td>
+<td>eng</td>
+<td>$</td>
+</tr>
+<tr>
+<td>en-BZ</td>
+<td>English (Belize)</td>
+<td>English (Belize)</td>
+<td>en</td>
+<td>eng</td>
+<td>BZ$</td>
+</tr>
+<tr>
+<td>en-CA</td>
+<td>English (Canada)</td>
+<td>English (Canada)</td>
+<td>en</td>
+<td>eng</td>
+<td>$</td>
+</tr>
+<tr>
+<td>en-GB</td>
+<td>English (United Kingdom)</td>
+<td>English (United Kingdom)</td>
+<td>en</td>
+<td>eng</td>
+<td>£</td>
+</tr>
+<tr>
+<td>en-IE</td>
+<td>English (Ireland)</td>
+<td>English (Ireland)</td>
+<td>en</td>
+<td>eng</td>
+<td>€</td>
+</tr>
+<tr>
+<td>en-IN</td>
+<td>English (India)</td>
+<td>English (India)</td>
+<td>en</td>
+<td>eng</td>
+<td>₹</td>
+</tr>
+<tr>
+<td>en-JM</td>
+<td>English (Jamaica)</td>
+<td>English (Jamaica)</td>
+<td>en</td>
+<td>eng</td>
+<td>J$</td>
+</tr>
+<tr>
+<td>en-MY</td>
+<td>English (Malaysia)</td>
+<td>English (Malaysia)</td>
+<td>en</td>
+<td>eng</td>
+<td>RM</td>
+</tr>
+<tr>
+<td>en-NZ</td>
+<td>English (New Zealand)</td>
+<td>English (New Zealand)</td>
+<td>en</td>
+<td>eng</td>
+<td>$</td>
+</tr>
+<tr>
+<td>en-PH</td>
+<td>English (Republic of the Philippines)</td>
+<td>English (Philippines)</td>
+<td>en</td>
+<td>eng</td>
+<td>Php</td>
+</tr>
+<tr>
+<td>en-SG</td>
+<td>English (Singapore)</td>
+<td>English (Singapore)</td>
+<td>en</td>
+<td>eng</td>
+<td>$</td>
+</tr>
+<tr>
+<td>en-TT</td>
+<td>English (Trinidad and Tobago)</td>
+<td>English (Trinidad y Tobago)</td>
+<td>en</td>
+<td>eng</td>
+<td>TT$</td>
+</tr>
+<tr>
+<td>en-US</td>
+<td>English (United States)</td>
+<td>English (United States)</td>
+<td>en</td>
+<td>eng</td>
+<td>$</td>
+</tr>
+<tr>
+<td>en-ZA</td>
+<td>English (South Africa)</td>
+<td>English (South Africa)</td>
+<td>en</td>
+<td>eng</td>
+<td>R</td>
+</tr>
+<tr>
+<td>en-ZW</td>
+<td>English (Zimbabwe)</td>
+<td>English (Zimbabwe)</td>
+<td>en</td>
+<td>eng</td>
+<td>Z$</td>
+</tr>
+<tr>
+<td>es</td>
+<td>Spanish</td>
+<td>español</td>
+<td>es</td>
+<td>spa</td>
+<td>-</td>
+</tr>
+<tr>
+<td>es-AR</td>
+<td>Spanish (Argentina)</td>
+<td>Español (Argentina)</td>
+<td>es</td>
+<td>spa</td>
+<td>$</td>
+</tr>
+<tr>
+<td>es-BO</td>
+<td>Spanish (Bolivia)</td>
+<td>Español (Bolivia)</td>
+<td>es</td>
+<td>spa</td>
+<td>$b</td>
+</tr>
+<tr>
+<td>es-CL</td>
+<td>Spanish (Chile)</td>
+<td>Español (Chile)</td>
+<td>es</td>
+<td>spa</td>
+<td>$</td>
+</tr>
+<tr>
+<td>es-CO</td>
+<td>Spanish (Colombia)</td>
+<td>Español (Colombia)</td>
+<td>es</td>
+<td>spa</td>
+<td>$</td>
+</tr>
+<tr>
+<td>es-CR</td>
+<td>Spanish (Costa Rica)</td>
+<td>Español (Costa Rica)</td>
+<td>es</td>
+<td>spa</td>
+<td>₡</td>
+</tr>
+<tr>
+<td>es-DO</td>
+<td>Spanish (Dominican Republic)</td>
+<td>Español (República Dominicana)</td>
+<td>es</td>
+<td>spa</td>
+<td>RD$</td>
+</tr>
+<tr>
+<td>es-EC</td>
+<td>Spanish (Ecuador)</td>
+<td>Español (Ecuador)</td>
+<td>es</td>
+<td>spa</td>
+<td>$</td>
+</tr>
+<tr>
+<td>es-ES</td>
+<td>Spanish (Spain, International Sort)</td>
+<td>Español (España, alfabetización internacional)</td>
+<td>es</td>
+<td>spa</td>
+<td>€</td>
+</tr>
+<tr>
+<td>es-GT</td>
+<td>Spanish (Guatemala)</td>
+<td>Español (Guatemala)</td>
+<td>es</td>
+<td>spa</td>
+<td>Q</td>
+</tr>
+<tr>
+<td>es-HN</td>
+<td>Spanish (Honduras)</td>
+<td>Español (Honduras)</td>
+<td>es</td>
+<td>spa</td>
+<td>L.</td>
+</tr>
+<tr>
+<td>es-MX</td>
+<td>Spanish (Mexico)</td>
+<td>Español (México)</td>
+<td>es</td>
+<td>spa</td>
+<td>$</td>
+</tr>
+<tr>
+<td>es-NI</td>
+<td>Spanish (Nicaragua)</td>
+<td>Español (Nicaragua)</td>
+<td>es</td>
+<td>spa</td>
+<td>C$</td>
+</tr>
+<tr>
+<td>es-PA</td>
+<td>Spanish (Panama)</td>
+<td>Español (Panamá)</td>
+<td>es</td>
+<td>spa</td>
+<td>B/.</td>
+</tr>
+<tr>
+<td>es-PE</td>
+<td>Spanish (Peru)</td>
+<td>Español (Perú)</td>
+<td>es</td>
+<td>spa</td>
+<td>S/.</td>
+</tr>
+<tr>
+<td>es-PR</td>
+<td>Spanish (Puerto Rico)</td>
+<td>Español (Puerto Rico)</td>
+<td>es</td>
+<td>spa</td>
+<td>$</td>
+</tr>
+<tr>
+<td>es-PY</td>
+<td>Spanish (Paraguay)</td>
+<td>Español (Paraguay)</td>
+<td>es</td>
+<td>spa</td>
+<td>Gs</td>
+</tr>
+<tr>
+<td>es-SV</td>
+<td>Spanish (El Salvador)</td>
+<td>Español (El Salvador)</td>
+<td>es</td>
+<td>spa</td>
+<td>$</td>
+</tr>
+<tr>
+<td>es-US</td>
+<td>Spanish (United States)</td>
+<td>Español (Estados Unidos)</td>
+<td>es</td>
+<td>spa</td>
+<td>$</td>
+</tr>
+<tr>
+<td>es-UY</td>
+<td>Spanish (Uruguay)</td>
+<td>Español (Uruguay)</td>
+<td>es</td>
+<td>spa</td>
+<td>$U</td>
+</tr>
+<tr>
+<td>es-VE</td>
+<td>Spanish (Bolivarian Republic of Venezuela)</td>
+<td>Español (Republica Bolivariana de Venezuela)</td>
+<td>es</td>
+<td>spa</td>
+<td>Bs. F.</td>
+</tr>
+<tr>
+<td>et</td>
+<td>Estonian</td>
+<td>eesti</td>
+<td>et</td>
+<td>est</td>
+<td>-</td>
+</tr>
+<tr>
+<td>et-EE</td>
+<td>Estonian (Estonia)</td>
+<td>eesti (Eesti)</td>
+<td>et</td>
+<td>est</td>
+<td>€</td>
+</tr>
+<tr>
+<td>eu</td>
+<td>Basque</td>
+<td>euskara</td>
+<td>eu</td>
+<td>eus</td>
+<td>-</td>
+</tr>
+<tr>
+<td>eu-ES</td>
+<td>Basque (Basque)</td>
+<td>euskara (euskara)</td>
+<td>eu</td>
+<td>eus</td>
+<td>€</td>
+</tr>
+<tr>
+<td>fa</td>
+<td>Persian</td>
+<td>&#x202b;فارسى</td>
+<td>fa</td>
+<td>fas</td>
+<td>-</td>
+</tr>
+<tr>
+<td>fa-IR</td>
+<td>Persian</td>
+<td>&#x202b;فارسى (ایران)</td>
+<td>fa</td>
+<td>fas</td>
+<td>&#x202b;ريال</td>
+</tr>
+<tr>
+<td>fi</td>
+<td>Finnish</td>
+<td>suomi</td>
+<td>fi</td>
+<td>fin</td>
+<td>-</td>
+</tr>
+<tr>
+<td>fi-FI</td>
+<td>Finnish (Finland)</td>
+<td>suomi (Suomi)</td>
+<td>fi</td>
+<td>fin</td>
+<td>€</td>
+</tr>
+<tr>
+<td>fil</td>
+<td>Filipino</td>
+<td>Filipino</td>
+<td>fil</td>
+<td>fil</td>
+<td>-</td>
+</tr>
+<tr>
+<td>fil-PH</td>
+<td>Filipino (Philippines)</td>
+<td>Filipino (Pilipinas)</td>
+<td>fil</td>
+<td>fil</td>
+<td>PhP</td>
+</tr>
+<tr>
+<td>fo</td>
+<td>Faroese</td>
+<td>føroyskt</td>
+<td>fo</td>
+<td>fao</td>
+<td>-</td>
+</tr>
+<tr>
+<td>fo-FO</td>
+<td>Faroese (Faroe Islands)</td>
+<td>føroyskt (Føroyar)</td>
+<td>fo</td>
+<td>fao</td>
+<td>kr.</td>
+</tr>
+<tr>
+<td>fr</td>
+<td>French</td>
+<td>français</td>
+<td>fr</td>
+<td>fra</td>
+<td>-</td>
+</tr>
+<tr>
+<td>fr-BE</td>
+<td>French (Belgium)</td>
+<td>français (Belgique)</td>
+<td>fr</td>
+<td>fra</td>
+<td>€</td>
+</tr>
+<tr>
+<td>fr-CA</td>
+<td>French (Canada)</td>
+<td>français (Canada)</td>
+<td>fr</td>
+<td>fra</td>
+<td>$</td>
+</tr>
+<tr>
+<td>fr-CH</td>
+<td>French (Switzerland)</td>
+<td>français (Suisse)</td>
+<td>fr</td>
+<td>fra</td>
+<td>fr.</td>
+</tr>
+<tr>
+<td>fr-FR</td>
+<td>French (France)</td>
+<td>français (France)</td>
+<td>fr</td>
+<td>fra</td>
+<td>€</td>
+</tr>
+<tr>
+<td>fr-LU</td>
+<td>French (Luxembourg)</td>
+<td>français (Luxembourg)</td>
+<td>fr</td>
+<td>fra</td>
+<td>€</td>
+</tr>
+<tr>
+<td>fr-MC</td>
+<td>French (Monaco)</td>
+<td>français (Principauté de Monaco)</td>
+<td>fr</td>
+<td>fra</td>
+<td>€</td>
+</tr>
+<tr>
+<td>fy</td>
+<td>Frisian</td>
+<td>Frysk</td>
+<td>fy</td>
+<td>fry</td>
+<td>-</td>
+</tr>
+<tr>
+<td>fy-NL</td>
+<td>Frisian (Netherlands)</td>
+<td>Frysk (Nederlân)</td>
+<td>fy</td>
+<td>fry</td>
+<td>€</td>
+</tr>
+<tr>
+<td>ga</td>
+<td>Irish</td>
+<td>Gaeilge</td>
+<td>ga</td>
+<td>gle</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ga-IE</td>
+<td>Irish (Ireland)</td>
+<td>Gaeilge (Éire)</td>
+<td>ga</td>
+<td>gle</td>
+<td>€</td>
+</tr>
+<tr>
+<td>gd</td>
+<td>Scottish Gaelic</td>
+<td>Gàidhlig</td>
+<td>gd</td>
+<td>gla</td>
+<td>-</td>
+</tr>
+<tr>
+<td>gd-GB</td>
+<td>Scottish Gaelic (United Kingdom)</td>
+<td>Gàidhlig (An Rìoghachd Aonaichte)</td>
+<td>gd</td>
+<td>gla</td>
+<td>£</td>
+</tr>
+<tr>
+<td>gl</td>
+<td>Galician</td>
+<td>galego</td>
+<td>gl</td>
+<td>glg</td>
+<td>-</td>
+</tr>
+<tr>
+<td>gl-ES</td>
+<td>Galician (Galician)</td>
+<td>galego (galego)</td>
+<td>gl</td>
+<td>glg</td>
+<td>€</td>
+</tr>
+<tr>
+<td>gsw</td>
+<td>Alsatian</td>
+<td>Elsässisch</td>
+<td>gsw</td>
+<td>gsw</td>
+<td>-</td>
+</tr>
+<tr>
+<td>gsw-FR</td>
+<td>Alsatian (France)</td>
+<td>Elsässisch (Frànkrisch)</td>
+<td>gsw</td>
+<td>gsw</td>
+<td>€</td>
+</tr>
+<tr>
+<td>gu</td>
+<td>Gujarati</td>
+<td>ગુજરાતી</td>
+<td>gu</td>
+<td>guj</td>
+<td>-</td>
+</tr>
+<tr>
+<td>gu-IN</td>
+<td>Gujarati (India)</td>
+<td>ગુજરાતી (ભારત)</td>
+<td>gu</td>
+<td>guj</td>
+<td>₹</td>
+</tr>
+<tr>
+<td>ha</td>
+<td>Hausa</td>
+<td>Hausa</td>
+<td>ha</td>
+<td>hau</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ha-Latn</td>
+<td>Hausa (Latin)</td>
+<td>Hausa</td>
+<td>ha</td>
+<td>hau</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ha-Latn-NG</td>
+<td>Hausa (Latin, Nigeria)</td>
+<td>Hausa (Nigeria)</td>
+<td>ha</td>
+<td>hau</td>
+<td>N</td>
+</tr>
+<tr>
+<td>he</td>
+<td>Hebrew</td>
+<td>&#x202b;עברית</td>
+<td>he</td>
+<td>heb</td>
+<td>-</td>
+</tr>
+<tr>
+<td>he-IL</td>
+<td>Hebrew (Israel)</td>
+<td>&#x202b;עברית (ישראל)</td>
+<td>he</td>
+<td>heb</td>
+<td>&#x202b;₪</td>
+</tr>
+<tr>
+<td>hi</td>
+<td>Hindi</td>
+<td>हिंदी</td>
+<td>hi</td>
+<td>hin</td>
+<td>-</td>
+</tr>
+<tr>
+<td>hi-IN</td>
+<td>Hindi (India)</td>
+<td>हिंदी (भारत)</td>
+<td>hi</td>
+<td>hin</td>
+<td>₹</td>
+</tr>
+<tr>
+<td>hr</td>
+<td>Croatian</td>
+<td>hrvatski</td>
+<td>hr</td>
+<td>hrv</td>
+<td>-</td>
+</tr>
+<tr>
+<td>hr-BA</td>
+<td>Croatian (Latin, Bosnia and Herzegovina)</td>
+<td>hrvatski (Bosna i Hercegovina)</td>
+<td>hr</td>
+<td>hrb</td>
+<td>KM</td>
+</tr>
+<tr>
+<td>hr-HR</td>
+<td>Croatian (Croatia)</td>
+<td>hrvatski (Hrvatska)</td>
+<td>hr</td>
+<td>hrv</td>
+<td>kn</td>
+</tr>
+<tr>
+<td>hsb</td>
+<td>Upper Sorbian</td>
+<td>hornjoserbšćina</td>
+<td>hsb</td>
+<td>hsb</td>
+<td>-</td>
+</tr>
+<tr>
+<td>hsb-DE</td>
+<td>Upper Sorbian (Germany)</td>
+<td>hornjoserbšćina (Němska)</td>
+<td>hsb</td>
+<td>hsb</td>
+<td>€</td>
+</tr>
+<tr>
+<td>hu</td>
+<td>Hungarian</td>
+<td>magyar</td>
+<td>hu</td>
+<td>hun</td>
+<td>-</td>
+</tr>
+<tr>
+<td>hu-HU</td>
+<td>Hungarian (Hungary)</td>
+<td>magyar (Magyarország)</td>
+<td>hu</td>
+<td>hun</td>
+<td>Ft</td>
+</tr>
+<tr>
+<td>hy</td>
+<td>Armenian</td>
+<td>Հայերեն</td>
+<td>hy</td>
+<td>hye</td>
+<td>-</td>
+</tr>
+<tr>
+<td>hy-AM</td>
+<td>Armenian (Armenia)</td>
+<td>Հայերեն (Հայաստան)</td>
+<td>hy</td>
+<td>hye</td>
+<td>դր.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Indonesian</td>
+<td>Bahasa Indonesia</td>
+<td>id</td>
+<td>ind</td>
+<td>-</td>
+</tr>
+<tr>
+<td>id-ID</td>
+<td>Indonesian (Indonesia)</td>
+<td>Bahasa Indonesia (Indonesia)</td>
+<td>id</td>
+<td>ind</td>
+<td>Rp</td>
+</tr>
+<tr>
+<td>ig</td>
+<td>Igbo</td>
+<td>Igbo</td>
+<td>ig</td>
+<td>ibo</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ig-NG</td>
+<td>Igbo (Nigeria)</td>
+<td>Igbo (Nigeria)</td>
+<td>ig</td>
+<td>ibo</td>
+<td>N</td>
+</tr>
+<tr>
+<td>ii</td>
+<td>Yi</td>
+<td>ꆈꌠꁱꂷ</td>
+<td>ii</td>
+<td>iii</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ii-CN</td>
+<td>Yi (PRC)</td>
+<td>ꆈꌠꁱꂷ (ꍏꉸꏓꂱꇭꉼꇩ)</td>
+<td>ii</td>
+<td>iii</td>
+<td>¥</td>
+</tr>
+<tr>
+<td>is</td>
+<td>Icelandic</td>
+<td>íslenska</td>
+<td>is</td>
+<td>isl</td>
+<td>-</td>
+</tr>
+<tr>
+<td>is-IS</td>
+<td>Icelandic (Iceland)</td>
+<td>íslenska (Ísland)</td>
+<td>is</td>
+<td>isl</td>
+<td>kr.</td>
+</tr>
+<tr>
+<td>it</td>
+<td>Italian</td>
+<td>italiano</td>
+<td>it</td>
+<td>ita</td>
+<td>-</td>
+</tr>
+<tr>
+<td>it-CH</td>
+<td>Italian (Switzerland)</td>
+<td>italiano (Svizzera)</td>
+<td>it</td>
+<td>ita</td>
+<td>fr.</td>
+</tr>
+<tr>
+<td>it-IT</td>
+<td>Italian (Italy)</td>
+<td>italiano (Italia)</td>
+<td>it</td>
+<td>ita</td>
+<td>€</td>
+</tr>
+<tr>
+<td>iu</td>
+<td>Inuktitut</td>
+<td>Inuktitut</td>
+<td>iu</td>
+<td>iku</td>
+<td>-</td>
+</tr>
+<tr>
+<td>iu-Cans</td>
+<td>Inuktitut (Syllabics)</td>
+<td>ᐃᓄᒃᑎᑐᑦ</td>
+<td>iu</td>
+<td>iku</td>
+<td>-</td>
+</tr>
+<tr>
+<td>iu-Cans-CA</td>
+<td>Inuktitut (Syllabics, Canada)</td>
+<td>ᐃᓄᒃᑎᑐᑦ (ᑲᓇᑕᒥ)</td>
+<td>iu</td>
+<td>iku</td>
+<td>$</td>
+</tr>
+<tr>
+<td>iu-Latn</td>
+<td>Inuktitut (Latin)</td>
+<td>Inuktitut</td>
+<td>iu</td>
+<td>iku</td>
+<td>-</td>
+</tr>
+<tr>
+<td>iu-Latn-CA</td>
+<td>Inuktitut (Latin, Canada)</td>
+<td>Inuktitut (Kanatami)</td>
+<td>iu</td>
+<td>iku</td>
+<td>$</td>
+</tr>
+<tr>
+<td>ja</td>
+<td>Japanese</td>
+<td>日本語</td>
+<td>ja</td>
+<td>jpn</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ja-JP</td>
+<td>Japanese (Japan)</td>
+<td>日本語 (日本)</td>
+<td>ja</td>
+<td>jpn</td>
+<td>¥</td>
+</tr>
+<tr>
+<td>ka</td>
+<td>Georgian</td>
+<td>ქართული</td>
+<td>ka</td>
+<td>kat</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ka-GE</td>
+<td>Georgian (Georgia)</td>
+<td>ქართული (საქართველო)</td>
+<td>ka</td>
+<td>kat</td>
+<td>Lari</td>
+</tr>
+<tr>
+<td>kk</td>
+<td>Kazakh</td>
+<td>Қазақ</td>
+<td>kk</td>
+<td>kaz</td>
+<td>-</td>
+</tr>
+<tr>
+<td>kk-KZ</td>
+<td>Kazakh (Kazakhstan)</td>
+<td>Қазақ (Қазақстан)</td>
+<td>kk</td>
+<td>kaz</td>
+<td>Т</td>
+</tr>
+<tr>
+<td>kl</td>
+<td>Greenlandic</td>
+<td>kalaallisut</td>
+<td>kl</td>
+<td>kal</td>
+<td>-</td>
+</tr>
+<tr>
+<td>kl-GL</td>
+<td>Greenlandic (Greenland)</td>
+<td>kalaallisut (Kalaallit Nunaat)</td>
+<td>kl</td>
+<td>kal</td>
+<td>kr.</td>
+</tr>
+<tr>
+<td>km</td>
+<td>Khmer</td>
+<td>ខ្មែរ</td>
+<td>km</td>
+<td>khm</td>
+<td>-</td>
+</tr>
+<tr>
+<td>km-KH</td>
+<td>Khmer (Cambodia)</td>
+<td>ខ្មែរ (កម្ពុជា)</td>
+<td>km</td>
+<td>khm</td>
+<td>៛</td>
+</tr>
+<tr>
+<td>kn</td>
+<td>Kannada</td>
+<td>ಕನ್ನಡ</td>
+<td>kn</td>
+<td>kan</td>
+<td>-</td>
+</tr>
+<tr>
+<td>kn-IN</td>
+<td>Kannada (India)</td>
+<td>ಕನ್ನಡ (ಭಾರತ)</td>
+<td>kn</td>
+<td>kan</td>
+<td>₹</td>
+</tr>
+<tr>
+<td>ko</td>
+<td>Korean</td>
+<td>한국어</td>
+<td>ko</td>
+<td>kor</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ko-KR</td>
+<td>Korean (Korea)</td>
+<td>한국어 (대한민국)</td>
+<td>ko</td>
+<td>kor</td>
+<td>₩</td>
+</tr>
+<tr>
+<td>kok</td>
+<td>Konkani</td>
+<td>कोंकणी</td>
+<td>kok</td>
+<td>kok</td>
+<td>-</td>
+</tr>
+<tr>
+<td>kok-IN</td>
+<td>Konkani (India)</td>
+<td>कोंकणी (भारत)</td>
+<td>kok</td>
+<td>kok</td>
+<td>₹</td>
+</tr>
+<tr>
+<td>ky</td>
+<td>Kyrgyz</td>
+<td>Кыргыз</td>
+<td>ky</td>
+<td>kir</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ky-KG</td>
+<td>Kyrgyz (Kyrgyzstan)</td>
+<td>Кыргыз (Кыргызстан)</td>
+<td>ky</td>
+<td>kir</td>
+<td>сом</td>
+</tr>
+<tr>
+<td>lb</td>
+<td>Luxembourgish</td>
+<td>Lëtzebuergesch</td>
+<td>lb</td>
+<td>ltz</td>
+<td>-</td>
+</tr>
+<tr>
+<td>lb-LU</td>
+<td>Luxembourgish (Luxembourg)</td>
+<td>Lëtzebuergesch (Luxembourg)</td>
+<td>lb</td>
+<td>ltz</td>
+<td>€</td>
+</tr>
+<tr>
+<td>lo</td>
+<td>Lao</td>
+<td>ລາວ</td>
+<td>lo</td>
+<td>lao</td>
+<td>-</td>
+</tr>
+<tr>
+<td>lo-LA</td>
+<td>Lao (Lao P.D.R.)</td>
+<td>ລາວ (ສ.ປ.ປ. ລາວ)</td>
+<td>lo</td>
+<td>lao</td>
+<td>₭</td>
+</tr>
+<tr>
+<td>lt</td>
+<td>Lithuanian</td>
+<td>lietuvių</td>
+<td>lt</td>
+<td>lit</td>
+<td>-</td>
+</tr>
+<tr>
+<td>lt-LT</td>
+<td>Lithuanian (Lithuania)</td>
+<td>lietuvių (Lietuva)</td>
+<td>lt</td>
+<td>lit</td>
+<td>Lt</td>
+</tr>
+<tr>
+<td>lv</td>
+<td>Latvian</td>
+<td>latviešu</td>
+<td>lv</td>
+<td>lav</td>
+<td>-</td>
+</tr>
+<tr>
+<td>lv-LV</td>
+<td>Latvian (Latvia)</td>
+<td>latviešu (Latvija)</td>
+<td>lv</td>
+<td>lav</td>
+<td>€</td>
+</tr>
+<tr>
+<td>mi</td>
+<td>Maori</td>
+<td>Reo Māori</td>
+<td>mi</td>
+<td>mri</td>
+<td>-</td>
+</tr>
+<tr>
+<td>mi-NZ</td>
+<td>Maori (New Zealand)</td>
+<td>Reo Māori (Aotearoa)</td>
+<td>mi</td>
+<td>mri</td>
+<td>$</td>
+</tr>
+<tr>
+<td>mk</td>
+<td>Macedonian (FYROM)</td>
+<td>македонски јазик</td>
+<td>mk</td>
+<td>mkd</td>
+<td>-</td>
+</tr>
+<tr>
+<td>mk-MK</td>
+<td>Macedonian (Former Yugoslav Republic of Macedonia)</td>
+<td>македонски јазик (Македонија)</td>
+<td>mk</td>
+<td>mkd</td>
+<td>ден.</td>
+</tr>
+<tr>
+<td>ml</td>
+<td>Malayalam</td>
+<td>മലയാളം</td>
+<td>ml</td>
+<td>mym</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ml-IN</td>
+<td>Malayalam (India)</td>
+<td>മലയാളം (ഭാരതം)</td>
+<td>ml</td>
+<td>mym</td>
+<td>₹</td>
+</tr>
+<tr>
+<td>mn</td>
+<td>Mongolian</td>
+<td>Монгол хэл</td>
+<td>mn</td>
+<td>mon</td>
+<td>-</td>
+</tr>
+<tr>
+<td>mn-Cyrl</td>
+<td>Mongolian (Cyrillic)</td>
+<td>Монгол хэл</td>
+<td>mn</td>
+<td>mon</td>
+<td>-</td>
+</tr>
+<tr>
+<td>mn-MN</td>
+<td>Mongolian (Cyrillic, Mongolia)</td>
+<td>Монгол хэл (Монгол улс)</td>
+<td>mn</td>
+<td>mon</td>
+<td>₮</td>
+</tr>
+<tr>
+<td>mn-Mong</td>
+<td>Mongolian (Traditional Mongolian)</td>
+<td>ᠮᠤᠨᠭᠭᠤᠯ ᠬᠡᠯᠡ</td>
+<td>mn</td>
+<td>mon</td>
+<td>-</td>
+</tr>
+<tr>
+<td>mn-Mong-CN</td>
+<td>Mongolian (Traditional Mongolian, PRC)</td>
+<td>ᠮᠤᠨᠭᠭᠤᠯ ᠬᠡᠯᠡ (ᠪᠦᠭᠦᠳᠡ ᠨᠠᠢᠷᠠᠮᠳᠠᠬᠤ ᠳᠤᠮᠳᠠᠳᠤ ᠠᠷᠠᠳ ᠣᠯᠣᠰ)</td>
+<td>mn</td>
+<td>mon</td>
+<td>¥</td>
+</tr>
+<tr>
+<td>moh</td>
+<td>Mohawk</td>
+<td>Kanien&#39;kéha</td>
+<td>moh</td>
+<td>moh</td>
+<td>-</td>
+</tr>
+<tr>
+<td>moh-CA</td>
+<td>Mohawk (Mohawk)</td>
+<td>Kanien&#39;kéha</td>
+<td>moh</td>
+<td>moh</td>
+<td>$</td>
+</tr>
+<tr>
+<td>mr</td>
+<td>Marathi</td>
+<td>मराठी</td>
+<td>mr</td>
+<td>mar</td>
+<td>-</td>
+</tr>
+<tr>
+<td>mr-IN</td>
+<td>Marathi (India)</td>
+<td>मराठी (भारत)</td>
+<td>mr</td>
+<td>mar</td>
+<td>₹</td>
+</tr>
+<tr>
+<td>ms</td>
+<td>Malay</td>
+<td>Bahasa Melayu</td>
+<td>ms</td>
+<td>msa</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ms-BN</td>
+<td>Malay (Brunei Darussalam)</td>
+<td>Bahasa Melayu (Brunei Darussalam)</td>
+<td>ms</td>
+<td>msa</td>
+<td>$</td>
+</tr>
+<tr>
+<td>ms-MY</td>
+<td>Malay (Malaysia)</td>
+<td>Bahasa Melayu (Malaysia)</td>
+<td>ms</td>
+<td>msa</td>
+<td>RM</td>
+</tr>
+<tr>
+<td>mt</td>
+<td>Maltese</td>
+<td>Malti</td>
+<td>mt</td>
+<td>mlt</td>
+<td>-</td>
+</tr>
+<tr>
+<td>mt-MT</td>
+<td>Maltese (Malta)</td>
+<td>Malti (Malta)</td>
+<td>mt</td>
+<td>mlt</td>
+<td>€</td>
+</tr>
+<tr>
+<td>nb</td>
+<td>Norwegian (Bokmål)</td>
+<td>norsk (bokmål)</td>
+<td>nb</td>
+<td>nob</td>
+<td>-</td>
+</tr>
+<tr>
+<td>nb-NO</td>
+<td>Norwegian, Bokmål (Norway)</td>
+<td>norsk, bokmål (Norge)</td>
+<td>nb</td>
+<td>nob</td>
+<td>kr</td>
+</tr>
+<tr>
+<td>ne</td>
+<td>Nepali</td>
+<td>नेपाली</td>
+<td>ne</td>
+<td>nep</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ne-NP</td>
+<td>Nepali (Nepal)</td>
+<td>नेपाली (नेपाल)</td>
+<td>ne</td>
+<td>nep</td>
+<td>रु</td>
+</tr>
+<tr>
+<td>nl</td>
+<td>Dutch</td>
+<td>Nederlands</td>
+<td>nl</td>
+<td>nld</td>
+<td>-</td>
+</tr>
+<tr>
+<td>nl-BE</td>
+<td>Dutch (Belgium)</td>
+<td>Nederlands (België)</td>
+<td>nl</td>
+<td>nld</td>
+<td>€</td>
+</tr>
+<tr>
+<td>nl-NL</td>
+<td>Dutch (Netherlands)</td>
+<td>Nederlands (Nederland)</td>
+<td>nl</td>
+<td>nld</td>
+<td>€</td>
+</tr>
+<tr>
+<td>nn</td>
+<td>Norwegian (Nynorsk)</td>
+<td>norsk (nynorsk)</td>
+<td>nn</td>
+<td>nno</td>
+<td>-</td>
+</tr>
+<tr>
+<td>nn-NO</td>
+<td>Norwegian, Nynorsk (Norway)</td>
+<td>norsk, nynorsk (Noreg)</td>
+<td>nn</td>
+<td>nno</td>
+<td>kr</td>
+</tr>
+<tr>
+<td>no</td>
+<td>Norwegian</td>
+<td>norsk</td>
+<td>nb</td>
+<td>nob</td>
+<td>-</td>
+</tr>
+<tr>
+<td>nso</td>
+<td>Sesotho sa Leboa</td>
+<td>Sesotho sa Leboa</td>
+<td>nso</td>
+<td>nso</td>
+<td>-</td>
+</tr>
+<tr>
+<td>nso-ZA</td>
+<td>Sesotho sa Leboa (South Africa)</td>
+<td>Sesotho sa Leboa (Afrika Borwa)</td>
+<td>nso</td>
+<td>nso</td>
+<td>R</td>
+</tr>
+<tr>
+<td>oc</td>
+<td>Occitan</td>
+<td>Occitan</td>
+<td>oc</td>
+<td>oci</td>
+<td>-</td>
+</tr>
+<tr>
+<td>oc-FR</td>
+<td>Occitan (France)</td>
+<td>Occitan (França)</td>
+<td>oc</td>
+<td>oci</td>
+<td>€</td>
+</tr>
+<tr>
+<td>or</td>
+<td>Oriya</td>
+<td>ଓଡ଼ିଆ</td>
+<td>or</td>
+<td>ori</td>
+<td>-</td>
+</tr>
+<tr>
+<td>or-IN</td>
+<td>Oriya (India)</td>
+<td>ଓଡ଼ିଆ (ଭାରତ)</td>
+<td>or</td>
+<td>ori</td>
+<td>₹</td>
+</tr>
+<tr>
+<td>pa</td>
+<td>Punjabi</td>
+<td>ਪੰਜਾਬੀ</td>
+<td>pa</td>
+<td>pan</td>
+<td>-</td>
+</tr>
+<tr>
+<td>pa-IN</td>
+<td>Punjabi (India)</td>
+<td>ਪੰਜਾਬੀ (ਭਾਰਤ)</td>
+<td>pa</td>
+<td>pan</td>
+<td>₹</td>
+</tr>
+<tr>
+<td>pl</td>
+<td>Polish</td>
+<td>polski</td>
+<td>pl</td>
+<td>pol</td>
+<td>-</td>
+</tr>
+<tr>
+<td>pl-PL</td>
+<td>Polish (Poland)</td>
+<td>polski (Polska)</td>
+<td>pl</td>
+<td>pol</td>
+<td>zł</td>
+</tr>
+<tr>
+<td>prs</td>
+<td>Dari</td>
+<td>&#x202b;درى</td>
+<td>prs</td>
+<td>prs</td>
+<td>-</td>
+</tr>
+<tr>
+<td>prs-AF</td>
+<td>Dari (Afghanistan)</td>
+<td>&#x202b;درى (افغانستان)</td>
+<td>prs</td>
+<td>prs</td>
+<td>&#x202b;؋</td>
+</tr>
+<tr>
+<td>ps</td>
+<td>Pashto</td>
+<td>&#x202b;پښتو</td>
+<td>ps</td>
+<td>pus</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ps-AF</td>
+<td>Pashto (Afghanistan)</td>
+<td>&#x202b;پښتو (افغانستان)</td>
+<td>ps</td>
+<td>pus</td>
+<td>&#x202b;؋</td>
+</tr>
+<tr>
+<td>pt</td>
+<td>Portuguese</td>
+<td>Português</td>
+<td>pt</td>
+<td>por</td>
+<td>-</td>
+</tr>
+<tr>
+<td>pt-BR</td>
+<td>Portuguese (Brazil)</td>
+<td>Português (Brasil)</td>
+<td>pt</td>
+<td>por</td>
+<td>R$</td>
+</tr>
+<tr>
+<td>pt-PT</td>
+<td>Portuguese (Portugal)</td>
+<td>português (Portugal)</td>
+<td>pt</td>
+<td>por</td>
+<td>€</td>
+</tr>
+<tr>
+<td>qut</td>
+<td>K&#39;iche</td>
+<td>K&#39;iche</td>
+<td>qut</td>
+<td>qut</td>
+<td>-</td>
+</tr>
+<tr>
+<td>qut-GT</td>
+<td>K&#39;iche (Guatemala)</td>
+<td>K&#39;iche (Guatemala)</td>
+<td>qut</td>
+<td>qut</td>
+<td>Q</td>
+</tr>
+<tr>
+<td>quz</td>
+<td>Quechua</td>
+<td>runasimi</td>
+<td>quz</td>
+<td>qub</td>
+<td>-</td>
+</tr>
+<tr>
+<td>quz-BO</td>
+<td>Quechua (Bolivia)</td>
+<td>runasimi (Qullasuyu)</td>
+<td>quz</td>
+<td>qub</td>
+<td>$b</td>
+</tr>
+<tr>
+<td>quz-EC</td>
+<td>Quechua (Ecuador)</td>
+<td>runasimi (Ecuador)</td>
+<td>quz</td>
+<td>que</td>
+<td>$</td>
+</tr>
+<tr>
+<td>quz-PE</td>
+<td>Quechua (Peru)</td>
+<td>runasimi (Piruw)</td>
+<td>quz</td>
+<td>qup</td>
+<td>S/.</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>Romansh</td>
+<td>Rumantsch</td>
+<td>rm</td>
+<td>roh</td>
+<td>-</td>
+</tr>
+<tr>
+<td>rm-CH</td>
+<td>Romansh (Switzerland)</td>
+<td>Rumantsch (Svizra)</td>
+<td>rm</td>
+<td>roh</td>
+<td>fr.</td>
+</tr>
+<tr>
+<td>ro</td>
+<td>Romanian</td>
+<td>română</td>
+<td>ro</td>
+<td>ron</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ro-RO</td>
+<td>Romanian (Romania)</td>
+<td>română (România)</td>
+<td>ro</td>
+<td>ron</td>
+<td>lei</td>
+</tr>
+<tr>
+<td>ru</td>
+<td>Russian</td>
+<td>русский</td>
+<td>ru</td>
+<td>rus</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ru-RU</td>
+<td>Russian (Russia)</td>
+<td>русский (Россия)</td>
+<td>ru</td>
+<td>rus</td>
+<td>р.</td>
+</tr>
+<tr>
+<td>rw</td>
+<td>Kinyarwanda</td>
+<td>Kinyarwanda</td>
+<td>rw</td>
+<td>kin</td>
+<td>-</td>
+</tr>
+<tr>
+<td>rw-RW</td>
+<td>Kinyarwanda (Rwanda)</td>
+<td>Kinyarwanda (Rwanda)</td>
+<td>rw</td>
+<td>kin</td>
+<td>RWF</td>
+</tr>
+<tr>
+<td>sa</td>
+<td>Sanskrit</td>
+<td>संस्कृत</td>
+<td>sa</td>
+<td>san</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sa-IN</td>
+<td>Sanskrit (India)</td>
+<td>संस्कृत (भारतम्)</td>
+<td>sa</td>
+<td>san</td>
+<td>₹</td>
+</tr>
+<tr>
+<td>sah</td>
+<td>Yakut</td>
+<td>саха</td>
+<td>sah</td>
+<td>sah</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sah-RU</td>
+<td>Yakut (Russia)</td>
+<td>саха (Россия)</td>
+<td>sah</td>
+<td>sah</td>
+<td>с.</td>
+</tr>
+<tr>
+<td>se</td>
+<td>Sami (Northern)</td>
+<td>davvisámegiella</td>
+<td>se</td>
+<td>sme</td>
+<td>-</td>
+</tr>
+<tr>
+<td>se-FI</td>
+<td>Sami, Northern (Finland)</td>
+<td>davvisámegiella (Suopma)</td>
+<td>se</td>
+<td>smg</td>
+<td>€</td>
+</tr>
+<tr>
+<td>se-NO</td>
+<td>Sami, Northern (Norway)</td>
+<td>davvisámegiella (Norga)</td>
+<td>se</td>
+<td>sme</td>
+<td>kr</td>
+</tr>
+<tr>
+<td>se-SE</td>
+<td>Sami, Northern (Sweden)</td>
+<td>davvisámegiella (Ruoŧŧa)</td>
+<td>se</td>
+<td>smf</td>
+<td>kr</td>
+</tr>
+<tr>
+<td>si</td>
+<td>Sinhala</td>
+<td>සිංහල</td>
+<td>si</td>
+<td>sin</td>
+<td>-</td>
+</tr>
+<tr>
+<td>si-LK</td>
+<td>Sinhala (Sri Lanka)</td>
+<td>සිංහල (ශ්‍රී ලංකා)</td>
+<td>si</td>
+<td>sin</td>
+<td>රු.</td>
+</tr>
+<tr>
+<td>sk</td>
+<td>Slovak</td>
+<td>slovenčina</td>
+<td>sk</td>
+<td>slk</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sk-SK</td>
+<td>Slovak (Slovakia)</td>
+<td>slovenčina (Slovenská republika)</td>
+<td>sk</td>
+<td>slk</td>
+<td>€</td>
+</tr>
+<tr>
+<td>sl</td>
+<td>Slovenian</td>
+<td>slovenski</td>
+<td>sl</td>
+<td>slv</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sl-SI</td>
+<td>Slovenian (Slovenia)</td>
+<td>slovenski (Slovenija)</td>
+<td>sl</td>
+<td>slv</td>
+<td>€</td>
+</tr>
+<tr>
+<td>sma</td>
+<td>Sami (Southern)</td>
+<td>åarjelsaemiengiele</td>
+<td>sma</td>
+<td>smb</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sma-NO</td>
+<td>Sami, Southern (Norway)</td>
+<td>åarjelsaemiengiele (Nöörje)</td>
+<td>sma</td>
+<td>sma</td>
+<td>kr</td>
+</tr>
+<tr>
+<td>sma-SE</td>
+<td>Sami, Southern (Sweden)</td>
+<td>åarjelsaemiengiele (Sveerje)</td>
+<td>sma</td>
+<td>smb</td>
+<td>kr</td>
+</tr>
+<tr>
+<td>smj</td>
+<td>Sami (Lule)</td>
+<td>julevusámegiella</td>
+<td>smj</td>
+<td>smk</td>
+<td>-</td>
+</tr>
+<tr>
+<td>smj-NO</td>
+<td>Sami, Lule (Norway)</td>
+<td>julevusámegiella (Vuodna)</td>
+<td>smj</td>
+<td>smj</td>
+<td>kr</td>
+</tr>
+<tr>
+<td>smj-SE</td>
+<td>Sami, Lule (Sweden)</td>
+<td>julevusámegiella (Svierik)</td>
+<td>smj</td>
+<td>smk</td>
+<td>kr</td>
+</tr>
+<tr>
+<td>smn</td>
+<td>Sami (Inari)</td>
+<td>sämikielâ</td>
+<td>smn</td>
+<td>smn</td>
+<td>-</td>
+</tr>
+<tr>
+<td>smn-FI</td>
+<td>Sami, Inari (Finland)</td>
+<td>sämikielâ (Suomâ)</td>
+<td>smn</td>
+<td>smn</td>
+<td>€</td>
+</tr>
+<tr>
+<td>sms</td>
+<td>Sami (Skolt)</td>
+<td>sääm´ǩiõll</td>
+<td>sms</td>
+<td>sms</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sms-FI</td>
+<td>Sami, Skolt (Finland)</td>
+<td>sääm´ǩiõll (Lää´ddjânnam)</td>
+<td>sms</td>
+<td>sms</td>
+<td>€</td>
+</tr>
+<tr>
+<td>sq</td>
+<td>Albanian</td>
+<td>shqipe</td>
+<td>sq</td>
+<td>sqi</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sq-AL</td>
+<td>Albanian (Albania)</td>
+<td>shqipe (Shqipëria)</td>
+<td>sq</td>
+<td>sqi</td>
+<td>Lek</td>
+</tr>
+<tr>
+<td>sr</td>
+<td>Serbian</td>
+<td>srpski</td>
+<td>sr</td>
+<td>srp</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sr-Cyrl</td>
+<td>Serbian (Cyrillic)</td>
+<td>српски</td>
+<td>sr</td>
+<td>srp</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sr-Cyrl-BA</td>
+<td>Serbian (Cyrillic, Bosnia and Herzegovina)</td>
+<td>српски (Босна и Херцеговина)</td>
+<td>sr</td>
+<td>srn</td>
+<td>КМ</td>
+</tr>
+<tr>
+<td>sr-Cyrl-CS</td>
+<td>Serbian (Cyrillic, Serbia and Montenegro (Former))</td>
+<td>српски (Србија и Црна Гора (Претходно))</td>
+<td>sr</td>
+<td>srp</td>
+<td>Дин.</td>
+</tr>
+<tr>
+<td>sr-Cyrl-ME</td>
+<td>Serbian (Cyrillic, Montenegro)</td>
+<td>српски (Црна Гора)</td>
+<td>sr</td>
+<td>srp</td>
+<td>€</td>
+</tr>
+<tr>
+<td>sr-Cyrl-RS</td>
+<td>Serbian (Cyrillic, Serbia)</td>
+<td>српски (Србија)</td>
+<td>sr</td>
+<td>srp</td>
+<td>Дин.</td>
+</tr>
+<tr>
+<td>sr-Latn</td>
+<td>Serbian (Latin)</td>
+<td>srpski</td>
+<td>sr</td>
+<td>srp</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sr-Latn-BA</td>
+<td>Serbian (Latin, Bosnia and Herzegovina)</td>
+<td>srpski (Bosna i Hercegovina)</td>
+<td>sr</td>
+<td>srs</td>
+<td>KM</td>
+</tr>
+<tr>
+<td>sr-Latn-CS</td>
+<td>Serbian (Latin, Serbia and Montenegro (Former))</td>
+<td>srpski (Srbija i Crna Gora (Prethodno))</td>
+<td>sr</td>
+<td>srp</td>
+<td>Din.</td>
+</tr>
+<tr>
+<td>sr-Latn-ME</td>
+<td>Serbian (Latin, Montenegro)</td>
+<td>srpski (Crna Gora)</td>
+<td>sr</td>
+<td>srp</td>
+<td>€</td>
+</tr>
+<tr>
+<td>sr-Latn-RS</td>
+<td>Serbian (Latin, Serbia)</td>
+<td>srpski (Srbija)</td>
+<td>sr</td>
+<td>srp</td>
+<td>Din.</td>
+</tr>
+<tr>
+<td>sv</td>
+<td>Swedish</td>
+<td>svenska</td>
+<td>sv</td>
+<td>swe</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sv-FI</td>
+<td>Swedish (Finland)</td>
+<td>svenska (Finland)</td>
+<td>sv</td>
+<td>swe</td>
+<td>€</td>
+</tr>
+<tr>
+<td>sv-SE</td>
+<td>Swedish (Sweden)</td>
+<td>svenska (Sverige)</td>
+<td>sv</td>
+<td>swe</td>
+<td>kr</td>
+</tr>
+<tr>
+<td>sw</td>
+<td>Kiswahili</td>
+<td>Kiswahili</td>
+<td>sw</td>
+<td>swa</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sw-KE</td>
+<td>Kiswahili (Kenya)</td>
+<td>Kiswahili (Kenya)</td>
+<td>sw</td>
+<td>swa</td>
+<td>S</td>
+</tr>
+<tr>
+<td>syr</td>
+<td>Syriac</td>
+<td>&#x202b;ܣܘܪܝܝܐ</td>
+<td>syr</td>
+<td>syr</td>
+<td>-</td>
+</tr>
+<tr>
+<td>syr-SY</td>
+<td>Syriac (Syria)</td>
+<td>&#x202b;ܣܘܪܝܝܐ (سوريا)</td>
+<td>syr</td>
+<td>syr</td>
+<td>&#x202b;ل.س.‏</td>
+</tr>
+<tr>
+<td>ta</td>
+<td>Tamil</td>
+<td>தமிழ்</td>
+<td>ta</td>
+<td>tam</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ta-IN</td>
+<td>Tamil (India)</td>
+<td>தமிழ் (இந்தியா)</td>
+<td>ta</td>
+<td>tam</td>
+<td>₹</td>
+</tr>
+<tr>
+<td>te</td>
+<td>Telugu</td>
+<td>తెలుగు</td>
+<td>te</td>
+<td>tel</td>
+<td>-</td>
+</tr>
+<tr>
+<td>te-IN</td>
+<td>Telugu (India)</td>
+<td>తెలుగు (భారత దేశం)</td>
+<td>te</td>
+<td>tel</td>
+<td>₹</td>
+</tr>
+<tr>
+<td>tg</td>
+<td>Tajik</td>
+<td>Тоҷикӣ</td>
+<td>tg</td>
+<td>tgk</td>
+<td>-</td>
+</tr>
+<tr>
+<td>tg-Cyrl</td>
+<td>Tajik (Cyrillic)</td>
+<td>Тоҷикӣ</td>
+<td>tg</td>
+<td>tgk</td>
+<td>-</td>
+</tr>
+<tr>
+<td>tg-Cyrl-TJ</td>
+<td>Tajik (Cyrillic, Tajikistan)</td>
+<td>Тоҷикӣ (Тоҷикистон)</td>
+<td>tg</td>
+<td>tgk</td>
+<td>т.р.</td>
+</tr>
+<tr>
+<td>th</td>
+<td>Thai</td>
+<td>ไทย</td>
+<td>th</td>
+<td>tha</td>
+<td>-</td>
+</tr>
+<tr>
+<td>th-TH</td>
+<td>Thai (Thailand)</td>
+<td>ไทย (ไทย)</td>
+<td>th</td>
+<td>tha</td>
+<td>฿</td>
+</tr>
+<tr>
+<td>tk</td>
+<td>Turkmen</td>
+<td>türkmençe</td>
+<td>tk</td>
+<td>tuk</td>
+<td>-</td>
+</tr>
+<tr>
+<td>tk-TM</td>
+<td>Turkmen (Turkmenistan)</td>
+<td>türkmençe (Türkmenistan)</td>
+<td>tk</td>
+<td>tuk</td>
+<td>m.</td>
+</tr>
+<tr>
+<td>tn</td>
+<td>Setswana</td>
+<td>Setswana</td>
+<td>tn</td>
+<td>tsn</td>
+<td>-</td>
+</tr>
+<tr>
+<td>tn-ZA</td>
+<td>Setswana (South Africa)</td>
+<td>Setswana (Aforika Borwa)</td>
+<td>tn</td>
+<td>tsn</td>
+<td>R</td>
+</tr>
+<tr>
+<td>tr</td>
+<td>Turkish</td>
+<td>Türkçe</td>
+<td>tr</td>
+<td>tur</td>
+<td>-</td>
+</tr>
+<tr>
+<td>tr-TR</td>
+<td>Turkish (Turkey)</td>
+<td>Türkçe (Türkiye)</td>
+<td>tr</td>
+<td>tur</td>
+<td>₺</td>
+</tr>
+<tr>
+<td>tt</td>
+<td>Tatar</td>
+<td>Татар</td>
+<td>tt</td>
+<td>tat</td>
+<td>-</td>
+</tr>
+<tr>
+<td>tt-RU</td>
+<td>Tatar (Russia)</td>
+<td>Татар (Россия)</td>
+<td>tt</td>
+<td>tat</td>
+<td>р.</td>
+</tr>
+<tr>
+<td>tzm</td>
+<td>Tamazight</td>
+<td>Tamazight</td>
+<td>tzm</td>
+<td>tzm</td>
+<td>-</td>
+</tr>
+<tr>
+<td>tzm-Latn</td>
+<td>Tamazight (Latin)</td>
+<td>Tamazight</td>
+<td>tzm</td>
+<td>tzm</td>
+<td>-</td>
+</tr>
+<tr>
+<td>tzm-Latn-DZ</td>
+<td>Tamazight (Latin, Algeria)</td>
+<td>Tamazight (Djazaïr)</td>
+<td>tzm</td>
+<td>tzm</td>
+<td>DZD</td>
+</tr>
+<tr>
+<td>ug</td>
+<td>Uyghur</td>
+<td>&#x202b;ئۇيغۇرچە</td>
+<td>ug</td>
+<td>uig</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ug-CN</td>
+<td>Uyghur (PRC)</td>
+<td>&#x202b;ئۇيغۇرچە (جۇڭخۇا خەلق جۇمھۇرىيىتى)</td>
+<td>ug</td>
+<td>uig</td>
+<td>&#x202b;¥</td>
+</tr>
+<tr>
+<td>uk</td>
+<td>Ukrainian</td>
+<td>українська</td>
+<td>uk</td>
+<td>ukr</td>
+<td>-</td>
+</tr>
+<tr>
+<td>uk-UA</td>
+<td>Ukrainian (Ukraine)</td>
+<td>українська (Україна)</td>
+<td>uk</td>
+<td>ukr</td>
+<td>₴</td>
+</tr>
+<tr>
+<td>ur</td>
+<td>Urdu</td>
+<td>&#x202b;اُردو</td>
+<td>ur</td>
+<td>urd</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ur-PK</td>
+<td>Urdu (Islamic Republic of Pakistan)</td>
+<td>&#x202b;اُردو (پاکستان)</td>
+<td>ur</td>
+<td>urd</td>
+<td>&#x202b;Rs</td>
+</tr>
+<tr>
+<td>uz</td>
+<td>Uzbek</td>
+<td>U&#39;zbek</td>
+<td>uz</td>
+<td>uzb</td>
+<td>-</td>
+</tr>
+<tr>
+<td>uz-Cyrl</td>
+<td>Uzbek (Cyrillic)</td>
+<td>Ўзбек</td>
+<td>uz</td>
+<td>uzb</td>
+<td>-</td>
+</tr>
+<tr>
+<td>uz-Cyrl-UZ</td>
+<td>Uzbek (Cyrillic, Uzbekistan)</td>
+<td>Ўзбек (Ўзбекистон)</td>
+<td>uz</td>
+<td>uzb</td>
+<td>сўм</td>
+</tr>
+<tr>
+<td>uz-Latn</td>
+<td>Uzbek (Latin)</td>
+<td>U&#39;zbek</td>
+<td>uz</td>
+<td>uzb</td>
+<td>-</td>
+</tr>
+<tr>
+<td>uz-Latn-UZ</td>
+<td>Uzbek (Latin, Uzbekistan)</td>
+<td>U&#39;zbek (U&#39;zbekiston Respublikasi)</td>
+<td>uz</td>
+<td>uzb</td>
+<td>so&#39;m</td>
+</tr>
+<tr>
+<td>vi</td>
+<td>Vietnamese</td>
+<td>Tiếng Việt</td>
+<td>vi</td>
+<td>vie</td>
+<td>-</td>
+</tr>
+<tr>
+<td>vi-VN</td>
+<td>Vietnamese (Vietnam)</td>
+<td>Tiếng Việt (Việt Nam)</td>
+<td>vi</td>
+<td>vie</td>
+<td>₫</td>
+</tr>
+<tr>
+<td>wo</td>
+<td>Wolof</td>
+<td>Wolof</td>
+<td>wo</td>
+<td>wol</td>
+<td>-</td>
+</tr>
+<tr>
+<td>wo-SN</td>
+<td>Wolof (Senegal)</td>
+<td>Wolof (Sénégal)</td>
+<td>wo</td>
+<td>wol</td>
+<td>XOF</td>
+</tr>
+<tr>
+<td>xh</td>
+<td>isiXhosa</td>
+<td>isiXhosa</td>
+<td>xh</td>
+<td>xho</td>
+<td>-</td>
+</tr>
+<tr>
+<td>xh-ZA</td>
+<td>isiXhosa (South Africa)</td>
+<td>isiXhosa (uMzantsi Afrika)</td>
+<td>xh</td>
+<td>xho</td>
+<td>R</td>
+</tr>
+<tr>
+<td>yo</td>
+<td>Yoruba</td>
+<td>Yoruba</td>
+<td>yo</td>
+<td>yor</td>
+<td>-</td>
+</tr>
+<tr>
+<td>yo-NG</td>
+<td>Yoruba (Nigeria)</td>
+<td>Yoruba (Nigeria)</td>
+<td>yo</td>
+<td>yor</td>
+<td>N</td>
+</tr>
+<tr>
+<td>zh</td>
+<td>Chinese</td>
+<td>中文</td>
+<td>zh</td>
+<td>zho</td>
+<td>-</td>
+</tr>
+<tr>
+<td>zh-CHS</td>
+<td>Chinese (Simplified) Legacy</td>
+<td>中文(简体) 旧版</td>
+<td>zh</td>
+<td>zho</td>
+<td>-</td>
+</tr>
+<tr>
+<td>zh-CHT</td>
+<td>Chinese (Traditional) Legacy</td>
+<td>中文(繁體) 舊版</td>
+<td>zh</td>
+<td>zho</td>
+<td>-</td>
+</tr>
+<tr>
+<td>zh-CN</td>
+<td>Chinese (Simplified, PRC)</td>
+<td>中文 (中华人民共和国)</td>
+<td>zh</td>
+<td>zho</td>
+<td>¥</td>
+</tr>
+<tr>
+<td>zh-HK</td>
+<td>Chinese (Traditional, Hong Kong S.A.R.)</td>
+<td>中文 (香港特別行政區)</td>
+<td>zh</td>
+<td>zho</td>
+<td>HK$</td>
+</tr>
+<tr>
+<td>zh-Hans</td>
+<td>Chinese (Simplified)</td>
+<td>中文 (简体)</td>
+<td>zh</td>
+<td>zho</td>
+<td>-</td>
+</tr>
+<tr>
+<td>zh-Hant</td>
+<td>Chinese (Traditional)</td>
+<td>中文 (繁體)</td>
+<td>zh</td>
+<td>zho</td>
+<td>-</td>
+</tr>
+<tr>
+<td>zh-MO</td>
+<td>Chinese (Traditional, Macao S.A.R.)</td>
+<td>中文 (澳門特別行政區)</td>
+<td>zh</td>
+<td>zho</td>
+<td>MOP</td>
+</tr>
+<tr>
+<td>zh-SG</td>
+<td>Chinese (Simplified, Singapore)</td>
+<td>中文 (新加坡)</td>
+<td>zh</td>
+<td>zho</td>
+<td>$</td>
+</tr>
+<tr>
+<td>zh-TW</td>
+<td>Chinese (Traditional, Taiwan)</td>
+<td>中文 (台灣)</td>
+<td>zh</td>
+<td>zho</td>
+<td>NT$</td>
+</tr>
+<tr>
+<td>zu</td>
+<td>isiZulu</td>
+<td>isiZulu</td>
+<td>zu</td>
+<td>zul</td>
+<td>-</td>
+</tr>
+<tr>
+<td>zu-ZA</td>
+<td>isiZulu (South Africa)</td>
+<td>isiZulu (iNingizimu Afrika)</td>
+<td>zu</td>
+<td>zul</td>
+<td>R</td>
+</tr>
+</tbody></table>
+
+<!-- END_CULTURES -->
+
+<h2 id="install">install</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">haxelib install thx.culture
+</code></pre></div>
+    <div class="footer">
+      <div class="contact">
+        <p>
+          copyright © Franco Ponticelli
+        </p>
+      </div>
+    </div>
+  </div>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+        _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+        _gaq.push(['_setAccount', 'UA-589893-18']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</body>
+<html>

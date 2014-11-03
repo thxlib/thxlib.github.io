@@ -8,11 +8,11 @@ tags:
   - cross
 layout: library
 classPath: src
-description: Colors library
+description: "Library for color maniupation. Contains definitions for CMYK, Grey, HSL, HSV, and RGB as well as alpha versions of the sames and color parsing."
 contributors: 
   - fponticelli
 releasenote: improved documentation
-version: 0.7.3
+version: 0.7.4
 url: "https://github.com/fponticelli/thx.color"
 title: thx.color
 dependencies: 
@@ -26,6 +26,8 @@ dependencies:
 
 General purpose color library for Haxe.
 
+## intro
+
 API uses abstracts to make it easy to use colors with strings and numbers.
 
 ```haxe
@@ -33,7 +35,7 @@ API uses abstracts to make it easy to use colors with strings and numbers.
     trace(rgb.green);
 ```
 
-## Some examples from [Demo](https://github.com/fponticelli/thx.color/raw/master/demo/Demo.hx)
+Some examples from [Demo](https://github.com/fponticelli/thx.color/raw/master/demo/Demo.hx).
 
 ### HSL Rainbow
 
@@ -103,8 +105,22 @@ colors.mapi(function(name, i) {
 });
 ```
 
-<img src="https://github.com/fponticelli/thx.color/raw/master/images/colortable.png?raw=true" alt="color table" width="450" height="600"">
+<img src="https://github.com/fponticelli/thx.color/raw/master/images/colortable.png?raw=true" alt="color table" width="450" height="600">
 
 To run [Demo](/demo/Demo.hx), you need `nodejs` and the Canvas library (`npm install canvas`);
 
 *Note:* API might still change before version 1.
+
+## install
+
+From the command line just type:
+
+```bash
+haxelib install thx.color
+```
+
+To use the `dev` version do:
+
+```bash
+haxelib git thx.core https://github.com/fponticelli/thx.color.git
+```
