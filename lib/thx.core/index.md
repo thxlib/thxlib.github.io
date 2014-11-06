@@ -12,8 +12,8 @@ classPath: src
 description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
 contributors: 
   - fponticelli
-releasenote: "Fixed several issues including `Floats.round()` and changed `Strings.map()` signature."
-version: 0.11.2
+releasenote: "Added `Timer.nextFrame` and `Timer.frame()`."
+version: 0.12.0
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 
