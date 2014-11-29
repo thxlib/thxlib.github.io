@@ -12,8 +12,8 @@ classPath: src
 description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
 contributors: 
   - fponticelli
-releasenote: Fixed issues with haxe 3.2.0.
-version: 0.13.1
+releasenote: "Added features: Floats.ceil(), Floats.floor(), Strings.toChunk() and Nulls.with()."
+version: 0.15.0
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 
