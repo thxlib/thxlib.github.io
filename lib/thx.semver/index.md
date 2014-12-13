@@ -10,11 +10,11 @@ tags:
 dependecies: {}
 layout: library
 classPath: src
-description: Semantic Version Library for Haxe
+description: "Semantic version library for Haxe. It follows the specifications for Semantic Versioning 2.0.0 described at http://semver.org/"
 contributors: 
   - fponticelli
-releasenote: better documentation
-version: 0.1.0
+releasenote: Support Version Rules for matching version ranges
+version: 0.2.0
 url: "https://github.com/fponticelli/thx.semver"
 title: thx.semver
 
@@ -23,6 +23,8 @@ title: thx.semver
 # thx.semver
 
 [![Build Status](https://travis-ci.org/fponticelli/thx.semver.svg)](https://travis-ci.org/fponticelli/thx.semver)
+
+## Version
 
 Semantic Version library for Haxe. The library provides an abstract type `thx.semver.Version` that represents a release version as described in the [Semantic Versioning Specification 2.0.0](http://semver.org/).
 
@@ -61,4 +63,37 @@ Also generating new versions is very easy:
 ```haxe
 var v : Version = '0.9.17';
 trace(v.nextMinor()); // echoes '0.10.0'
+```
+
+## Version Rules
+
+`thx.semver` support the same SemVer patterns adopted for [npm-semver](https://github.com/npm/node-semver). Note that this is neither a wrapper or a port but a library that conforms to the same specifications.
+
+The simplest way to define a Version Rule is to use the string format:
+
+```haxe
+var rule : VersionRule = '1.x || >=2.5.0 || 5.0.0 - 7.2.3';
+rule.isSatisfiedBy('1.2.3'); // holds true
+```
+
+You can also operate in the other direction:
+
+```haxe
+('1.2.3' : Version).satisfies('1.x || >=2.5.0 || 5.0.0 - 7.2.3'); // holds true
+```
+
+For more details on the patterns, refer to the previous link.
+
+## install
+
+From the command line just type:
+
+```bash
+haxelib install thx.semver
+```
+
+To use the `dev` version do:
+
+```bash
+haxelib git thx.core https://github.com/fponticelli/thx.semver.git
 ```

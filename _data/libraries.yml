@@ -108,11 +108,11 @@
     - semver
   dependecies: {}
   classPath: src
-  description: Semantic Version Library for Haxe
+  description: "Semantic version library for Haxe. It follows the specifications for Semantic Versioning 2.0.0 described at http://semver.org/"
   contributors: 
     - fponticelli
-  releasenote: better documentation
-  version: 0.1.0
+  releasenote: Support Version Rules for matching version ranges
+  version: 0.2.0
   url: "https://github.com/fponticelli/thx.semver"
 - name: thx.unit
   license: MIT
