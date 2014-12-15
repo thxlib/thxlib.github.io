@@ -124,11 +124,11 @@
     - unit
     - cross
   classPath: src
-  description: Units library
+  description: "Library for unit of measurements. So far are included linear measurement, amount of substance, angle, current, digital, luminous intensity, mass, and time."
   contributors: 
     - fponticelli
-  releasenote: Better documentation
-  version: 0.3.5
+  releasenote: added abs/min/max/normalize/normalizeDirection/turn/pointToX to Angle and abs/min/max to others
+  version: 0.4.0
   url: "https://github.com/fponticelli/thx.unit"
   dependencies: 
     thx.core: ""

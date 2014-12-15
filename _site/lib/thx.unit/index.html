@@ -15,7 +15,7 @@
     <ul class="info">
       <li><a href="https://github.com/fponticelli/thx.unit"><i class="fa fa-github"></i> Github</a></li>
       <li><a href="/api/thx/unit"><i class="fa fa-code"></i> API doc</a></li>
-      <li title="version"><i class="fa fa-at"></i> 0.3.5</li>
+      <li title="version"><i class="fa fa-at"></i> 0.4.0</li>
       <li class="list" title="tags">
         <i class="fa fa-tags"></i> <span class="tags">thx, math, dimension, unit, cross</span>
       </li>
@@ -33,7 +33,7 @@
 
 <p><a href="https://travis-ci.org/fponticelli/thx.unit"><img src="https://travis-ci.org/fponticelli/thx.unit.svg" alt="Build Status"></a></p>
 
-<p>The library contains type definitions for several kind of units. They are defined as asbtract types to siplify their usage as much as possible.</p>
+<p>The library contains type definitions for several kind of units. They are defined as asbtract types to simplify their usage as much as possible.</p>
 <div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="p">(</span><span class="mi">10</span> <span class="p">:</span> <span class="n">Millimetre</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span> <span class="p">:</span> <span class="n">Metre</span><span class="p">);</span>
 <span class="c1">// other example</span>
 <span class="kd">var</span> f <span class="o">=</span> <span class="p">(</span><span class="mi">27</span> <span class="p">:</span> <span class="n">Celsius</span><span class="p">).</span><span class="n">toFahrenheit</span><span class="p">()</span>
@@ -58,8 +58,16 @@
 
 <p>The library has not been exhaustively tested, please pay attention to the correctness of the results you get.</p>
 
-<p><em>Important</em>. This library should be used with the consciousness that converting values and perform some operations on the values might result in loss of precision. The limitation come from the fact that the underlying type is a <code>Float</code>. Converting <code>LightYear</code>s to <code>Millimitre</code>s might not work as well as you expect!</p>
+<p><em>Important</em>. This library should be used with the knowledge that converting values and perform some operations on the values might result in loss of precision. The limitation come from the fact that the underlying type is <code>Float</code>. Converting <code>LightYear</code>s to <code>Millimitre</code>s might not work as well as you expect!</p>
 
+<h2 id="install">install</h2>
+
+<p>From the command line just type:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">haxelib install thx.unit
+</code></pre></div>
+<p>To use the <code>dev</code> version do:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">haxelib git thx.core https://github.com/fponticelli/thx.unit.git
+</code></pre></div>
     <div class="footer">
       <div class="contact">
         <p>

@@ -10,11 +10,11 @@ tags:
   - cross
 layout: library
 classPath: src
-description: Units library
+description: "Library for unit of measurements. So far are included linear measurement, amount of substance, angle, current, digital, luminous intensity, mass, and time."
 contributors: 
   - fponticelli
-releasenote: Better documentation
-version: 0.3.5
+releasenote: added abs/min/max/normalize/normalizeDirection/turn/pointToX to Angle and abs/min/max to others
+version: 0.4.0
 url: "https://github.com/fponticelli/thx.unit"
 title: thx.unit
 dependencies: 
@@ -26,7 +26,7 @@ dependencies:
 
 [![Build Status](https://travis-ci.org/fponticelli/thx.unit.svg)](https://travis-ci.org/fponticelli/thx.unit)
 
-The library contains type definitions for several kind of units. They are defined as asbtract types to siplify their usage as much as possible.
+The library contains type definitions for several kind of units. They are defined as asbtract types to simplify their usage as much as possible.
 
 ```haxe
 (10 : Millimetre) * 100 == (1 : Metre);
@@ -52,4 +52,19 @@ Also notice that the types are automatically generated. If you want to contribut
 
 The library has not been exhaustively tested, please pay attention to the correctness of the results you get.
 
-*Important*. This library should be used with the consciousness that converting values and perform some operations on the values might result in loss of precision. The limitation come from the fact that the underlying type is a `Float`. Converting `LightYear`s to `Millimitre`s might not work as well as you expect!
+*Important*. This library should be used with the knowledge that converting values and perform some operations on the values might result in loss of precision. The limitation come from the fact that the underlying type is `Float`. Converting `LightYear`s to `Millimitre`s might not work as well as you expect!
+
+## install
+
+From the command line just type:
+
+```bash
+haxelib install thx.unit
+```
+
+To use the `dev` version do:
+
+```bash
+haxelib git thx.core https://github.com/fponticelli/thx.unit.git
+```
+
