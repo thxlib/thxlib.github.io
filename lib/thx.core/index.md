@@ -12,14 +12,15 @@ classPath: src
 description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
 contributors: 
   - fponticelli
-releasenote: "Added features: Floats.ceil(), Floats.floor(), Strings.toChunk() and Nulls.with()."
-version: 0.15.0
+releasenote: "Added several features to thx.core.Dates, thx.core.Dynamics and thx.core.Objects."
+version: 0.16.0
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 
 ---
 
 # thx.core
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/fponticelli/thx.core?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [![Build Status](https://travis-ci.org/fponticelli/thx.core.svg?branch=master)](https://travis-ci.org/fponticelli/thx.core)
 
@@ -308,6 +309,32 @@ Extension methods for `String`. Some examples:
   * `repeat` creates a string repeating a certain pattern `n` times
   * `stripTags` sanitize html string by removing any tag-like information
   * `wrapColumns` breaks a long string into consistently sized lines without breaking words apart.
+
+`Strings` also defines a type alias to `StringTools`. This way by including it,
+you also get all the `StringTools` extension methods:
+
+```haxe
+using thx.core.Strings;
+```
+
+### [Dates](http://thx-lib.org/api/thx/core/Dates.html)
+
+Extension methods for `Date` and `Float`s that represent date values.
+
+Some examples:
+
+  * `compare` to sort `Date` values.
+  * `isLeapYear`/`isInLeapYear` to find leap year about a spefici year or date.
+  * `numDaysInMonth`/`numDaysInThisMonth` return the number of days in a month for a specified date.
+  * `snapTo`/`snapPrev`/`snapNext` to force a date value to a close boundary (Minute, Hour, Day, Week, Month, Year).
+  * `jump`/`prevX`/`nextX` to skip forward/backward by a given time delta.
+
+`Dates` also defines a type alias to `DateTools`. This way by including it,
+you also get all the `DateTools` extension methods:
+
+```haxe
+using thx.core.Dates;
+```
 
 ### [Types](http://thx-lib.org/api/thx/core/Types.html)
 

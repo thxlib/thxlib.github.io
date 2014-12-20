@@ -10,8 +10,8 @@
   description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
   contributors: 
     - fponticelli
-  releasenote: "Added features: Floats.ceil(), Floats.floor(), Strings.toChunk() and Nulls.with()."
-  version: 0.15.0
+  releasenote: "Added several features to thx.core.Dates, thx.core.Dynamics and thx.core.Objects."
+  version: 0.16.0
   url: "https://github.com/fponticelli/thx.core"
 - name: thx.color
   license: MIT
@@ -57,8 +57,8 @@
   description: Formatting library (Numbers and Dates).
   contributors: 
     - fponticelli
-  releasenote: First release.
-  version: 0.1.1
+  releasenote: Fixed API change in thx.core.
+  version: 0.1.2
   url: "https://github.com/fponticelli/thx.format"
   dependencies: 
     thx.culture: ""
@@ -111,8 +111,8 @@
   description: "Semantic version library for Haxe. It follows the specifications for Semantic Versioning 2.0.0 described at http://semver.org/"
   contributors: 
     - fponticelli
-  releasenote: Support Version Rules for matching version ranges
-  version: 0.2.0
+  releasenote: Removed unused null tests from equality
+  version: 0.2.1
   url: "https://github.com/fponticelli/thx.semver"
 - name: thx.unit
   license: MIT

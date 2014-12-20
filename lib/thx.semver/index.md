@@ -13,8 +13,8 @@ classPath: src
 description: "Semantic version library for Haxe. It follows the specifications for Semantic Versioning 2.0.0 described at http://semver.org/"
 contributors: 
   - fponticelli
-releasenote: Support Version Rules for matching version ranges
-version: 0.2.0
+releasenote: Removed unused null tests from equality
+version: 0.2.1
 url: "https://github.com/fponticelli/thx.semver"
 title: thx.semver
 
