@@ -10,8 +10,8 @@
   description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
   contributors: 
     - fponticelli
-  releasenote: "Added several features to thx.core.Dates, thx.core.Dynamics and thx.core.Objects."
-  version: 0.16.0
+  releasenote: Added Math type alias to Floats and renamed Floats.round methods. Also added a few more methods to Strings and Types.
+  version: 0.17.0
   url: "https://github.com/fponticelli/thx.core"
 - name: thx.color
   license: MIT
@@ -21,11 +21,11 @@
     - thx
     - cross
   classPath: src
-  description: "Library for color maniupation. Contains definitions for CMYK, Grey, HSL, HSV, and RGB as well as alpha versions of the sames and color parsing."
+  description: "Library for color manipulation. Contains definitions for CMYK, Grey, HSL, HSV, and RGB as well as alpha versions of the sames and color parsing."
   contributors: 
     - fponticelli
-  releasenote: improved documentation
-  version: 0.7.4
+  releasenote: "Added several color spaces: XYZ, CIELab, CIELCh, Yxy and CMY."
+  version: 0.8.0
   url: "https://github.com/fponticelli/thx.color"
   dependencies: 
     thx.core: ""
@@ -57,8 +57,8 @@
   description: Formatting library (Numbers and Dates).
   contributors: 
     - fponticelli
-  releasenote: Fixed API change in thx.core.
-  version: 0.1.2
+  releasenote: Updated thx.core API.
+  version: 0.1.4
   url: "https://github.com/fponticelli/thx.format"
   dependencies: 
     thx.culture: ""

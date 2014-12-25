@@ -12,8 +12,8 @@ classPath: src
 description: Formatting library (Numbers and Dates).
 contributors: 
   - fponticelli
-releasenote: Fixed API change in thx.core.
-version: 0.1.2
+releasenote: Updated thx.core API.
+version: 0.1.4
 url: "https://github.com/fponticelli/thx.format"
 title: thx.format
 dependencies: 
