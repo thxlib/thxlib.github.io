@@ -12,8 +12,8 @@ classPath: src
 description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
 contributors: 
   - fponticelli
-releasenote: Added Math type alias to Floats and renamed Floats.round methods. Also added a few more methods to Strings and Types.
-version: 0.17.0
+releasenote: Fixed tests.
+version: 0.17.1
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 

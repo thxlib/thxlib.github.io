@@ -10,8 +10,8 @@
   description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
   contributors: 
     - fponticelli
-  releasenote: Added Math type alias to Floats and renamed Floats.round methods. Also added a few more methods to Strings and Types.
-  version: 0.17.0
+  releasenote: Fixed tests.
+  version: 0.17.1
   url: "https://github.com/fponticelli/thx.core"
 - name: thx.color
   license: MIT
@@ -24,8 +24,8 @@
   description: "Library for color manipulation. Contains definitions for CMYK, Grey, HSL, HSV, and RGB as well as alpha versions of the sames and color parsing."
   contributors: 
     - fponticelli
-  releasenote: "Added several color spaces: XYZ, CIELab, CIELCh, Yxy and CMY."
-  version: 0.8.0
+  releasenote: Added color operations on HSL. Many fixes and tunes.
+  version: 0.9.0
   url: "https://github.com/fponticelli/thx.color"
   dependencies: 
     thx.core: ""

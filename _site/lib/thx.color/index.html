@@ -15,7 +15,7 @@
     <ul class="info">
       <li><a href="https://github.com/fponticelli/thx.color"><i class="fa fa-github"></i> Github</a></li>
       <li><a href="/api/thx/color"><i class="fa fa-code"></i> API doc</a></li>
-      <li title="version"><i class="fa fa-at"></i> 0.8.0</li>
+      <li title="version"><i class="fa fa-at"></i> 0.9.0</li>
       <li class="list" title="tags">
         <i class="fa fa-tags"></i> <span class="tags">color, thx, cross</span>
       </li>
@@ -45,26 +45,20 @@
 
 <h3 id="hsl-rainbow">HSL Rainbow</h3>
 <div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> left  <span class="p">:</span> <span class="n">HSL</span> <span class="o">=</span> <span class="s1">&#39;hsl(0,100%,0%)&#39;</span><span class="p">,</span>
-    right <span class="p">:</span> <span class="n">HSL</span> <span class="o">=</span> <span class="s1">&#39;hsl(359.99,100%,0%)&#39;</span><span class="p">,</span>
-    interpolate <span class="o">=</span> <span class="n">left</span><span class="p">.</span><span class="n">interpolate</span><span class="p">.</span><span class="n">bind</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">_</span><span class="p">);</span>
-<span class="n">Ints</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
-    <span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">var</span> color <span class="o">=</span> <span class="n">interpolate</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">w</span><span class="p">);</span>
-        <span class="n">Ints</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">h</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">ctx</span><span class="p">.</span><span class="n">fillStyle</span> <span class="o">=</span> <span class="n">color</span><span class="p">.</span><span class="n">lighter</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">h</span><span class="p">).</span><span class="n">toRGB</span><span class="p">().</span><span class="n">toString</span><span class="p">();</span>
-            <span class="n">ctx</span><span class="p">.</span><span class="n">fillRect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-        <span class="p">});</span>
-    <span class="p">});</span>
+    right <span class="p">:</span> <span class="n">HSL</span> <span class="o">=</span> <span class="s1">&#39;hsl(359.99,100%,0%)&#39;</span><span class="p">;</span>
+<span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="n">x</span> <span class="p">:</span> <span class="n">Float</span><span class="p">,</span> <span class="n">y</span> <span class="p">:</span> <span class="n">Float</span><span class="p">)</span> <span class="p">:</span> <span class="n">RGB</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">left</span><span class="p">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">x</span><span class="p">).</span><span class="n">lighter</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+<span class="p">};</span>
 </code></pre></div>
-<p><img src="https://github.com/fponticelli/thx.color/raw/master/images/rainbow.png?raw=true" alt="Alt text" title="HSL Rainbow"></p>
+<p><img src="https://github.com/fponticelli/thx.color/raw/master/images/rainbowhsl.png?raw=true" alt="Alt text" title="HSL Rainbow"></p>
 
-<h3 id="hsv-gradient">HSV Gradient</h3>
-<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> left  <span class="p">:</span> <span class="n">HSV</span> <span class="o">=</span> <span class="s1">&#39;hsv(0,100%,100%)&#39;</span><span class="p">,</span>
-    right <span class="p">:</span> <span class="n">HSV</span> <span class="o">=</span> <span class="s1">&#39;hsv(359.99,100%,100%)&#39;</span><span class="p">;</span>
-<span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">left</span><span class="p">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">t</span><span class="p">).</span><span class="n">toRGB</span><span class="p">();</span>
+<h3 id="hsv-interpolation">HSV Interpolation</h3>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> left  <span class="p">:</span> <span class="n">HSV</span> <span class="o">=</span> <span class="s1">&#39;hsv(160deg,100%,63%)&#39;</span><span class="p">,</span>
+    right <span class="p">:</span> <span class="n">HSV</span> <span class="o">=</span> <span class="s1">&#39;hsv(345deg,88%,77%)&#39;</span><span class="p">;</span>
+<span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="n">t</span> <span class="p">:</span> <span class="n">Float</span><span class="p">)</span> <span class="p">:</span> <span class="n">RGB</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">left</span> <span class="p">:</span> <span class="n">HSV</span><span class="p">).</span><span class="n">interpolate</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span><span class="err">);</span>
 </code></pre></div>
-<p><img src="https://github.com/fponticelli/thx.color/raw/master/images/gradienthsv.png?raw=true" alt="Alt text" title="HSV Gradient"></p>
+<p><img src="https://github.com/fponticelli/thx.color/raw/master/images/interpolatehsv.png?raw=true" alt="Alt text" title="HSV Interpolation"></p>
 
 <h3 id="lighter-rgb">Lighter RGB</h3>
 <div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> left <span class="p">:</span> <span class="n">RGB</span> <span class="o">=</span> <span class="s1">&#39;#0000ff&#39;</span><span class="p">;</span>
