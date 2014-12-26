@@ -10,8 +10,8 @@
   description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
   contributors: 
     - fponticelli
-  releasenote: Fixed tests.
-  version: 0.17.1
+  releasenote: Added Arrays.resize() and Floats.root().
+  version: 0.17.2
   url: "https://github.com/fponticelli/thx.core"
 - name: thx.color
   license: MIT
