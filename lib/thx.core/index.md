@@ -12,8 +12,8 @@ classPath: src
 description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
 contributors: 
   - fponticelli
-releasenote: Added Arrays.resize() and Floats.root().
-version: 0.17.2
+releasenote: Added Floats.angleDistance and angle interpolations.
+version: 0.17.3
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 
