@@ -11,8 +11,8 @@ classPath: src
 description: "Library for color manipulation. Contains definitions for CMYK, Grey, HSL, HSV, and RGB as well as alpha versions of the sames and color parsing."
 contributors: 
   - fponticelli
-releasenote: Ton of refactoring and improvements.
-version: 0.10.0
+releasenote: Fixed issue in CMY.
+version: 0.10.1
 url: "https://github.com/fponticelli/thx.color"
 title: thx.color
 dependencies: 
