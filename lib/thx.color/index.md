@@ -11,8 +11,8 @@ classPath: src
 description: "Library for color manipulation. Contains definitions for CMYK, Grey, HSL, HSV, and RGB as well as alpha versions of the sames and color parsing."
 contributors: 
   - fponticelli
-releasenote: Added color operations on HSL. Many fixes and tunes.
-version: 0.9.0
+releasenote: Ton of refactoring and improvements.
+version: 0.10.0
 url: "https://github.com/fponticelli/thx.color"
 title: thx.color
 dependencies: 
@@ -55,7 +55,7 @@ return function(x : Float, y : Float) : RGB {
 var left  : HSV = 'hsv(160deg,100%,63%)',
     right : HSV = 'hsv(345deg,88%,77%)';
 return function(t : Float) : RGB
-    return (left : HSV).interpolate(right, t));
+    return (left : HSV).interpolate(right, t);
 ```
 
 ![Alt text](https://github.com/fponticelli/thx.color/raw/master/images/interpolatehsv.png?raw=true "HSV Interpolation")
