@@ -12,8 +12,8 @@ classPath: src
 description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
 contributors: 
   - fponticelli
-releasenote: Added Floats.angleDistance and angle interpolations.
-version: 0.17.3
+releasenote: "Added alias to Either, Arrays.rotate and guard in Timer (for neko)."
+version: 0.17.4
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 
@@ -57,6 +57,8 @@ var result : MyResult = Right("the answer is 42");
 ```
 
 Note that [`thx.core.Result`](http://thx-lib.org/api/thx/core/Result.html) is an abstract on top of `Either` with some additional features.
+
+NOTE: Haxe v.3.2.0 introduces its own `haxe.ds.Either` type. It is 100% compatible with the one provided by thx.core. For that reason, thx.core adopts the official one when available. In the future `thx.core.Either` will probably be deprecated.
 
 ### [Nil](http://thx-lib.org/api/thx/core/Nil.html)
 

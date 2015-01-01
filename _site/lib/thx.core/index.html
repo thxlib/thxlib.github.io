@@ -15,7 +15,7 @@
     <ul class="info">
       <li><a href="https://github.com/fponticelli/thx.core"><i class="fa fa-github"></i> Github</a></li>
       <li><a href="/api/thx/core"><i class="fa fa-code"></i> API doc</a></li>
-      <li title="version"><i class="fa fa-at"></i> 0.17.3</li>
+      <li title="version"><i class="fa fa-at"></i> 0.17.4</li>
       <li class="list" title="tags">
         <i class="fa fa-tags"></i> <span class="tags">thx, general, cross, std</span>
       </li>
@@ -54,6 +54,8 @@
 <span class="kd">var</span> result <span class="p">:</span> <span class="n">MyResult</span> <span class="o">=</span> <span class="n">Right</span><span class="p">(</span><span class="s2">&quot;the answer is 42&quot;</span><span class="p">);</span>
 </code></pre></div>
 <p>Note that <a href="http://thx-lib.org/api/thx/core/Result.html"><code>thx.core.Result</code></a> is an abstract on top of <code>Either</code> with some additional features.</p>
+
+<p>NOTE: Haxe v.3.2.0 introduces its own <code>haxe.ds.Either</code> type. It is 100% compatible with the one provided by thx.core. For that reason, thx.core adopts the official one when available. In the future <code>thx.core.Either</code> will probably be deprecated.</p>
 
 <h3 id="nil"><a href="http://thx-lib.org/api/thx/core/Nil.html">Nil</a></h3>
 

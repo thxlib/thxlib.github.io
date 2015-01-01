@@ -11,8 +11,8 @@ classPath: src
 description: "Library for color manipulation. Contains definitions for CMYK, Grey, HSL, HSV, and RGB as well as alpha versions of the sames and color parsing."
 contributors: 
   - fponticelli
-releasenote: "Use `nearEquals` for equality operator."
-version: 0.10.2
+releasenote: More implicit conversions.
+version: 0.10.3
 url: "https://github.com/fponticelli/thx.color"
 title: thx.color
 dependencies: 
