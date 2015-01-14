@@ -8,11 +8,11 @@ tags:
   - cross
 layout: library
 classPath: src
-description: "Library for color manipulation. Contains definitions for CMYK, Grey, HSL, HSV, and RGB as well as alpha versions of the sames and color parsing."
+description: "Library for color manipulation. Contains definitions for CIELab, CIELCh, CMY(K), Grey, HSL(A), HSV(A), RGB(A), XYZ and Yxy as well as alpha versions of the sames and color parsing."
 contributors: 
   - fponticelli
-releasenote: More implicit conversions.
-version: 0.10.3
+releasenote: removed inlines and swapped alpha channel in RGBA.
+version: 0.11.0
 url: "https://github.com/fponticelli/thx.color"
 title: thx.color
 dependencies: 

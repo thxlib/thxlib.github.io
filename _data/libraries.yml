@@ -10,8 +10,8 @@
   description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
   contributors: 
     - fponticelli
-  releasenote: "Added alias to Either, Arrays.rotate and guard in Timer (for neko)."
-  version: 0.17.4
+  releasenote: "Added support for `TNull` in Types and improved `Date` documentation."
+  version: 0.17.5
   url: "https://github.com/fponticelli/thx.core"
 - name: thx.color
   license: MIT
@@ -21,11 +21,11 @@
     - thx
     - cross
   classPath: src
-  description: "Library for color manipulation. Contains definitions for CMYK, Grey, HSL, HSV, and RGB as well as alpha versions of the sames and color parsing."
+  description: "Library for color manipulation. Contains definitions for CIELab, CIELCh, CMY(K), Grey, HSL(A), HSV(A), RGB(A), XYZ and Yxy as well as alpha versions of the sames and color parsing."
   contributors: 
     - fponticelli
-  releasenote: More implicit conversions.
-  version: 0.10.3
+  releasenote: removed inlines and swapped alpha channel in RGBA.
+  version: 0.11.0
   url: "https://github.com/fponticelli/thx.color"
   dependencies: 
     thx.core: ""
