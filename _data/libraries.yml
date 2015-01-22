@@ -10,8 +10,8 @@
   description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
   contributors: 
     - fponticelli
-  releasenote: "Added support for `TNull` in Types and improved `Date` documentation."
-  version: 0.17.5
+  releasenote: Added thx.macro.MacroFields.
+  version: 0.17.7
   url: "https://github.com/fponticelli/thx.core"
 - name: thx.color
   license: MIT
