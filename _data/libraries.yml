@@ -10,8 +10,8 @@
   description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
   contributors: 
     - fponticelli
-  releasenote: Added thx.macro.MacroFields.
-  version: 0.17.7
+  releasenote: Added Bool.parse/tryParse.
+  version: 0.17.8
   url: "https://github.com/fponticelli/thx.core"
 - name: thx.color
   license: MIT
@@ -57,8 +57,8 @@
   description: Formatting library (Numbers and Dates).
   contributors: 
     - fponticelli
-  releasenote: Updated thx.core API.
-  version: 0.1.4
+  releasenote: When culture is not defined now it uses Format.defaultCulture instead of Culture.invariant.
+  version: 0.2.0
   url: "https://github.com/fponticelli/thx.format"
   dependencies: 
     thx.culture: ""
@@ -72,11 +72,11 @@
     - async
     - cross
   classPath: src
-  description: Library for lightweight promises
+  description: Library for lightweight promises and futures.
   contributors: 
     - fponticelli
-  releasenote: Improved documentation
-  version: 0.3.3
+  releasenote: Fixed issue with Promise.all() when getting an empty array of promises.
+  version: 0.3.4
   url: "https://github.com/fponticelli/thx.promise"
   dependencies: 
     thx.core: ""

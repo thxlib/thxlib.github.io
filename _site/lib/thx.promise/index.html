@@ -15,7 +15,7 @@
     <ul class="info">
       <li><a href="https://github.com/fponticelli/thx.promise"><i class="fa fa-github"></i> Github</a></li>
       <li><a href="/api/thx/promise"><i class="fa fa-code"></i> API doc</a></li>
-      <li title="version"><i class="fa fa-at"></i> 0.3.3</li>
+      <li title="version"><i class="fa fa-at"></i> 0.3.4</li>
       <li class="list" title="tags">
         <i class="fa fa-tags"></i> <span class="tags">thx, promise, async, cross</span>
       </li>
@@ -35,13 +35,15 @@
 
 <p>Simple reinterpretation of the Promise pattern for Haxe.</p>
 
-<h2 id="intro">intro</h2>
+<p>Note: The documentation needs to be updated to fit in the new implementation that uses <a href="http://thx-lib.org/api/thx/promise/Future.html">Future</a> as the basic implementation.</p>
 
-<p>thx.promise doesn&#39;t follow the Promise/A+ specication or any other specification. The libraries simply tries to leverage the Haxe typing system without enforcing any type of obscure magic.</p>
+<h2 id="introduction">Introduction</h2>
 
-<p>Promises always deal with just one value. If you need multiple values, you can use a <a href="https://github.com/fponticelli/thx.core/blob/master/src/thx/core/Tuple.hx">Tuple</a> and if you don&#39;t need any value use <a href="https://github.com/fponticelli/thx.core/blob/master/src/thx/core/Nil.hx">Nil</a>. This approach allows for a very simple API and implementation.
+<p>thx.promise doesn&#39;t follow the <a href="https://promisesaplus.com/">Promise/A+</a> specification or any other specification. The libraries simply tries to leverage the Haxe typing system without enforcing any type of obscure magic.</p>
+
+<p>Promises always deal with just one value. If you need multiple values, you can use a <a href="http://thx-lib.org/api/thx/core/Tuple2.html">Tuple</a> and if you don&#39;t need any value use <a href="http://thx-lib.org/api/thx/core/Nil.html">Nil</a>. This approach allows for a very simple API and implementation.
 mark
-A Promise is a representation of a value that will be available some time in the future. The value can be either any type in case of success or an instance of <a href="https://github.com/fponticelli/thx.core/blob/master/src/thx/core/Error.hx">Error</a> in case of failure. Notice that the Error case can only occur if the Promise has been explicitely rejected. Any error occurring in the promise handlers will not be automatically captured and will propagate normally.</p>
+A Promise is a representation of a value that will be available some time in the future. The value can be either any type in case of success or an instance of <a href="http://thx-lib.org/api/thx/core/Error.html">Error</a> in case of failure. Notice that the Error case can only occur if the Promise has been explicitely rejected. Any error occurring in the promise handlers will not be automatically captured and will propagate normally.</p>
 
 <p>A simple promise look something like this:</p>
 <div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> promise <span class="o">=</span> <span class="n">Promise</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">resolve</span> <span class="p">:</span> <span class="n">String</span> <span class="p">-&gt;</span> <span class="n">Void</span><span class="p">,</span> <span class="n">reject</span> <span class="p">:</span> <span class="n">Error</span> <span class="p">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="p">{</span>
@@ -67,7 +69,7 @@ A Promise is a representation of a value that will be available some time in the
     <span class="kd">function</span><span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="n">trace</span><span class="p">(</span><span class="s1">&#39;ERROR </span><span class="si">$</span><span class="n">error</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="p">);</span>
 </code></pre></div>
-<p>All these methods are convenience methods that use <code>.then()</code> internally. <code>.then()</code> method deals with <a href="/src/thx/promise/PromiseValue.hx"><code>PromiseValue&lt;T&gt;</code></a> directly.</p>
+<p>All these methods are convenience methods that use <code>.then()</code> internally. <code>.then()</code> method deals with <a href="http://thx-lib.org/api/thx/promise/PromiseValue.html"><code>PromiseValue&lt;T&gt;</code></a> directly.</p>
 
 <p>All of the above methods return the same Promise instance to enable easy chaining. Notice that handlers are executed in the sequence they have been registered and an uncaught exception in one of the handlers will provoke a termination in the chain.</p>
 <div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="n">promise</span><span class="p">.</span><span class="n">success</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">})</span>
@@ -76,7 +78,7 @@ A Promise is a representation of a value that will be available some time in the
 </code></pre></div>
 <p>All of the above are handling the same Promise/Value pair.</p>
 
-<h2 id="values">values</h2>
+<h2 id="values">Values</h2>
 
 <p>If you already have a value (or an error) you can instantly fulfill a Promise by doing:</p>
 <div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="n">Promise</span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="s2">&quot;some value&quot;</span><span class="p">);</span>
@@ -84,7 +86,7 @@ A Promise is a representation of a value that will be available some time in the
 </code></pre></div>
 <p>They both return a resolved instance of Promise.</p>
 
-<h2 id="transform/map">transform/map</h2>
+<h2 id="transform/map">Transform/Map</h2>
 
 <p>It seems pretty obvious that a Promise should be easy to transform/map. To that effect you have <code>map</code> and the <code>map*</code> derivative methods. A <code>map</code> method must return a new Promise instance.</p>
 <div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="n">Promise</span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -109,30 +111,30 @@ A Promise is a representation of a value that will be available some time in the
 
 <p><code>map</code> works as the above except that deals directly with <code>PromiseValue</code>.</p>
 
-<h2 id="always">always</h2>
+<h2 id="always">Always</h2>
 
 <p>Sometimes you just want to be notified when a promise has been fulfilled regardless of the value itself. In this case you can use <code>always()</code> (terminal computation like <code>success</code>/<code>failure</code>) or <code>mapAlways()</code> (map method like <code>mapSuccess/mapFailure</code>). Obviously the handlers of these functions will take no arguments because we don&#39;t care about the value of the promise.</p>
 
-<h2 id="more">more</h2>
+<h2 id="more">More</h2>
 
 <p>Promise also provide the following methods for completeness: <code>isResolved()</code>, <code>isFailure()</code> and <code>isComplete()</code>. They all return a <code>Bool</code> value and their behavior seems pretty obvious.</p>
 
-<h2 id="vitamins">vitamins</h2>
+<h2 id="vitamins">Vitamins</h2>
 
 <p>Extensions methods are available in the <code>thx.core.Promise</code> module. Using <code>using</code> you can access those directly as instance members of Promise.</p>
 
-<h3 id="log()">log()</h3>
+<h3 id="log()"><code>log()</code></h3>
 
 <p>Utility function to send the value of a Promise to <code>trace()</code>.</p>
 
-<h3 id="delay()">delay()</h3>
+<h3 id="delay()"><code>delay()</code></h3>
 
 <p>Returns a new Promise that passes through the value of the original promise but with a time delay. If time is not specified, the delay will be the shortest allowed by the platform (for JavaScript developers that might be equivalent to &#39;setImmediate&#39;).</p>
 <div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> promise <span class="o">=</span> <span class="n">Promise</span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="mi">7</span><span class="p">).</span><span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
 </code></pre></div>
 <p>The promise holds the value 7 but its availability is delayed by <code>50ms</code>.</p>
 
-<h3 id="join()">join()</h3>
+<h3 id="join()"><code>join()</code></h3>
 
 <p>Joins together two promises and returns a new Promise holding both values as members of a Tuple. You can easily &#39;unpack&#39; the members of a Promise<TupleX> by using <code>tuple()</code>/<code>mapTuple()</code>.</p>
 <div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="n">Promise</span><span class="p">.</span><span class="n">value</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
@@ -151,6 +153,14 @@ A Promise is a representation of a value that will be available some time in the
 </code></pre></div>
 <p>To be clear the Promises joined together will run concurrently and the Promise<TupleX> result will be available as soon as all the Promises involved have been resolved.</p>
 
+<h2 id="install">Install</h2>
+
+<p>From the command line just type:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">haxelib install thx.promise
+</code></pre></div>
+<p>To use the <code>dev</code> version do:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">haxelib git thx.core https://github.com/fponticelli/thx.promise.git
+</code></pre></div>
     <div class="footer">
       <div class="contact">
         <p>
