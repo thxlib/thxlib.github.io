@@ -12,8 +12,8 @@ classPath: src
 description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
 contributors: 
   - fponticelli
-releasenote: Added Bool.parse/tryParse.
-version: 0.17.8
+releasenote: "Added Strings.random, Arrays.distinct, Tuple from array, more permissive bool parsing, Ints.toBool, ."
+version: 0.18.0
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 

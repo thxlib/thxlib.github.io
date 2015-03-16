@@ -12,8 +12,8 @@ classPath: src
 description: Library for lightweight promises and futures.
 contributors: 
   - fponticelli
-releasenote: Fixed issue with Promise.all() when getting an empty array of promises.
-version: 0.3.4
+releasenote: Several additions.
+version: 0.4.0
 url: "https://github.com/fponticelli/thx.promise"
 title: thx.promise
 dependencies: 
