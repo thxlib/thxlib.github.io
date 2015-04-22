@@ -11,8 +11,8 @@ classPath: src
 description: "Library for color manipulation. Contains definitions for CIELab, CIELCh, CMY(K), Grey, HSL(A), HSV(A), RGB(A), XYZ and Yxy as well as alpha versions of the sames and color parsing."
 contributors: 
   - fponticelli
-releasenote: removed inlines and swapped alpha channel in RGBA.
-version: 0.11.0
+releasenote: Color brewer palettes and updated package for thx.core.
+version: 0.12.0
 url: "https://github.com/fponticelli/thx.color"
 title: thx.color
 dependencies: 
@@ -116,5 +116,5 @@ haxelib install thx.color
 To use the `dev` version do:
 
 ```bash
-haxelib git thx.core https://github.com/fponticelli/thx.color.git
+haxelib git thx.color https://github.com/fponticelli/thx.color.git
 ```

@@ -13,7 +13,7 @@ description: Stream library for Haxe.
 contributors: 
   - fponticelli
 releasenote: Aded .filterPluck() and reordered code
-version: 0.4.0
+version: 0.4.1
 url: "https://github.com/fponticelli/thx.stream"
 title: thx.stream
 dependencies: 

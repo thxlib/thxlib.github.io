@@ -12,8 +12,8 @@ classPath: src
 description: Library for lightweight promises and futures.
 contributors: 
   - fponticelli
-releasenote: Several additions.
-version: 0.4.0
+releasenote: JS promise conversion and updated package for thx.core.
+version: 0.5.0
 url: "https://github.com/fponticelli/thx.promise"
 title: thx.promise
 dependencies: 

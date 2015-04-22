@@ -11,8 +11,8 @@ classPath: src
 description: Localization library.
 contributors: 
   - fponticelli
-releasenote: Updated documentation
-version: 0.2.1
+releasenote: Updated a few definitions and updated package for thx.core
+version: 0.3.0
 url: "https://github.com/fponticelli/thx.culture"
 title: thx.culture
 dependencies: 

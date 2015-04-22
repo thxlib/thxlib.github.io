@@ -12,8 +12,8 @@ classPath: src
 description: Formatting library (Numbers and Dates).
 contributors: 
   - fponticelli
-releasenote: When culture is not defined now it uses Format.defaultCulture instead of Culture.invariant.
-version: 0.2.0
+releasenote: Updated package for thx.core.
+version: 0.2.1
 url: "https://github.com/fponticelli/thx.format"
 title: thx.format
 dependencies: 

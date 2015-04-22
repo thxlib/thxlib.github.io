@@ -13,8 +13,8 @@ classPath: src
 description: "Library for unit of measurements. So far are included linear measurement, amount of substance, angle, current, digital, luminous intensity, mass, and time."
 contributors: 
   - fponticelli
-releasenote: added abs/min/max/normalize/normalizeDirection/turn/pointToX to Angle and abs/min/max to others
-version: 0.4.0
+releasenote: Updated package for thx.core
+version: 0.4.1
 url: "https://github.com/fponticelli/thx.unit"
 title: thx.unit
 dependencies: 
