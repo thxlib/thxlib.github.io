@@ -14,7 +14,12 @@
     <div class="title"><a href="/">thx libraries</a></div>
     <ul class="info">
       <li><a href="https://github.com/fponticelli/{{ page.title }}"><i class="fa fa-github"></i> Github</a></li>
-      <li><a href="/api/{{ page.path }}"><i class="fa fa-code"></i> API doc</a></li>
+      <li>
+        {% if (page.path == "thx/core") %}
+        <a href="/api/"><i class="fa fa-code"></i> API doc</a></li>
+        {% else %}
+        <a href="/api/{{ page.path }}"><i class="fa fa-code"></i> API doc</a></li>
+        {% endif %}
       <li title="version"><i class="fa fa-at"></i> {{ page.version }}</li>
       <li class="list" title="tags">
         <i class="fa fa-tags"></i> <span class="tags">{{ page.tags | join:', ' }}</span>
