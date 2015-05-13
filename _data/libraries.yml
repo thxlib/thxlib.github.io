@@ -10,8 +10,8 @@
   description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
   contributors: 
     - fponticelli
-  releasenote: "Breaking change, requires global find/replace for `thx.core`/`thx`.\n This should be the last and most impacting BC before version 1."
-  version: 0.20.0
+  releasenote: Target specific fixes and restored travis builds.
+  version: 0.20.1
   url: "https://github.com/fponticelli/thx.core"
 - name: thx.color
   license: MIT

@@ -12,8 +12,8 @@ classPath: src
 description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
 contributors: 
   - fponticelli
-releasenote: "Breaking change, requires global find/replace for `thx.core`/`thx`.\n This should be the last and most impacting BC before version 1."
-version: 0.20.0
+releasenote: Target specific fixes and restored travis builds.
+version: 0.20.1
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 
@@ -23,8 +23,6 @@ title: thx.core
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/fponticelli/thx.core?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [![Build Status](https://travis-ci.org/fponticelli/thx.core.svg?branch=master)](https://travis-ci.org/fponticelli/thx.core)
-
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/thx-core.svg)](https://saucelabs.com/u/thx-core)
 
 Generic multi-purpose library. `thx.core` aims to be the [lodash](http://lodash.com/) library for Haxe.
 
