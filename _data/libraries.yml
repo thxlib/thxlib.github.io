@@ -10,8 +10,8 @@
   description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
   contributors: 
     - fponticelli
-  releasenote: Target specific fixes and restored travis builds.
-  version: 0.20.1
+  releasenote: Added functions helpers thanks to Francesco Agati.
+  version: 0.21.0
   url: "https://github.com/fponticelli/thx.core"
 - name: thx.color
   license: MIT
@@ -21,11 +21,11 @@
     - thx
     - cross
   classPath: src
-  description: "Library for color manipulation. Contains definitions for CIELab, CIELCh, CMY(K), Grey, HSL(A), HSV(A), RGB(A), XYZ and Yxy as well as alpha versions of the sames and color parsing."
+  description: "Library for color manipulation. Contains definitions for CieLab, CieLCh, Cmy(K), Grey, Hsl(A), Hsv(A), Rgb(A), Xyz and Yxy as well as alpha versions of the sames and color parsing."
   contributors: 
     - fponticelli
-  releasenote: Color brewer palettes and updated package for thx.core.
-  version: 0.12.0
+  releasenote: "Changed letter-casing of acronyms to match Haxe convention."
+  version: 0.13.0
   url: "https://github.com/fponticelli/thx.color"
   dependencies: 
     thx.core: ""
@@ -75,8 +75,8 @@
   description: Library for lightweight promises and futures.
   contributors: 
     - fponticelli
-  releasenote: JS promise conversion and updated package for thx.core.
-  version: 0.5.0
+  releasenote: Excluded .all and .afterAll from Java since there is a bug in the generated code.
+  version: 0.5.1
   url: "https://github.com/fponticelli/thx.promise"
   dependencies: 
     thx.core: ""

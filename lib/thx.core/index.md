@@ -12,8 +12,8 @@ classPath: src
 description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
 contributors: 
   - fponticelli
-releasenote: Target specific fixes and restored travis builds.
-version: 0.20.1
+releasenote: Added functions helpers thanks to Francesco Agati.
+version: 0.21.0
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 
