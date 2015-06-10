@@ -12,8 +12,8 @@ classPath: src
 description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
 contributors: 
   - fponticelli
-releasenote: "Added short-lambda (kind of) in thx.Functions. Thanks Andreas (@ciscoheat)!."
-version: 0.23.0
+releasenote: "Deprecated pluck(X) methods to favor the new `.fn` short lambdas."
+version: 0.24.0
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 
@@ -176,11 +176,11 @@ Some examples of the common features:
 // filter works for any Iterator/Iterable like the normal Array.filter
 [1,2,3].filter(Ints.isOdd); // [1,3]
 
-[1,2,3].filterPluck(_ != 2); // equivalent to [1,2,3].filter(function(i) return i != 2)
+[1,2,3].filter.fn(_ != 2); // equivalent to [1,2,3].filter(function(i) return i != 2)
 
 [1,2,3].isEmpty(); // false
 
-[1,2,3].pluck(_ * 2); // [2,4,6]
+[1,2,3].map.fn(_ * 2); // [2,4,6]
 ```
 
 ### [Arrays](http://thx-lib.org/api/thx/Arrays.html)
