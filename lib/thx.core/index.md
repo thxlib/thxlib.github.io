@@ -12,8 +12,8 @@ classPath: src
 description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
 contributors: 
   - fponticelli
-releasenote: "Deprecated pluck(X) methods to favor the new `.fn` short lambdas."
-version: 0.24.0
+releasenote: "Fixed some deprecations and improved `.fn` short lambda."
+version: 0.24.1
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 
