@@ -8,11 +8,11 @@ tags:
   - cross
 layout: library
 classPath: src
-description: "Library for color manipulation. Contains definitions for CieLab, CieLCh, Cmy(K), Grey, Hsl(A), Hsv(A), Rgb(A), Xyz and Yxy as well as alpha versions of the sames and color parsing."
+description: "Library for color manipulation. Contains definitions for CieLab, CieLCh, Cmy(K), CubeHelix, Grey, Hcl, Hsl(A), Hsv(A), Rgb(A), Xyz and Yxy as well as alpha versions of the sames and color parsing."
 contributors: 
   - fponticelli
-releasenote: "Changed letter-casing of acronyms to match Haxe convention."
-version: 0.13.0
+releasenote: Added CubeHelix and Hcl color spaces.
+version: 0.14.0
 url: "https://github.com/fponticelli/thx.color"
 title: thx.color
 dependencies: 
