@@ -12,8 +12,8 @@ classPath: src
 description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
 contributors: 
   - fponticelli
-releasenote: "Added thx.Enums helper, comparison and convert to string methods, improvements to Dates and Floats."
-version: 0.25.0
+releasenote: "Fixed bug in `Floats.nearEqualAngles`."
+version: 0.25.1
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 
