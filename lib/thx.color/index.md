@@ -11,8 +11,8 @@ classPath: src
 description: "Library for color manipulation. Contains definitions for CieLab, CieLCh, Cmy(K), CubeHelix, Grey, Hcl, Hsl(A), Hsv(A), Rgb(A), Xyz and Yxy as well as alpha versions of the sames and color parsing."
 contributors: 
   - fponticelli
-releasenote: Overall improvements and enhanced stability.
-version: 0.15.0
+releasenote: "Added Yuv, HunterLab, CieLuv and RAL colors. Removed Hcl (implemented as LabLCh) and a lot of improvements and fixes."
+version: 0.16.0
 url: "https://github.com/fponticelli/thx.color"
 title: thx.color
 dependencies: 
