@@ -12,8 +12,8 @@ classPath: src
 description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
 contributors: 
   - fponticelli
-releasenote: "Fixed bug in `Floats.nearEqualAngles`."
-version: 0.25.1
+releasenote: "Updated `thx.Strings` to use Utf8 where appropriated and added `Strings.count()`."
+version: 0.27.0
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 
