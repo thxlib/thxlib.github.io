@@ -11,8 +11,8 @@ classPath: src
 description: "Library for color manipulation. Contains definitions for CieLab, CieLCh, Cmy(K), CubeHelix, Grey, Hcl, Hsl(A), Hsv(A), Rgb(A), Xyz and Yxy as well as alpha versions of the sames and color parsing."
 contributors: 
   - fponticelli
-releasenote: "Added Yuv, HunterLab, CieLuv and RAL colors. Removed Hcl (implemented as LabLCh) and a lot of improvements and fixes."
-version: 0.16.0
+releasenote: Documentation update.
+version: 0.16.1
 url: "https://github.com/fponticelli/thx.color"
 title: thx.color
 dependencies: 
@@ -24,11 +24,30 @@ dependencies:
 
 [![Build Status](https://travis-ci.org/fponticelli/thx.color.svg)](https://travis-ci.org/fponticelli/thx.color)
 
-General purpose color library for Haxe.
+Color library for Haxe. Supports the following color spaces:
+
+  * CieLab (AKA Lab)
+  * CieLCh (AKA HCL)
+  * CieLuv (or LUV)
+  * Cmy
+  * Cmyk
+  * CubeHelix
+  * Grey
+  * Hsl(a)
+  * Hsv(a) (AKA HSB)
+  * HunterLab
+  * Rgb(a)
+  * Rgbx(a) (an high resolution version of RGB)
+  * Temperature
+  * Xyz
+  * Yuv
+  * Yxy
+
+With conversion from/to any color space (notice that you can lose some information in the conversion).
 
 ## intro
 
-API uses abstracts to make it easy to use colors with strings and numbers.
+API uses abstracts to make it easy to create colors from strings and numbers.
 
 ```haxe
     var rgb : Rgb = "#cf8700";

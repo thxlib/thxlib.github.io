@@ -18,7 +18,7 @@
         
         <a href="/api/thx/color"><i class="fa fa-code"></i> API doc</a></li>
         
-      <li title="version"><i class="fa fa-at"></i> 0.16.0</li>
+      <li title="version"><i class="fa fa-at"></i> 0.16.1</li>
       <li class="list" title="tags">
         <i class="fa fa-tags"></i> <span class="tags">color, thx, cross</span>
       </li>
@@ -36,11 +36,32 @@
 
 <p><a href="https://travis-ci.org/fponticelli/thx.color"><img src="https://travis-ci.org/fponticelli/thx.color.svg" alt="Build Status"></a></p>
 
-<p>General purpose color library for Haxe.</p>
+<p>Color library for Haxe. Supports the following color spaces:</p>
+
+<ul>
+<li>CieLab (AKA Lab)</li>
+<li>CieLCh (AKA HCL)</li>
+<li>CieLuv (or LUV)</li>
+<li>Cmy</li>
+<li>Cmyk</li>
+<li>CubeHelix</li>
+<li>Grey</li>
+<li>Hsl(a)</li>
+<li>Hsv(a) (AKA HSB)</li>
+<li>HunterLab</li>
+<li>Rgb(a)</li>
+<li>Rgbx(a) (an high resolution version of RGB)</li>
+<li>Temperature</li>
+<li>Xyz</li>
+<li>Yuv</li>
+<li>Yxy</li>
+</ul>
+
+<p>With conversion from/to any color space (notice that you can lose some information in the conversion).</p>
 
 <h2 id="intro">intro</h2>
 
-<p>API uses abstracts to make it easy to use colors with strings and numbers.</p>
+<p>API uses abstracts to make it easy to create colors from strings and numbers.</p>
 <div class="highlight"><pre><code class="language-haxe" data-lang="haxe">    <span class="kd">var</span> rgb <span class="p">:</span> <span class="n">Rgb</span> <span class="o">=</span> <span class="s2">&quot;#cf8700&quot;</span><span class="p">;</span>
     <span class="n">trace</span><span class="p">(</span><span class="n">rgb</span><span class="p">.</span><span class="n">green</span><span class="p">);</span>
 </code></pre></div>
