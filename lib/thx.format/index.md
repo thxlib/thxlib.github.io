@@ -13,7 +13,7 @@ description: Formatting library (Numbers and Dates).
 contributors: 
   - fponticelli
 releasenote: Updated package for thx.core.
-version: 0.2.1
+version: 0.3.0
 url: "https://github.com/fponticelli/thx.format"
 title: thx.format
 dependencies: 
