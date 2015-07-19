@@ -10,8 +10,8 @@
   description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
   contributors: 
     - fponticelli
-  releasenote: "Added Timestamp abstract (replaces Timestamps), Char, Chars, Nulls.ensure, Arrays.hasElements, Strings.hasContent, removed plick methods, improvements and fixes."
-  version: 0.28.0
+  releasenote: "Added macro version of thx.Objects.merge (thank @mlms13)."
+  version: 0.29.0
   url: "https://github.com/fponticelli/thx.core"
 - name: thx.color
   license: MIT
@@ -21,11 +21,11 @@
     - thx
     - cross
   classPath: src
-  description: "Library for color manipulation. Contains definitions for CieLab, CieLCh, Cmy(K), CubeHelix, Grey, Hcl, Hsl(A), Hsv(A), Rgb(A), Xyz and Yxy as well as alpha versions of the sames and color parsing."
+  description: "Library for color manipulation. Contains definitions for Lab, LCh, Cmy(K), CubeHelix, Grey, Hcl, Hsl(A), Hsv(A), Rgb(A), Xyz and Yxy as well as alpha versions of the sames and color parsing."
   contributors: 
     - fponticelli
-  releasenote: Documentation update.
-  version: 0.16.1
+  releasenote: Improvements and renamed some color spaces.
+  version: 0.17.0
   url: "https://github.com/fponticelli/thx.color"
   dependencies: 
     thx.core: ""
@@ -41,7 +41,7 @@
   contributors: 
     - fponticelli
   releasenote: Updated a few definitions and updated package for thx.core
-  version: 0.3.0
+  version: 0.4.0
   url: "https://github.com/fponticelli/thx.culture"
   dependencies: 
     thx.core: ""

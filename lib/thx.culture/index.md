@@ -12,7 +12,7 @@ description: Localization library.
 contributors: 
   - fponticelli
 releasenote: Updated a few definitions and updated package for thx.core
-version: 0.3.0
+version: 0.4.0
 url: "https://github.com/fponticelli/thx.culture"
 title: thx.culture
 dependencies: 
