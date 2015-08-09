@@ -12,8 +12,8 @@ classPath: src
 description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
 contributors: 
   - fponticelli
-releasenote: "Added macro version of thx.Objects.merge (thank @mlms13)."
-version: 0.29.0
+releasenote: "First release with new DateTime, DateTimeUtc and Time types!"
+version: 0.31.0
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 
