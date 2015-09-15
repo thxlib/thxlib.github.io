@@ -13,7 +13,7 @@ description: General purpose library. It contains extensions to many of the type
 contributors: 
   - fponticelli
 releasenote: "Decimal, fixes and general improvements"
-version: 0.33.1
+version: 0.34.0
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 

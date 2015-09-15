@@ -12,8 +12,8 @@ classPath: src
 description: Formatting library (Numbers and Dates).
 contributors: 
   - fponticelli
-releasenote: Updated to support new DateTime types in thx.core and extended features.
-version: 0.4.0
+releasenote: Added support for Decimal and BigInt.
+version: 0.5.0
 url: "https://github.com/fponticelli/thx.format"
 title: thx.format
 dependencies: 

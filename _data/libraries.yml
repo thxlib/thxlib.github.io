@@ -11,7 +11,7 @@
   contributors: 
     - fponticelli
   releasenote: "Decimal, fixes and general improvements"
-  version: 0.33.1
+  version: 0.34.0
   url: "https://github.com/fponticelli/thx.core"
 - name: thx.color
   license: MIT
@@ -57,8 +57,8 @@
   description: Formatting library (Numbers and Dates).
   contributors: 
     - fponticelli
-  releasenote: Updated to support new DateTime types in thx.core and extended features.
-  version: 0.4.0
+  releasenote: Added support for Decimal and BigInt.
+  version: 0.5.0
   url: "https://github.com/fponticelli/thx.format"
   dependencies: 
     thx.culture: ""
@@ -127,8 +127,8 @@
   description: "Library for unit of measurements. So far are included linear measurement, amount of substance, angle, current, digital, luminous intensity, mass, and time."
   contributors: 
     - fponticelli
-  releasenote: Updated package for thx.core
-  version: 0.4.1
+  releasenote: Changed most units to use Decimal or BigInt
+  version: 0.5.0
   url: "https://github.com/fponticelli/thx.unit"
   dependencies: 
     thx.core: ""
