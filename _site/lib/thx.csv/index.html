@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-gb">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>thx.csv</title>
+  <meta name="author" content="Franco Ponticelli" />
+  <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/css/screen.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/css/highlight.css" type="text/css" media="all" />
+<!--  <base href="https://github.com/fponticelli/thx.csv/" /> -->
+</head>
+<body>
+  <div class="site">
+    <div class="title"><a href="/">thx libraries</a></div>
+    <div class="try"><em>You can run your thx code snippets with <a href="http://try.thx-lib.org" target="_blank">try.thx-lib.org</a></em></div>
+    <ul class="info">
+      <li><a href="https://github.com/fponticelli/thx.csv"><i class="fa fa-github"></i> Github</a></li>
+      <li>
+        
+        <a href="/api/thx/csv"><i class="fa fa-code"></i> API doc</a></li>
+        
+      <li title="version"><i class="fa fa-at"></i> 0.1.1</li>
+      <li class="list" title="tags">
+        <i class="fa fa-tags"></i> <span class="tags">thx, data, csv, dsv, tsv, general, cross, std</span>
+      </li>
+      
+    </ul>
+    <h1 id="thx.csv">thx.csv</h1>
+
+<p><a href="https://gitter.im/fponticelli/thx.core?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter"></a></p>
+
+<p><a href="https://travis-ci.org/fponticelli/thx.csv"><img src="https://travis-ci.org/fponticelli/thx.csv.svg?branch=master" alt="Build Status"></a></p>
+
+<p>CSV decoder (parser) and encoder (writer)</p>
+
+<h2 id="usage">usage</h2>
+<div class="highlight"><pre><code class="language-haxe" data-lang="haxe"><span class="kd">var</span> s <span class="o">=</span> <span class="s1">&#39;Year,Make,Model,Description,Price</span>
+<span class="s1">1997,Ford,E350,&quot;ac, abs, moon&quot;,3000.00</span>
+<span class="s1">1999,Chevy,&quot;Venture &quot;&quot;Extended Edition&quot;&quot;&quot;,&quot;&quot;,4900.00</span>
+<span class="s1">1999,Chevy,&quot;Venture &quot;&quot;Extended Edition, Very Large&quot;&quot;&quot;,,5000.00</span>
+<span class="s1">1996,Jeep,Grand Cherokee,&quot;MUST SELL!</span>
+<span class="s1">air, moon roof, loaded&quot;,4799.00&#39;</span><span class="p">;</span>
+
+<span class="kd">var</span> decoded <span class="o">=</span> <span class="n">Csv</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">),</span>
+    encoded <span class="o">=</span> <span class="n">Csv</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="n">decoded</span><span class="p">);</span>
+<span class="n">trace</span><span class="p">(</span><span class="n">decoded</span><span class="p">);</span> <span class="c1">// Array&lt;Array&lt;String&gt;&gt;</span>
+<span class="n">trace</span><span class="p">(</span><span class="n">encoded</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="install">install</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">haxelib install thx.csv
+</code></pre></div>
+    <div class="footer">
+      <div class="contact">
+        <p>
+          copyright © Franco Ponticelli
+        </p>
+      </div>
+    </div>
+  </div>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+        _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+        _gaq.push(['_setAccount', 'UA-589893-18']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</body>
+<html>
