@@ -10,8 +10,8 @@
   description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
   contributors: 
     - fponticelli
-  releasenote: "Decimal, fixes and general improvements"
-  version: 0.34.0
+  releasenote: added Thx to get all the powers of thx in one step. Refactored Set into OrderedSet and MapList into OrderedMap. Improvements to Strings and fixes.
+  version: 0.35.0
   url: "https://github.com/fponticelli/thx.core"
 - name: thx.color
   license: MIT
@@ -76,8 +76,8 @@
   description: Formatting library (Numbers and Dates).
   contributors: 
     - fponticelli
-  releasenote: Added support for Decimal and BigInt.
-  version: 0.5.0
+  releasenote: Fixed issue with rounding.
+  version: 0.5.1
   url: "https://github.com/fponticelli/thx.format"
   dependencies: 
     thx.culture: ""

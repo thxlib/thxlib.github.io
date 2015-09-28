@@ -12,8 +12,8 @@ classPath: src
 description: Formatting library (Numbers and Dates).
 contributors: 
   - fponticelli
-releasenote: Added support for Decimal and BigInt.
-version: 0.5.0
+releasenote: Fixed issue with rounding.
+version: 0.5.1
 url: "https://github.com/fponticelli/thx.format"
 title: thx.format
 dependencies: 
