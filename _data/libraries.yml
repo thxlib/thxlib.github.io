@@ -45,8 +45,8 @@
   description: CSV parsing and writing libraries. Also supports DSV and TSV.
   contributors: 
     - fponticelli
-  releasenote: minor fixes to doc generation
-  version: 0.1.1
+  releasenote: throw an expection for unparsable CSV
+  version: 0.1.2
   url: "https://github.com/fponticelli/thx.csv"
 - name: thx.culture
   license: MIT

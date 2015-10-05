@@ -16,8 +16,8 @@ classPath: src
 description: CSV parsing and writing libraries. Also supports DSV and TSV.
 contributors: 
   - fponticelli
-releasenote: minor fixes to doc generation
-version: 0.1.1
+releasenote: throw an expection for unparsable CSV
+version: 0.1.2
 url: "https://github.com/fponticelli/thx.csv"
 title: thx.csv
 
@@ -45,6 +45,8 @@ var decoded = Csv.decode(s),
 trace(decoded); // Array<Array<String>>
 trace(encoded);
 ```
+
+[live sample](http://try.thx-lib.org/#913a7)
 
 ## install
 
