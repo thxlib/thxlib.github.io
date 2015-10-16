@@ -12,8 +12,8 @@ classPath: src
 description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
 contributors: 
   - fponticelli
-releasenote: added Thx to get all the powers of thx in one step. Refactored Set into OrderedSet and MapList into OrderedMap. Improvements to Strings and fixes.
-version: 0.35.0
+releasenote: Minor additions to thx.Decimal.
+version: 0.36.1
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 

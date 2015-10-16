@@ -13,8 +13,8 @@ classPath: src
 description: "Library for unit of measurements. So far are included linear measurement, amount of substance, angle, current, digital, luminous intensity, mass, and time."
 contributors: 
   - fponticelli
-releasenote: Changed most units to use Decimal or BigInt
-version: 0.5.0
+releasenote: Added runtime types for measures and automatic conversion from/to thx.Time for time units
+version: 0.6.0
 url: "https://github.com/fponticelli/thx.unit"
 title: thx.unit
 dependencies: 

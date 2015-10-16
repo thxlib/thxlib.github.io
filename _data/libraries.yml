@@ -10,8 +10,8 @@
   description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
   contributors: 
     - fponticelli
-  releasenote: added Thx to get all the powers of thx in one step. Refactored Set into OrderedSet and MapList into OrderedMap. Improvements to Strings and fixes.
-  version: 0.35.0
+  releasenote: Minor additions to thx.Decimal.
+  version: 0.36.1
   url: "https://github.com/fponticelli/thx.core"
 - name: thx.color
   license: MIT
@@ -146,8 +146,8 @@
   description: "Library for unit of measurements. So far are included linear measurement, amount of substance, angle, current, digital, luminous intensity, mass, and time."
   contributors: 
     - fponticelli
-  releasenote: Changed most units to use Decimal or BigInt
-  version: 0.5.0
+  releasenote: Added runtime types for measures and automatic conversion from/to thx.Time for time units
+  version: 0.6.0
   url: "https://github.com/fponticelli/thx.unit"
   dependencies: 
     thx.core: ""
