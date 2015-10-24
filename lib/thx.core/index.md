@@ -12,8 +12,8 @@ classPath: src
 description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
 contributors: 
   - fponticelli
-releasenote: Minor additions to thx.Decimal.
-version: 0.36.1
+releasenote: "TreeBag, Disjunction, HashSet, Rational plus fixes and improvements."
+version: 0.37.0
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 
