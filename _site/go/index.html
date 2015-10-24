@@ -4,10 +4,19 @@
 <meta charset="utf-8">
 <title>redirect to api</title>
 <script>
-var base = 'https://github.com/fponticelli/',
-    hash = window.location.hash.substr(2),
-    lib  = hash.split('/').slice(0, 2).join('.'),
-    path = base + lib + '/blob/master/src/' + hash;
+var base   = 'https://github.com/fponticelli/',
+    hash   = window.location.hash.substr(2),
+    parts  = hash.split('/'),
+    lib    = parts.slice(0, 2).join('.'),
+    incore = ["thx.bigint", "thx.error", "thx.macro"];
+if(parts.length == 2 || incore.indexOf(lib) >= 0) {
+  // thx.core
+  lib = "thx.core";
+}
+var path = base + lib + '/blob/master/src/' + hash;
+console.log('hash', hash);
+console.log('lib', lib);
+console.log('path', path);
 window.location = path;
 </script>
 </head>
