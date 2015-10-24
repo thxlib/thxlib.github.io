@@ -10,8 +10,8 @@
   description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
   contributors: 
     - fponticelli
-  releasenote: "TreeBag, Disjunction, HashSet, Rational plus fixes and improvements."
-  version: 0.37.0
+  releasenote: updated docs.
+  version: 0.37.1
   url: "https://github.com/fponticelli/thx.core"
 - name: thx.color
   license: MIT
@@ -146,8 +146,8 @@
   description: "Library for unit of measurements. So far are included linear measurement, amount of substance, angle, current, digital, luminous intensity, mass, and time."
   contributors: 
     - fponticelli
-  releasenote: Added runtime types for measures and automatic conversion from/to thx.Time for time units
-  version: 0.6.0
+  releasenote: Fixed time conversion
+  version: 0.7.1
   url: "https://github.com/fponticelli/thx.unit"
   dependencies: 
     thx.core: ""

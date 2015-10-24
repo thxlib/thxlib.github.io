@@ -12,8 +12,8 @@ classPath: src
 description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
 contributors: 
   - fponticelli
-releasenote: "TreeBag, Disjunction, HashSet, Rational plus fixes and improvements."
-version: 0.37.0
+releasenote: updated docs.
+version: 0.37.1
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 
