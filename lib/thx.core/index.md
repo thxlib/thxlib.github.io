@@ -12,8 +12,8 @@ classPath: src
 description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
 contributors: 
   - fponticelli
-releasenote: updated docs.
-version: 0.37.1
+releasenote: The FP release.
+version: 0.38.0
 url: "https://github.com/fponticelli/thx.core"
 title: thx.core
 
@@ -226,7 +226,7 @@ it.isIterable() // checks that the instance has the right members to be an Itera
 Extension methods for functions. Methods are roughly distributed between [`Functions`](http://thx-lib.org/api/thx/Functions.html),  [`Functions0`](http://thx-lib.org/api/thx/Functions0.html),  [`Functions1`](http://thx-lib.org/api/thx/Functions1.html),  [`Functions2`](http://thx-lib.org/api/thx/Functions2.html) and  [`Functions3`](http://thx-lib.org/api/thx/Functions3.html) where the number suffix denotes the arity (number of arguments) of the function that are going to be extended.
 
   * `after` returns a function that wraps the passed function. The original function will be executed only after it has been called `n` times
-  * `compose` returns a function that calls the first arguemnt function with the result of the following one.
+  * `compose` returns a function that calls the first argument function with the result of the following one.
   * `equality` performs strict physical equality
   * `identity` is a function that returns its first argument
   * `join` creates a function that calls the 2 functions passed as arguments in sequence

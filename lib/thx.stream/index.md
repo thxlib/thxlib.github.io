@@ -12,8 +12,8 @@ classPath: src
 description: Stream library for Haxe.
 contributors: 
   - fponticelli
-releasenote: Aded .filterPluck() and reordered code
-version: 0.4.1
+releasenote: Updated dependencies and general improvments
+version: 0.5.0
 url: "https://github.com/fponticelli/thx.stream"
 title: thx.stream
 dependencies: 

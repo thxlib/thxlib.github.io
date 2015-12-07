@@ -11,8 +11,8 @@ classPath: src
 description: "Library for color manipulation. Contains definitions for Lab, LCh, Cmy(K), CubeHelix, Grey, Hcl, Hsl(A), Hsv(A), Rgb(A), Xyz and Yxy as well as alpha versions of the sames and color parsing."
 contributors: 
   - fponticelli
-releasenote: Updated docs.
-version: 0.17.1
+releasenote: "Fixes to some of the `with` methods."
+version: 0.17.3
 url: "https://github.com/fponticelli/thx.color"
 title: thx.color
 dependencies: 
