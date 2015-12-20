@@ -10,8 +10,8 @@
   description: General purpose library. It contains extensions to many of the types contained in the standard library as well as new complementary types.
   contributors: 
     - fponticelli
-  releasenote: The FP release.
-  version: 0.38.0
+  releasenote: "More functional goodness, Make, Convert, fixes and minor additions."
+  version: 0.39.0
   url: "https://github.com/fponticelli/thx.core"
 - name: thx.color
   license: MIT
